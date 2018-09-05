@@ -159,7 +159,7 @@ fi
 # The paths for the different bash files
 export PATH=$PATH":/usr/games:$HOME/homework/local_scripts"
 
-source ~/homework/bash/.bash_alias
+source ~/myrepo/bash/.bash_alias
 #source ~/homework/bash/.bash_profile
 
 # Unused files
