@@ -98,11 +98,11 @@ alias GP='git_push'
 alias B='cib'
 
 # The ssh-copy-id command can only take the name from the local config.
-alias ssh-copy-id='cat ~/homework/config > ~/.ssh/config;ssh-copy-id'
-alias ec='emacs ~/homework/config'
-alias ssh='ssh -o ServerAliveInterval=100 -F ~/homework/config'
-alias scp='scp -F ~/homework/config'
-alias ssp='ssh -F ~/homework/peter_ssh'
+alias ssh-copy-id='cat ~/myrepo/config > ~/.ssh/config;ssh-copy-id'
+alias ec='emacs ~/myrepo/config'
+alias ssh='ssh -o ServerAliveInterval=100 -F ~/myrepo/config'
+alias scp='scp -F ~/myrepo/config'
+
 #alias ls='ls'
 alias V='vncssh'
 alias S='showcit'
