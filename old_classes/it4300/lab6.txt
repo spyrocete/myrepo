@@ -1,0 +1,204 @@
+mysql> \. b.sql
+--------------
+select title_id, title_name, price, (.10) as "discount", round(price*.90,4) 
+       as "New Price" 
+       from books.titles
+--------------
+
++----------+-------------------------------------+-------+----------+-----------+
+| title_id | title_name                          | price | discount | New Price |
++----------+-------------------------------------+-------+----------+-----------+
+| T01      | 1977!                               | 21.99 |     0.10 |   19.7910 |
+| T02      | 200 Years of German Humor           | 19.95 |     0.10 |   17.9550 |
+| T03      | Ask Your System Administrator       | 39.95 |     0.10 |   35.9550 |
+| T04      | But I Did It Unconsciously          | 12.99 |     0.10 |   11.6910 |
+| T05      | Exchange of Platitudes              |  6.95 |     0.10 |    6.2550 |
+| T06      | How About Never?                    | 19.95 |     0.10 |   17.9550 |
+| T07      | I Blame My Mother                   | 23.95 |     0.10 |   21.5550 |
+| T08      | Just Wait Until After School        | 10.00 |     0.10 |    9.0000 |
+| T09      | Kiss My Boo-Boo                     | 13.95 |     0.10 |   12.5550 |
+| T10      | Not Without My Faberge Egg          |  NULL |     0.10 |      NULL |
+| T11      | Perhaps It's a Glandular Problem    |  7.99 |     0.10 |    7.1910 |
+| T12      | Spontaneous, Not Annoying           | 12.99 |     0.10 |   11.6910 |
+| T13      | What Are The Civilian Applications? | 29.99 |     0.10 |   26.9910 |
++----------+-------------------------------------+-------+----------+-----------+
+13 rows in set (0.00 sec)
+
+--------------
+select concat(au_lname,", ",au_fname) as "name" from books.authors
+--------------
+
++--------------------+
+| name               |
++--------------------+
+| Buchman, Sarah     |
+| Heydemark, Wendy   |
+| Hull, Hallie       |
+| Hull, Klee         |
+| Kells, Christian   |
+| Kellsey,           |
+| O'Furniture, Paddy |
++--------------------+
+7 rows in set (0.00 sec)
+
+--------------
+select concat(upper(substr(au_lname, 1,3)),substr(phone from 9)) as "Search ID",
+       concat(au_lname,", ",au_fname) as "name"       
+       from books.authors
+--------------
+
++-----------+--------------------+
+| Search ID | name               |
++-----------+--------------------+
+| BUC7223   | Buchman, Sarah     |
+| HEY7020   | Heydemark, Wendy   |
+| HUL4278   | Hull, Hallie       |
+| HUL4278   | Hull, Klee         |
+| KEL4680   | Kells, Christian   |
+| KEL7128   | Kellsey,           |
+| O'F0752   | O'Furniture, Paddy |
++-----------+--------------------+
+7 rows in set (0.00 sec)
+
+--------------
+select au_lname,character_length(au_lname) as "length"
+       from books.authors
+--------------
+
++-------------+--------+
+| au_lname    | length |
++-------------+--------+
+| Buchman     |      7 |
+| Heydemark   |      9 |
+| Hull        |      4 |
+| Hull        |      4 |
+| Kells       |      5 |
+| Kellsey     |      7 |
+| O'Furniture |     11 |
++-------------+--------+
+7 rows in set (0.00 sec)
+
+--------------
+select title_id,title_name,extract(year from pubdate) as "year"
+       from books.titles
+--------------
+
++----------+-------------------------------------+------+
+| title_id | title_name                          | year |
++----------+-------------------------------------+------+
+| T01      | 1977!                               | 2000 |
+| T02      | 200 Years of German Humor           | 1998 |
+| T03      | Ask Your System Administrator       | 2000 |
+| T04      | But I Did It Unconsciously          | 1999 |
+| T05      | Exchange of Platitudes              | 2001 |
+| T06      | How About Never?                    | 2000 |
+| T07      | I Blame My Mother                   | 1999 |
+| T08      | Just Wait Until After School        | 2001 |
+| T09      | Kiss My Boo-Boo                     | 2002 |
+| T10      | Not Without My Faberge Egg          | NULL |
+| T11      | Perhaps It's a Glandular Problem    | 2000 |
+| T12      | Spontaneous, Not Annoying           | 2000 |
+| T13      | What Are The Civilian Applications? | 1999 |
++----------+-------------------------------------+------+
+13 rows in set (0.00 sec)
+
+--------------
+select title_id,title_name,pubdate, pubdate+interval 28 year as "copyright date"
+       from books.titles
+--------------
+
++----------+-------------------------------------+------------+----------------+
+| title_id | title_name                          | pubdate    | copyright date |
++----------+-------------------------------------+------------+----------------+
+| T01      | 1977!                               | 2000-08-01 | 2028-08-01     |
+| T02      | 200 Years of German Humor           | 1998-04-01 | 2026-04-01     |
+| T03      | Ask Your System Administrator       | 2000-09-01 | 2028-09-01     |
+| T04      | But I Did It Unconsciously          | 1999-05-31 | 2027-05-31     |
+| T05      | Exchange of Platitudes              | 2001-01-01 | 2029-01-01     |
+| T06      | How About Never?                    | 2000-07-31 | 2028-07-31     |
+| T07      | I Blame My Mother                   | 1999-10-01 | 2027-10-01     |
+| T08      | Just Wait Until After School        | 2001-06-01 | 2029-06-01     |
+| T09      | Kiss My Boo-Boo                     | 2002-05-31 | 2030-05-31     |
+| T10      | Not Without My Faberge Egg          | NULL       | NULL           |
+| T11      | Perhaps It's a Glandular Problem    | 2000-11-30 | 2028-11-30     |
+| T12      | Spontaneous, Not Annoying           | 2000-08-31 | 2028-08-31     |
+| T13      | What Are The Civilian Applications? | 1999-05-31 | 2027-05-31     |
++----------+-------------------------------------+------------+----------------+
+13 rows in set (0.00 sec)
+
+--------------
+select title_id,title_name,price,
+       case
+           when type="history" then round(price*.90,4)
+	   else round(price*.80,4)
+       end as "New Price"
+from books.titles
+--------------
+
++----------+-------------------------------------+-------+-----------+
+| title_id | title_name                          | price | New Price |
++----------+-------------------------------------+-------+-----------+
+| T01      | 1977!                               | 21.99 |   19.7910 |
+| T02      | 200 Years of German Humor           | 19.95 |   17.9550 |
+| T03      | Ask Your System Administrator       | 39.95 |   31.9600 |
+| T04      | But I Did It Unconsciously          | 12.99 |   10.3920 |
+| T05      | Exchange of Platitudes              |  6.95 |    5.5600 |
+| T06      | How About Never?                    | 19.95 |   15.9600 |
+| T07      | I Blame My Mother                   | 23.95 |   19.1600 |
+| T08      | Just Wait Until After School        | 10.00 |    8.0000 |
+| T09      | Kiss My Boo-Boo                     | 13.95 |   11.1600 |
+| T10      | Not Without My Faberge Egg          |  NULL |      NULL |
+| T11      | Perhaps It's a Glandular Problem    |  7.99 |    6.3920 |
+| T12      | Spontaneous, Not Annoying           | 12.99 |   10.3920 |
+| T13      | What Are The Civilian Applications? | 29.99 |   26.9910 |
++----------+-------------------------------------+-------+-----------+
+13 rows in set (0.00 sec)
+
+--------------
+select title_id, title_name, coalesce(price, "priceless") 
+       as "retail"
+       from books.titles
+--------------
+
++----------+-------------------------------------+-----------+
+| title_id | title_name                          | retail    |
++----------+-------------------------------------+-----------+
+| T01      | 1977!                               | 21.99     |
+| T02      | 200 Years of German Humor           | 19.95     |
+| T03      | Ask Your System Administrator       | 39.95     |
+| T04      | But I Did It Unconsciously          | 12.99     |
+| T05      | Exchange of Platitudes              | 6.95      |
+| T06      | How About Never?                    | 19.95     |
+| T07      | I Blame My Mother                   | 23.95     |
+| T08      | Just Wait Until After School        | 10.00     |
+| T09      | Kiss My Boo-Boo                     | 13.95     |
+| T10      | Not Without My Faberge Egg          | priceless |
+| T11      | Perhaps It's a Glandular Problem    | 7.99      |
+| T12      | Spontaneous, Not Annoying           | 12.99     |
+| T13      | What Are The Civilian Applications? | 29.99     |
++----------+-------------------------------------+-----------+
+13 rows in set (0.00 sec)
+
+--------------
+select concat(CURRENT_DATE,' ',CURRENT_TIME) as "Current Time"
+--------------
+
++---------------------+
+| Current Time        |
++---------------------+
+| 2014-10-08 21:07:27 |
++---------------------+
+1 row in set (0.00 sec)
+
+--------------
+select substr(CURRENT_USER from position('@' in CURRENT_USER)+1) as "Server"
+--------------
+
++-----------+
+| Server    |
++-----------+
+| localhost |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> exit

@@ -1,0 +1,131 @@
+mysql> \. 9.sql
+Database changed
+--------------
+SELECT distinct 
+       spj.jid
+     FROM spj
+     INNER JOIN j
+       ON spj.jid = j.jid 
+     INNER JOIN s
+       ON spj.sid = s.sid
+     WHERE s.city="London"
+--------------
+
++------+
+| jid  |
++------+
+| J1   |
+| J4   |
+| J3   |
+| J7   |
++------+
+4 rows in set (0.00 sec)
+
+--------------
+SELECT spj.jid
+     FROM spj
+     WHERE spj.sid IN
+       (SELECT s.sid
+   	FROM s
+   	WHERE s.city="London")
+--------------
+
++------+
+| jid  |
++------+
+| J1   |
+| J4   |
+| J3   |
+| J7   |
++------+
+4 rows in set (0.00 sec)
+
+--------------
+SELECT distinct 
+       j.jid
+     FROM j
+     INNER JOIN spj 
+       ON j.jid = spj.jid 
+     INNER JOIN p
+       ON spj.pid = p.pid
+     WHERE p.color="Red"
+--------------
+
++------+
+| jid  |
++------+
+| J1   |
+| J4   |
+| J2   |
+| J3   |
+| J7   |
++------+
+5 rows in set (0.00 sec)
+
+--------------
+SELECT DISTINCT 
+       jid
+     FROM spj
+     WHERE pid IN
+       (SELECT p.pid
+   	FROM p
+   	WHERE p.color="Red")
+--------------
+
++------+
+| jid  |
++------+
+| J1   |
+| J4   |
+| J2   |
+| J3   |
+| J7   |
++------+
+5 rows in set (0.00 sec)
+
+--------------
+SELECT 
+       a.jid,
+       a.pid,
+       a.sid,
+       qty
+     FROM spj a
+     WHERE a.qty >
+       (SELECT AVG(b.qty)
+       	  FROM spj b)
+--------------
+
++------+------+------+------+
+| jid  | pid  | sid  | qty  |
++------+------+------+------+
+| J4   | P1   | S1   |  700 |
+| J1   | P3   | S2   |  400 |
+| J4   | P3   | S2   |  500 |
+| J5   | P3   | S2   |  600 |
+| J6   | P3   | S2   |  400 |
+| J7   | P3   | S2   |  800 |
+| J2   | P4   | S3   |  500 |
+| J5   | P5   | S5   |  500 |
+| J4   | P4   | S5   |  800 |
+| J4   | P5   | S5   |  400 |
+| J4   | P6   | S5   |  500 |
++------+------+------+------+
+11 rows in set (0.00 sec)
+
+--------------
+SELECT sid
+       FROM spj
+       GROUP BY sid
+       HAVING COUNT(DISTINCT pid) =
+         (SELECT COUNT(DISTINCT pid) 
+        FROM spj)
+--------------
+
++------+
+| sid  |
++------+
+| S5   |
++------+
+1 row in set (0.00 sec)
+
+mysql> exit

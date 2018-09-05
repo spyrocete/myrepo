@@ -1,0 +1,31 @@
+#!/bin/bash
+
+vm=clone
+
+# Will server the file of all the vms from the citv showvm command\
+# and will take just the line out that has the server name you want.
+name=$(cat feedback | grep $vm)
+
+# Will search through cordelia desdemona and ophelia for the servers.\
+# If you need to add another server use this\
+# echo $name | grep -o 'name_of_server'
+server=$(echo $name | grep -o 'cordelia'
+echo $name | grep -o 'desdemona'
+echo $name | grep -o 'ophelia')
+
+# Will take out just the port number if this does not work try altering the\
+# grep that looks like this grep -o '[0-9][0-9].' this will grab 3 digits\
+# the period is a wild card that will grab anything even space\
+# the [0-9][0-9] will grab a double digit number it will not grab a sigle digit.
+port=$(echo $name | grep -o $server..... | grep -o '[0-9][0-9].')
+
+# Strip spaces from the port number and server name
+mod_port=$(echo $port | tr -s [:space:])
+mod_server=$(echo $server | tr -s [:space:])
+
+
+echo "$mod_port:$mod_server:$mod_port"
+
+
+
+

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd /root
+if [ ! -d .ssh ]; then
+    mkdir .ssh
+fi
+chmod 700 .ssh
+cd .ssh
+wget http://cit.dixie.edu/it/3100/sources/grader_rsa.pub
+cat grader_rsa.pub >> authorized_keys
+rm grader_rsa.pub
+chown root:root authorized_keys
+chmod 600 authorized_keys

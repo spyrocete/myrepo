@@ -1,0 +1,72 @@
+garay-3750(config)#int f1/0/3
+
+channel-group 1 mode active
+
+switchport trunk encapsulation dot1q
+
+garay-3750(config-if)#switchport trunk allowed vlan 117
+
+garay-3750(config-if)#switchport mode trunk
+
+garay-3750(config)#int f1/0/4
+
+channel-group 1 mode active
+
+garay-3750(config-if)#switchport trunk encapsulation dot1q
+
+garay-3750(config-if)#switchport trunk allowed vlan 117
+
+garay-3750(config-if)#switchport mode trunk
+
+garay-3750#show etherchannel 1 detail
+ 
+garay-3750(config)#int p01
+
+garay-3750(config-if)#switchport trunk encapsulation dot1q
+
+garay-3750(config-if)#switchport trunk allowed vlan 117,917,3317,3333
+
+
+garay-3750(config)#spanning-tree mode rapid-pvst
+
+garay-3750(config-if)#spanning-tree vlan 117 cost 8
+
+
+garay-3750(config)#int f1/0/22
+
+garay-3750(config-if)#spanning-tree portfast trunk
+
+garay-3750(config)#int f1/0/20
+
+garay-3750(config-if)#spanning-tree portfast trunk
+
+
+garay-3750(config)#spanning-tree vlan 11 root primary
+
+garay-3750(config)#spanning-tree vlan 12 root primary
+
+
+garay-3750(config)#int po1
+
+garay-3750(config-if)#spanning-tree vlan 3333 cost 30
+
+garay-3750(config-if)#spanning-tree vlan 117 cost 10
+
+
+garay-3750(config)#int f10/013
+
+garay-3750(config-if)#spanning-tree vlan 117 cost 30
+
+
+garay-3750(config)#int f1/0/13
+
+garay-3750(config-if)#shutdown
+
+garay-3750(config)#int f1/0/13
+
+garay-3750(config-if)#no shutdown
+
+
+garay-3750(config)#int po1
+
+garay-3750(config-if)#shutdown

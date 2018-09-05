@@ -1,0 +1,120 @@
+* 1 
+osi model
+encapsulation
+pdus
+* 2
+lan 
+no pinout
+smaller micron the more distance
+how big is mac address in bytes and bits
+* 3
+naus
+* 4
+routting logical addresses 
+default gate way uses subnet mask to see if it is on the local network
+reserved space
+* 5
+both use ports tcpip udp tcp
+common ports
+
+* section 2
+* 9
+vlan 
+trunking vs access prots
+tagged vs untagged
+router on a stick
+
+* 10
+cdp
+admin down = you shut it down
+up down
+down up
+down down = did a shutdown but the port is off
+
+* section 3
+
+* 12
+subneting 
+* 13
+binary probably not
+* 14
+sub broadcast address
+magic number
+
+* section 4
+* 15
+line status vs 
+* 16
+connected routs statick routes
+static routes are bad and should not be used.
+* 17
+distats victor vs link state
+loop backs good to know why would you want to use one
+wild card mask
+* section 5
+* 19
+probably not goign to have subnet tree 
+* section 6
+* 20
+acls 
+source or destination
+up link port vs normal port
+ntp 
+sys log
+* section 7
+
+* 25
+ipv6
+ospf icmp 
+summerization of ipv
+expanding it back
+calc prefix
+bits in qurtet
+global unicast is your public ip
+slac
+unque local unicast 
+* 26
+subnet 
+and a tree
+eui-64 
+dont have to figure out eui
+auto configes
+link local
+multicast
+egrip
+* 28
+ndp 
+descovering prefix
+duplicatin ip
+dhp6
+slaac does not need server
+ospf ip6
+*  book 2 
+* 1
+stp
+bpdu sends cost 
+defualt costs 
+states
+etherchannel
+bpdu guard 
+* 2
+pvst = force cost accross different links or balancing
+
+lacp 
+* 3
+stp trouble shooting
+* section 3
+* 10
+eigrp
+route poisoning = send out infent metric if link goes down
+* section 6
+* 19
+snmp 
+what is mibs
+oids
+acl 
+syslog
+netflow
+ip ingress egress want it on interface on it
+
+* 

@@ -1,0 +1,189 @@
+systemctl stop dhcpcd.service
+
+ip link
+
+ip link set enp2s0f0 up
+
+ip addr add 144.38.204.76/27 dev enp2s0f0
+
+# may need to be my gateway instead of ip
+
+ip route add default via 144.38.204.76
+
+emacs /etc/resolv.conf
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+#search example.com
+
+* raid10
+** benchmark
+Version  1.97       ------Sequential Output------ --Sequential Input- --Rando\
+m-                                                                            
+Concurrency   1     -Per Chr- --Block-- -Rewrite- -Per Chr- --Block-- --Seeks\
+--                                                                            
+Machine        Size K/sec %CP K/sec %CP K/sec %CP K/sec %CP K/sec %CP  /sec %\
+CP                                                                            
+archiso         12G   664  97 230029  41 81820  11  3384  94 265724  20 826.5\
+  21                                                                          
+Latency             18391us     794ms     820ms   14760us   54519us     868ms
+Version  1.97       ------Sequential Create------ --------Random Create------\
+--                                                                            
+archiso             -Create-- --Read--- -Delete-- -Create-- --Read--- -Delete\
+--                                                                            
+              files  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %\
+CP                                                                            
+                 16 +++++ +++ +++++ +++ 21111  21 +++++ +++ +++++ +++ +++++ +\
+++                                                                            
+Latency              5980us     445us     476us     167us      26us     258us
+1.97,1.97,archiso,1,1412293315,12G,,664,97,230029,41,81820,11,3384,94,265724,\
+20,826.5,21,16,,,,,+++++,+++,+++++,+++,21111,21,+++++,+++,+++++,+++,+++++,+++\
+,18391us,794ms,820ms,14760us,54519us,868ms,5980us,445us,476us,167us,26us,258u\
+s
+
+
+** degraded
+
+//archiso> /c0/u0 show
+
+Unit     UnitType  Status         %RCmpl  %V/I/M  Port  Stripe  Size(GB)
+------------------------------------------------------------------------
+u0       RAID-10   DEGRADED*      -       -       -     256K    931.303   
+u0-0     RAID-1    OK             -       -       -     -       -         
+u0-0-0   DISK      OK             -       -       p0    -       465.651   
+u0-0-1   DISK      OK             -       -       p1    -       465.651   
+u0-1     RAID-1    DEGRADED       -       -       -     -       -         
+u0-1-0   DISK      DEGRADED       -       -       -     -       465.651   
+u0-1-1   DISK      WARNING        -       -       p3    -       465.651   
+u0/v0    Volume    -              -       -       -     -       931.303  
+
+** rebuild
+
+Unit     UnitType  Status         %RCmpl  %V/I/M  Port  Stripe  Size(GB)
+------------------------------------------------------------------------
+u0       RAID-10   REBUILDING     59%     -       -     256K    931.303
+u0-0     RAID-1    OK             -       -       -     -       -
+u0-0-0   DISK      OK             -       -       p0    -       465.651
+u0-0-1   DISK      OK             -       -       p1    -       465.651
+u0-1     RAID-1    REBUILDING     18%     -       -     -       -
+u0-1-0   DISK      DEGRADED       -       -       p2    -       465.651
+u0-1-1   DISK      OK             -       -       p3    -       465.651
+u0/v0    Volume    -              -       -       -     -       931.303
+
+
+
+** after
+
+//archiso> /c0/u0 show
+
+Unit     UnitType  Status         %RCmpl  %V/I/M  Port  Stripe  Size(GB)
+------------------------------------------------------------------------
+u0       RAID-10   OK             -       -       -     256K    931.303   
+u0-0     RAID-1    OK             -       -       -     -       -         
+u0-0-0   DISK      OK             -       -       p0    -       465.651   
+u0-0-1   DISK      OK             -       -       p1    -       465.651   
+u0-1     RAID-1    OK             -       -       -     -       -         
+u0-1-0   DISK      OK             -       -       p2    -       465.651   
+u0-1-1   DISK      OK             -       -       p3    -       465.651   
+u0/v0    Volume    -              -       -       -     -       931.303  
+
+* raid5
+
+** show
+//archiso> /c0/u0 show
+
+
+Unit     UnitType  Status         %RCmpl  %V/I/M  Port  Stripe  Size(GB)
+------------------------------------------------------------------------
+u0       RAID-5    OK             -       -       -     64K     1396.95   
+u0-0     DISK      OK             -       -       p0    -       465.651   
+u0-1     DISK      OK             -       -       p1    -       465.651   
+u0-2     DISK      OK             -       -       p2    -       465.651   
+u0-3     DISK      OK             -       -       p3    -       465.651   
+u0/v0    Volume    -              -       -       -     -       1396.95   
+
+
+** cfdisk
+
+                                              Disk: /dev/sdc
+                                                    Size: 1.4 TiB, 1499968045056 bytes, 2929625088 sectors
+                                                 Label: gpt, identifier: A02BA5A6-083B-45A3-A748-330CA9CE951D
+
+    Device                                     Start                        End                   Sectors                 Size Type
+>>  /dev/sdc1                                   2048                 2929625054                2929623007                 1.4T Linux
+
+
+
+
+
+                                             [  Delete  ]  [   Quit   ]  [   Type   ]  [   Help   ]  [   Write  ]
+
+
+** benchmark 
+
+Version  1.97       ------Sequential Output------ --Sequential Input- --Random-
+Concurrency   1     -Per Chr- --Block-- -Rewrite- -Per Chr- --Block-- --Seeks--
+Machine        Size K/sec %CP K/sec %CP K/sec %CP K/sec %CP K/sec %CP  /sec %CP
+archiso         12G   669  98 294962  50 99071  14  3047  87 391115  27 562.5  23
+Latency             12036us     534ms     480ms   17850us     100ms    1378ms
+Version  1.97       ------Sequential Create------ --------Random Create--------
+archiso             -Create-- --Read--- -Delete-- -Create-- --Read--- -Delete--
+              files  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP
+                 16 +++++ +++ +++++ +++ 19578  19 +++++ +++ +++++ +++ +++++ +++
+Latency             13043us     464us     527us     175us      27us     256us
+1.97,1.97,archiso,1,1412361207,12G,,669,98,294962,50,99071,14,3047,87,391115,27,562.5,23,16,,,,,+++++,+++,+++++,+++,19578,19,+++++,+++,+++++,+++,+++++,+++,12\
+036us,534ms,480ms,17850us,100ms,1378ms,13043us,464us,527us,175us,27us,256us
+
+
+** degraded
+Unit     UnitType  Status         %RCmpl  %V/I/M  Port  Stripe  Size(GB)
+------------------------------------------------------------------------
+u0       RAID-5    DEGRADED       -       -       -     64K     1396.95   
+u0-0     DISK      OK             -       -       p0    -       465.651   
+u0-1     DISK      DEGRADED       -       -       -     -       465.651   
+u0-2     DISK      OK             -       -       p2    -       465.651   
+u0-3     DISK      OK             -       -       p3    -       465.651   
+u0/v0    Volume    -              -       -       -     -       1396.95  
+
+
+** degraded benchmark
+ersion  1.97       ------Sequential Output------ --Sequential Input- --Random-
+Concurrency   1     -Per Chr- --Block-- -Rewrite- -Per Chr- --Block-- --Seeks--
+Machine        Size K/sec %CP K/sec %CP K/sec %CP K/sec %CP K/sec %CP  /sec %CP
+archiso         12G   648  95 309647  53 118654  16  3172  89 380201  25 550.6  15
+Latency             17605us     569ms     603ms   18597us   91066us    1200ms
+Version  1.97       ------Sequential Create------ --------Random Create--------
+archiso             -Create-- --Read--- -Delete-- -Create-- --Read--- -Delete--
+              files  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP
+                 16 +++++ +++ +++++ +++ 17691  17 +++++ +++ +++++ +++ +++++ +++
+Latency             18444us     455us     466us     204us      30us     257us
+|   1.97 |  1.97 | archiso |       1 | 1412339389 | 12G    |         |   648 |    95 | 309647 |   53 | 118654 | 16 | 3172 | 89 | 380201 | 25 | 550.6 | 15 | 16 |   |   |   |   | +++++ | +++ | +++++ | +++ | 17691 | 17 | +++++ | +++ | +++++ | +++ | +++++ | +++ | 1\ |
+| 7605us | 569ms | 603ms   | 18597us |    91066us | 1200ms | 18444us | 455us | 466us |  204us | 30us |  257us |    |      |    |        |    |       |    |    |   |   |   |   |       |     |       |     |       |    |       |     |       |     |       |     |    |
+
+** after
+Unit     UnitType  Status         %RCmpl  %V/I/M  Port  Stripe  Size(GB)
+------------------------------------------------------------------------
+u0       RAID-5    OK             -       -       -     64K     1396.95   
+u0-0     DISK      OK             -       -       p0    -       465.651   
+u0-1     DISK      OK             -       -       p1    -       465.651   
+u0-2     DISK      OK             -       -       p2    -       465.651   
+u0-3     DISK      OK             -       -       p3    -       465.651   
+u0/v0    Volume    -              -       -       -     -       1396.95   
+
+//archiso> 
+
+
+** 
+Version  1.97       ------Sequential Output------ --Sequential Input- --Random-
+Concurrency   1     -Per Chr- --Block-- -Rewrite- -Per Chr- --Block-- --Seeks--
+Machine        Size K/sec %CP K/sec %CP K/sec %CP K/sec %CP K/sec %CP  /sec %CP
+archiso         12G   648  95 309647  53 118654  16  3172  89 380201  25 550.6  15
+Latency             17605us     569ms     603ms   18597us   91066us    1200ms
+Version  1.97       ------Sequential Create------ --------Random Create--------
+archiso             -Create-- --Read--- -Delete-- -Create-- --Read--- -Delete--
+              files  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP
+                 16 +++++ +++ +++++ +++ 17691  17 +++++ +++ +++++ +++ +++++ +++
+Latency             18444us     455us     466us     204us      30us     257us
+1.97,1.97,archiso,1,1412339389,12G,,648,95,309647,53,118654,16,3172,89,380201,25,550.6,15,16,,,,,+++++,+++,+++++,+++,17691,17,+++++,+++,+++++,+++,+++++,+++,1\
+7605us,569ms,603ms,18597us,91066us,1200ms,18444us,455us,466us,204us,30us,257us
+
+

@@ -1,0 +1,25 @@
+Create the appropriate VLAN NUMBER from the list above on your SWITCH. VLAN 917
+
+conf t
+vlan 917
+name test
+
+Tag that VLAN NUMBER from above on your uplink port.
+
+int f1/0/13
+switchport trunk allowed vlan 117,3317,3333,917
+
+
+As well as to your TWO 2800's on their F0/1 interfaces.
+
+int f0/1.917
+encapsulation dot1Q 917
+
+
+
+To pass off, paste the output of "show vlan id XXX | 
+
+3750 - 
+show vlan id 917
+show mac address-table dynamic vlan 917
+

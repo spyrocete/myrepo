@@ -1,0 +1,22 @@
+$TTL 3600
+
+@  IN  SOA  ns1.archpacman.com. root.ns1.archpacman.com. (
+	2014100510
+	360
+	300
+	241920
+	60 )
+
+@  IN  NS  ns1.archpacman.com.
+@  IN  NS  ns2.archpacman.com.
+
+194  IN  PTR  dhcp.archpacman.com.
+195  IN  PTR  ns1.archpacman.com. 
+197  IN  PTR  ns2.archpacman.com.
+198  IN  PTR  mail.archpacman.com.
+199  IN  PTR  http.archpacman.com.
+200  IN  PTR  res.archpacman.com.
+194  IN  PTR  group.archpacman.com.
+201  IN  PTR  data.archpacman.com.
+202  IN  PTR  disk.archpacman.com.  
+

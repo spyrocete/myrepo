@@ -1,0 +1,74 @@
+#-----------------------
+# it4200
+#-----------------------
+
+Host xen
+     HostName 144.38.204.70
+     User root
+
+Host xns1
+     HostName 144.38.204.71
+     User andrew
+
+Host xns2
+     HostName 144.38.204.72
+     User andrew
+
+Host xhttp
+     HostName 144.38.204.73
+     User andrew
+
+#-----------------------
+# it4400
+#-----------------------
+
+Host rat
+     HostName raritan.cs.dixie.edu
+     User acoulter
+
+Host rout2
+     HostName 74.123.12.138
+     User andrew
+
+Host rout1
+     HostName 74.123.12.134
+     User andrew
+
+Host switch
+     HostName 74.123.12.130
+     User andrew
+
+Host vm1
+     HostName 74.123.12.142
+     User andrew
+
+Host vm2
+     HostName 74.123.12.146
+     User andrew
+#-----------------------
+# it4200
+#-----------------------
+
+Host lamp
+     HostName 144.38.212.163
+     User andrew
+
+#-----------------------
+# personal servers
+#-----------------------
+Host my
+     HostName 192.157.221.222
+     User andrew
+
+
+
+
+
+
+
+
+
+
+
+
+

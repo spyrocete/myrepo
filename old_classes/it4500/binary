@@ -1,0 +1,116 @@
+#!/bin/bash
+
+#key=$(head -n 1 $1)
+#echo $key
+#stuff=$(xxd -b $1)
+#stuff="010000"
+#echo "output"
+bst=$(xxd -b $1 | sed 's/.*://')
+stuff=$(echo $bst | sed 's/[a-z]//g' | tr -d ' ')
+#stuff=$(echo $bst | sed 's/[A-Z]//g' | tr -d ' ')
+
+echo $stuff
+# key=$(echo $stuff | grep -o -E [0-9]{12}$)
+# echo "the key is " $key
+
+      
+#  | grep -o .
+len_stuff=$(echo ${#stuff})
+echo $len_stuff
+tem_len_str=$(expr $len_stuff % 12)
+
+# In case the string is 12 this will prevent 12 being added
+if [ $tem_len_str -gt 0 ]; then
+    len_str=$((12-tem_len_str))
+
+else
+    len_str=0
+fi
+
+
+
+# len_str=102
+echo "len of str" $len_str
+#expr $len_str + $kount
+
+
+kount=0
+# adds padding to make binary blocks of 12
+while true; do
+    if [ $kount -lt $len_str ]; then
+	new+="1"
+	kount=$((kount+1))
+    else
+	break
+    fi
+    
+    if  [ $kount -lt $len_str ]; then
+	new+="0"
+	kount=$((kount+1))
+    else
+	break
+    fi
+done
+
+padding="0000"
+pad=$(echo $kount | xxd -b)
+padding+=$(echo $pad | sed 's/.*://g' | grep -o [0-9]....... | head -n 1)
+
+echo "padding is " $padding
+whole_str="$stuff$new$padding"
+echo "the whole string is " $whole_str
+
+#echo $kount | xxd -b
+
+### numb=1
+### echo $numb | xxd -b
+
+echo $new
+echo "kount is " $kount
+
+echo "string " ${whole_str:3:1}
+echo 
+upto=$(expr ${#whole_str} / 12)
+start=0
+end=12
+
+echo "upto " $upto
+# a="010001000101"
+# b="101000100010"
+
+
+na=0
+nb=4
+
+
+
+for i in $(seq $upto); do
+    # blocks=$(echo "string " ${whole_str:$start:$end} | rev)
+    a=${whole_str:$start:$end}
+    b=$(echo "${whole_str:$start:$end}" | rev)
+    for j in {0..11}; do
+	if [ "${a:$j:1}" = 0 ]; then
+	    if [ "${b:$j:1}" = 0 ]; then
+		bnew+=0
+            else
+		bnew+=1
+
+	    fi
+
+        else
+	    bnew+=1
+
+	
+	fi
+    done
+    echo "bnew loop " $bnew
+    final+=$bnew
+    bnew=""
+    start=$((start+12))
+    end=$((end+12))
+    
+done
+
+echo "final " $final
+
+

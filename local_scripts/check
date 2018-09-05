@@ -1,0 +1,18 @@
+#!/bin/bash
+
+array=(cordelia ophelia desdemona)
+test_numb='$[0-9]+$'
+
+for i in "${array[@]}"
+do
+    output=$(ssh $i 'ps -aux | grep nhouston')
+    port=$(echo $output | egrep -o vnc\ \:[0-9]+)
+    port_numb=$(echo $port | egrep -o [0-9]+)
+#    echo $output
+    echo $port_numb
+    
+#    [[ $port_numb =~ ^-?[0-9]+$ ]] && echo $(($port_numb+5900))
+
+
+done
+

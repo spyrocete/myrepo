@@ -1,0 +1,18 @@
+username clarson privilege 15 secret passw0rd
+
+aaa new-model
+
+ip radius source-interface loopback 0
+
+radius server bam
+address ipv4 74.123.12.242 auth-port 1812 acct-port 1813
+key (fran1054
+aaa group server radius bamserver
+
+server name bam
+aaa authentication login default group bamserver local
+aaa authorization exec default group bamserver local
+
+aaa authentication enable default group bamserver enable 
+
+aaa authorization network default group bamserver local

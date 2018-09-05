@@ -1,0 +1,6 @@
+master: 144.38.217.195
+slave: 144.38.217.197
+domain: archpacman.com
+ns1: ns1.archpacman.com
+ns2: ns2.archpacman.com
+hosts: mail.archpacman.com:144.38.217.198, http.archpacman.com:144.38.217.199, res.archpacman.com:144.38.217.200, ns1.archpacman.com:144.38.217.195, ns2.archpacman.com:144.38.217.197

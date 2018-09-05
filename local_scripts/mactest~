@@ -1,0 +1,6 @@
+#!/bin/bash
+if ($(sw_vers -productVersion > /dev/null )); then
+   echo "mac"
+else
+   echo "not a mac"
+fi

@@ -1,0 +1,25 @@
+garay-3750#show ip ospf neighbors
+                                ^
+% Invalid input detected at '^' marker.
+
+garay-3750#show ip ospf neighbor
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+74.123.14.255     0   FULL/  -        00:00:36    74.123.12.225   Vlan117
+74.123.12.250     0   FULL/  -        00:00:35    74.123.12.234   Vlan12
+74.123.12.249     0   FULL/  -        00:00:36    74.123.12.230   Vlan11
+
+
+garay-2800-1#show ip ospf neighbor
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+74.123.12.250     0   FULL/  -        00:00:31    74.123.12.246   FastEthernet0/1.13
+74.123.12.248     0   FULL/  -        00:00:32    74.123.12.229   FastEthernet0/0.1
+
+
+garay-2800-2#show ip ospf neighbor
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+74.123.12.249     0   FULL/  -        00:00:33    74.123.12.245   FastEthernet0/                1.13
+74.123.12.248     0   FULL/  -        00:00:39    74.123.12.233   FastEthernet0/                0.12
+

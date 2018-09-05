@@ -1,0 +1,10 @@
+garay-3750#show clock
+12:47:53.992 MDT Fri Oct 3 2014
+
+
+garay-2800-1#show clock
+12:47:39.918 MDT Fri Oct 3 2014
+
+
+garay-2800-2#show clock
+12:47:48.409 MDT Fri Oct 3 2014

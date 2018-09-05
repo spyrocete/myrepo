@@ -1,0 +1,19 @@
+#!/bin/bash
+
+server_ip=ophelia
+ser_user=acoulter
+
+# if [ -z "$1" ]; then
+#    echo "must run with name of vm like cboot vm"
+
+#    ssh -l $ser_user $server_ip<<ENDSSH 
+#    citv showvm
+#    ENDSSH
+#    exit
+# fi
+
+
+ssh -l $ser_user $server_ip<<ENDSSH
+citv powerdownvm $1; citv bootvm $1 c
+
+ENDSSH

@@ -1,0 +1,43 @@
+#!/bin/bash
+
+key=$(head -n 1 $1)
+echo $key
+#stuff=$(xxd -b $1)
+stuff="01010000101001"
+
+
+#  | grep -o .
+len_stuff=$(echo ${#stuff})
+echo $len_stuff
+expr $len_stuff % 12
+kount=0
+len_str=10
+
+while true; do
+    if ( "$kount" < "$len_str"); then
+	new+="1"
+	kount+=1
+    else
+	break
+    fi
+    if  ("$kount" < "$len_str") ; then
+	new+="0"
+	kount+=1
+    else
+	break
+    fi
+
+done
+
+echo $new
+
+# function myxor {
+#     for i in $a; do
+# 	if (( ${a[i]}^${b[i]} )) ;then
+# 	    new+="1"
+# 	else
+# 	    new+="0"
+# 	fi
+# }
+
+

@@ -1,0 +1,83 @@
+#!/bin/bash
+
+######## Instructions ###############
+# This script will bind the vnc server and port to computer running this
+# script can be ran as follows
+# 1. To run the script all the way through use this command
+# ./vnc_tunnel
+
+# 2. If you want to reconnect to the last mechine try this
+# ./vnc_tunnel r
+
+# 3. If you do not want to run the ssh part that retrieves vm info.
+# any parametor besides r will skip the ssh portion.
+# ./vnc_tunnel s
+
+########### Variables #####################
+# Variables that must be changed for the first time
+user_name=acoulter
+local_port=5901
+
+
+#################### Code ####################
+
+
+# The while loop is just reading from the file to pull the last vnc info.
+if [ "$1" = "r" ]; then
+    while read line
+    do
+       ssh -L $line
+    done < last_vnc_tunnel
+
+    exit
+fi
+
+echo "What server do you want to make a vnc tunnel to?"
+read vm
+
+# Goes and gets the vm info with citv showvm command.
+# The -z is checking if the parametor is an empty returns true if it is.
+# ENDSSH along with the -T creates a interactive shell as if the user
+# was connected to the host through a normal ssh tunnel.
+if [ -z "$1" ]; then
+ssh $user_name@ssh.cs.dixie.edu '
+ssh -T lear <<'ENDSSH'
+citv showvm
+ENDSSH' > feedback
+fi
+
+
+
+# Will server the file of all the vms from the citv showvm command\
+# and will take just the line out that has the server name you want.
+name=$(cat feedback | grep $vm)
+
+# Will search through cordelia desdemona and ophelia for the servers.\
+# If you need to add another server use this\
+# echo $name | grep -o 'name_of_server'
+server=$(echo $name | grep -o 'cordelia'
+echo $name | grep -o 'desdemona'
+echo $name | grep -o 'ophelia')
+
+# Will take out just the port number if this does not work try altering the\
+# grep that looks like this grep -o '[0-9][0-9].' this will grab 3 digits\
+# the period is a wild card that will grab anything even space\
+# the [0-9][0-9] will grab a double digit number it will not grab a sigle digit.
+port=$(echo $name | grep -o $server..... | grep -o '[0-9][0-9]..')
+echo $port
+# Strip spaces from the port number and server name
+mod_port=$(echo $port | tr -s [:space:])
+mod_server=$(echo $server | tr -s [:space:])
+
+# To add 5900 on port number required for vnc to work
+added_port=$(echo $(($mod_port+5900)))
+
+# The command that will make the vnc tunnel
+ssh -L $local_port:$mod_server:$added_port $user_name@ssh.cs.dixie.edu
+
+# This will save the command to last_vnc_tunnel that way it saves time 
+# when reconnecting to the same server 
+echo "$local_port:$mod_server:$added_port $user_name@ssh.cs.dixie.edu" > last_vnc_tunnel
+
+ssh -L 5901:vm:20115 acoulter@ssh.cs.dixie.edu
+

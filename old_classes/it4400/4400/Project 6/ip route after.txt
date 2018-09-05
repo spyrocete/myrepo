@@ -1,0 +1,360 @@
+garay-2800-1#show ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+       + - replicated route, % - next hop override
+
+Gateway of last resort is 74.123.12.229 to network 0.0.0.0
+
+S*    0.0.0.0/0 [1/0] via 74.123.12.229
+      10.0.0.0/30 is subnetted, 1 subnets
+O E2     10.244.0.112 [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+      74.0.0.0/8 is variably subnetted, 84 subnets, 3 masks
+O E2     74.123.12.0/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.12.0/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.32/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.12.32/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.64/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.12.64/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.96/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.12.96/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.128/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.12.128/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.160/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.12.160/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.12.164/30
+           [110/6] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.12.168/30
+           [110/5] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.12.172/30
+           [110/5] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.176/30
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.180/30
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.189/32
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.190/32
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.192/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.12.192/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.12.200/30
+           [110/5] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.204/30
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.208/30
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.12.212/30
+           [110/6] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.217/32
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.218/32
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.12.224/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.12.224/30
+           [110/3] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O        74.123.12.232/30
+           [110/2] via 74.123.12.246, 00:55:41, FastEthernet0/1.13
+O E2     74.123.12.236/30
+           [110/1] via 74.123.12.246, 00:55:41, FastEthernet0/1.13
+C        74.123.12.240/30 is directly connected, FastEthernet0/1.3317
+L        74.123.12.241/32 is directly connected, FastEthernet0/1.3317
+C        74.123.12.244/30 is directly connected, FastEthernet0/1.13
+L        74.123.12.245/32 is directly connected, FastEthernet0/1.13
+C        74.123.12.249/32 is directly connected, Loopback0
+O E2     74.123.12.250/32
+           [110/1] via 74.123.12.246, 00:55:41, FastEthernet0/1.13
+O IA     74.123.13.0/27
+           [110/5] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.0/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.13.12/30
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.13.29/32
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.13.32/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.32/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.13.64/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.64/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.13.96/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.96/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.104/30
+           [110/5] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.108/30
+           [110/5] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.112/30
+           [110/6] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.116/30
+           [110/6] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.120/30
+           [110/6] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.13.128/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.128/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.13.160/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.160/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.13.192/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.192/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.13.224/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.224/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.228/30
+           [110/5] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.232/30
+           [110/5] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.13.236/30
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.13.240/30
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.13.248/30
+           [110/6] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.13.253/32
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.13.254/32
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.14.0/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.14.0/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.14.32/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.14.32/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.14.36/30
+           [110/5] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.14.40/30
+           [110/5] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.14.44/30
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.14.48/30
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.14.52/30
+           [110/6] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.14.56/32
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.14.57/32
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.14.58/32
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.14.64/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.14.64/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.14.96/27
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O IA     74.123.14.96/30
+           [110/4] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+O E2     74.123.14.255/32
+           [110/1] via 74.123.12.246, 00:08:12, FastEthernet0/1.13
+
+
+garay-2800-2#show ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+       + - replicated route, % - next hop override
+
+Gateway of last resort is 74.123.12.233 to network 0.0.0.0
+
+S*    0.0.0.0/0 [1/0] via 74.123.12.233
+      10.0.0.0/30 is subnetted, 1 subnets
+O E2     10.244.0.112 [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+      74.0.0.0/8 is variably subnetted, 85 subnets, 3 masks
+O E2     74.123.12.0/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.12.0/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.12.32/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.12.32/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.12.64/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.12.64/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.12.96/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.12.96/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.12.128/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.12.128/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.12.160/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.12.160/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O IA     74.123.12.164/30
+           [110/5] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O IA     74.123.12.168/30
+           [110/4] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O IA     74.123.12.172/30
+           [110/4] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.12.176/30
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O E2     74.123.12.180/30
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O E2     74.123.12.189/32
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O E2     74.123.12.190/32
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O E2     74.123.12.192/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.12.192/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O IA     74.123.12.200/30
+           [110/4] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.12.204/30
+           [110/1] via 74.123.12.233, 02:21:59, FastEthernet0/0.12
+O E2     74.123.12.208/30
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.12.212/30
+           [110/5] via 74.123.12.233, 01:16:39, FastEthernet0/0.12
+O E2     74.123.12.217/32
+           [110/1] via 74.123.12.233, 02:21:59, FastEthernet0/0.12
+O E2     74.123.12.218/32
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O E2     74.123.12.224/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.12.224/30
+           [110/2] via 74.123.12.233, 20:03:10, FastEthernet0/0.12
+C        74.123.12.232/30 is directly connected, FastEthernet0/0.12
+L        74.123.12.234/32 is directly connected, FastEthernet0/0.12
+C        74.123.12.236/30 is directly connected, FastEthernet0/1.3333
+L        74.123.12.237/32 is directly connected, FastEthernet0/1.3333
+O E2     74.123.12.240/30
+           [110/1] via 74.123.12.245, 00:56:42, FastEthernet0/1.13
+C        74.123.12.244/30 is directly connected, FastEthernet0/1.13
+L        74.123.12.246/32 is directly connected, FastEthernet0/1.13
+O E2     74.123.12.249/32
+           [110/1] via 74.123.12.245, 00:56:42, FastEthernet0/1.13
+C        74.123.12.250/32 is directly connected, Loopback0
+O IA     74.123.13.0/27
+           [110/4] via 74.123.12.233, 19:42:38, FastEthernet0/0.12
+O IA     74.123.13.0/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.13.12/30
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O E2     74.123.13.29/32
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O E2     74.123.13.32/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.13.32/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.13.64/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.13.64/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.13.96/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.13.96/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O IA     74.123.13.104/30
+           [110/4] via 74.123.12.233, 14:14:42, FastEthernet0/0.12
+O IA     74.123.13.108/30
+           [110/4] via 74.123.12.233, 18:53:22, FastEthernet0/0.12
+O IA     74.123.13.112/30
+           [110/5] via 74.123.12.233, 13:59:08, FastEthernet0/0.12
+O IA     74.123.13.116/30
+           [110/5] via 74.123.12.233, 15:06:20, FastEthernet0/0.12
+O IA     74.123.13.120/30
+           [110/5] via 74.123.12.233, 18:44:50, FastEthernet0/0.12
+O E2     74.123.13.128/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.13.128/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.13.160/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.13.160/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.13.192/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.13.192/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.13.224/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.13.224/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O IA     74.123.13.228/30
+           [110/4] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O IA     74.123.13.232/30
+           [110/4] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.13.236/30
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O E2     74.123.13.240/30
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.13.248/30
+           [110/5] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.13.253/32
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O E2     74.123.13.254/32
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O E2     74.123.14.0/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.14.0/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.14.32/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.14.32/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O IA     74.123.14.36/30
+           [110/4] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O IA     74.123.14.40/30
+           [110/4] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.14.44/30
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O E2     74.123.14.48/30
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.14.52/30
+           [110/5] via 74.123.12.233, 00:54:11, FastEthernet0/0.12
+O E2     74.123.14.56/32
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O E2     74.123.14.57/32
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O E2     74.123.14.58/32
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O E2     74.123.14.64/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.14.64/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.14.96/27
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12
+O IA     74.123.14.96/30
+           [110/3] via 74.123.12.233, 19:42:53, FastEthernet0/0.12
+O E2     74.123.14.255/32
+           [110/1] via 74.123.12.233, 19:42:48, FastEthernet0/0.12

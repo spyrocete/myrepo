@@ -1,0 +1,17 @@
+#!/bin/bash
+iptables -N TCP
+iptables -N UDP
+# May need the rule that is commented out it should all the device to go through
+# the fire wall
+# iptables -A INPUT -i enp0s29f7u4 -j ACCEPT
+iptables -N fw-interfaces
+iptables -N fw-open
+iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -j fw-interfaces 
+iptables -A FORWARD -j fw-open 
+iptables -A FORWARD -j REJECT --reject-with icmp-host-unreach
+iptables -P FORWARD DROP
+iptables -A fw-interfaces -i enp0s29f7u4 -j ACCEPT
+iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o enp0s1 -j MASQUERADE
+# might need to do the below command again.
+#echo 1 > /proc/sys/net/ipv4/ip_forward

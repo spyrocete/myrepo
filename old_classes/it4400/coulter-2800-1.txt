@@ -1,0 +1,370 @@
+####################################
+# login for raidius                #
+####################################
+username: clarson
+password: plastic
+
+####################################
+# free radius working              #
+####################################
+
+acoulter@silicon:/net/144.38.192.167/vol/student_account/home/a/acoulter$ ssh clarson@74.123.12.134
+Password: 
+elcome
+Bender
+ 
+                  o
+                  |
+                ,'~'.
+               /     \
+              |   ____|_
+              |  '___,,_'         .----------------.
+              |  ||(o |o)|       ( KILL ALL HUMANS! )
+              |   -------         ,----------------'
+              |  _____|         -'
+              \  '####,
+               -------
+             /________\
+           (  )        |)
+           '_ ' ,------|\         _
+          /_ /  |      |_\        ||
+         /_ /|  |     o| _\      _|| 
+        /_ / |  |      |\ _\____//' |
+       (  (  |  |      | (_,_,_,____/
+        \ _\ |   ------|        
+         \ _\|_________|
+          \ _\ \__\\__\
+          |__| |__||__|
+       ||/__/  |__||__|
+               |__||__|
+               |__||__|
+               /__)/__)
+              /__//__/
+             /__//__/
+            /__//__/.
+          .'    '.   '.
+         (_kOs____)____)
+
+coulter-2800-1#
+
+
+####################################
+# net flow                         #
+####################################
+
+coulter-2800-1(config)#do show ip flow export                   
+Flow export v9 is enabled for main cache
+  Export source and destination details : 
+  VRF ID : Default
+    Source(1)       74.123.12.156 (Loopback0)
+    Destination(1)  74.123.12.142 (9995) 
+  Version 9 flow records
+  104 flows exported in 15 udp datagrams
+  0 flows failed due to lack of export packet
+  0 export packets were sent up to process level
+  0 export packets were dropped due to no fib
+  0 export packets were dropped due to adjacency issues
+  0 export packets were dropped due to fragmentation failures
+  0 export packets were dropped due to encapsulation fixup failures
+
+
+####################################
+# show run                         #
+####################################
+
+coulter-2800-1#show run
+Building configuration...
+
+
+Current configuration : 7091 bytes
+!
+! Last configuration change at 20:50:30 MST Mon Dec 8 2014 by andrew
+! NVRAM config last updated at 21:29:33 MST Mon Dec 8 2014 by andrew
+! NVRAM config last updated at 21:29:33 MST Mon Dec 8 2014 by andrew
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname coulter-2800-1
+!
+boot-start-marker
+boot system flash:/c2800nm-adventerprisek9-mz.151-4.M8.bin
+boot-end-marker
+!
+!
+logging buffered 4096
+enable secret 4 LH1sMlHzZ8Am/pLL.V74lU1ornKVmusR9iuQFShaBpg
+!
+aaa new-model
+!
+!         
+aaa group server radius RadiusServers
+ server name raidus
+!
+aaa authentication login default group RadiusServers local
+aaa authentication enable default group RadiusServers enable
+aaa authorization exec default group RadiusServers local 
+aaa authorization network default group RadiusServers local 
+!
+!
+!
+!
+!
+aaa session-id common
+!
+clock timezone MST -7 0
+clock summer-time MDT recurring
+!
+dot11 syslog
+ip source-route
+!
+!
+ip cef
+!         
+!
+!
+no ip domain lookup
+ip domain name docdoc.us
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+vty-async
+!
+!
+!
+!
+!
+!
+!
+voice-card 0
+!
+crypto pki token default removal timeout 0
+!
+crypto pki trustpoint TP-self-signed-1583748364
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1583748364
+ revocation-check none
+ rsakeypair TP-self-signed-1583748364
+!
+!
+crypto pki certificate chain TP-self-signed-1583748364
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31353833 37343833 3634301E 170D3134 31323039 30303237 
+  33395A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 35383337 
+  34383336 3430819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100E890 3B2AD932 378B59B6 61AB95B7 7D97CE8F C5048AB9 E323C053 D69E26DD 
+  BAADFE62 041FC7E6 EBEFFE6E FAD812F2 428018E2 F4A62EFB 25E2C5EC D901F94D 
+  167D5A28 7C1EBF5F 41B12743 AA13EB81 BA41DD5E EE97F13B 43AD9C49 05D0F8B9 
+  46E39324 AE839A6A E391AA20 F4C96492 C5B1D9DC A2F55BD5 EFB38F5D 30025B6B 
+  73A90203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 14600BA5 00224438 0A01AE9F 40231F6E D2E66B08 93301D06 
+  03551D0E 04160414 600BA500 2244380A 01AE9F40 231F6ED2 E66B0893 300D0609 
+  2A864886 F70D0101 05050003 81810020 A573A313 CDFEC7F5 F3ECCB85 163A0146 
+  F47186D1 26094D7B 720C0992 A4F93EBF 3549E705 3C95F35E 5464E09B 0E59A48A 
+  BBC0418C EA929780 012179F0 19BF4346 79728831 2F18A939 425DCDB0 232FA76C 
+  30FCCC43 83908CCB BAA7FD73 3B83B5DD 88A3B4F8 03B81F3B 56A63B9C C9CC905E 
+  47037D82 9902B0CF 13A0ABEA DEFB42
+  	quit
+!
+!
+license udi pid CISCO2811 sn FCZ092970R3
+username test password 7 010703174F02154F315E471F100912150E4C11392E36
+username andrew privilege 15 secret 4 Dbz21iKNu21UyqFfQL7eibCfwIszy1sazj26fRT1igQ
+username cbl privilege 15 secret 4 c5LFTnp3A5C3Ds2sCA3PU0Csl6Q1V1MpHyKNktEi5tI
+username clarson privilege 15 secret 5 $1$AuhP$MuGXBQCENqPc/FLkrFj380
+!
+redundancy
+!
+!
+ip ssh time-out 60
+ip ssh version 2
+ip ssh pubkey-chain
+  username andrew
+   key-hash ssh-rsa 9AE74D3CD68D7B5D84539612B6F7561A acoulter@lear
+  quit
+ip scp server enable
+! 
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 74.123.12.156 255.255.255.255
+!
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/0.101
+ description linked with vlan 101 as uplink on switch
+ encapsulation dot1Q 101
+ ip address 74.123.12.134 255.255.255.252
+ ipv6 address 2604:2C00:FFE4:1000::/64 eui-64
+ ipv6 enable
+ ipv6 ospf network point-to-point
+ ipv6 ospf 65535 area 100
+!
+interface FastEthernet0/0.3314
+ ip flow ingress
+ ip flow egress
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1.400
+ description vlan 400 between 2800s
+ encapsulation dot1Q 400
+ ip address 74.123.12.149 255.255.255.252
+ ipv6 address 2604:2C00:FFE4:1200::1/64
+ ipv6 enable
+ ipv6 ospf network point-to-point
+ ipv6 ospf 65535 area 100
+!
+interface FastEthernet0/1.3314
+ description This is on vlan 3314 and it for vm1
+ encapsulation dot1Q 3314
+ ip address 74.123.12.141 255.255.255.252
+ ip flow ingress
+ ip flow egress
+ ipv6 address 2604:2C00:FFE4:1300::1/64
+ ipv6 enable
+!
+!
+router eigrp 12345
+ network 74.123.12.132 0.0.0.3
+ network 74.123.12.148 0.0.0.3
+ redistribute connected metric 1 10 255 1 1500
+ redistribute static metric 1 10 255 1 1500
+ eigrp router-id 74.123.12.156
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+ip flow-export source Loopback0
+ip flow-export version 9
+ip flow-export destination 74.123.12.142 9995
+!
+!
+ip access-list standard snmp
+ permit 74.123.12.142
+ deny   any
+ip access-list standard test
+ permit 74.211.92.222
+ permit 209.33.215.102
+ permit 144.38.192.40
+ permit 144.0.0.0 0.255.255.255
+ deny   any
+!
+ip access-list extended vms
+ permit tcp 144.38.0.0 0.0.255.255 host 74.123.12.141 eq 22 ftp www
+ permit tcp 209.33.192.0 0.0.63.255 host 74.123.12.141 eq 22 ftp www
+ deny   tcp host 74.123.12.141 any eq 22 www ftp
+ permit udp host 204.17.177.21 host 74.123.12.142 eq domain
+ permit tcp host 204.17.177.21 host 74.123.12.142 eq domain
+ deny   tcp any host 74.123.12.142 eq domain
+ deny   udp any host 74.123.12.142 eq domain
+ permit ip any any
+!
+logging trap debugging
+logging facility syslog
+logging source-interface Loopback0
+logging 74.123.12.142
+ipv6 router ospf 65535
+ router-id 74.123.12.156
+ redistribute connected metric 1
+ redistribute static metric 1
+!
+!
+
+!
+!
+snmp-server community pool RO snmp
+snmp-server location utah
+snmp-server contact andrew
+!
+!
+!
+radius server raidus
+ address ipv4 74.123.12.42 auth-port 1812 acct-port 1813
+ key 7 09644B1B1C0C041F121C053938
+!
+!         
+control-plane
+!
+!
+!
+!
+mgcp profile default
+!
+!
+!
+!
+!
+banner motd ^Celcome
+Bender
+ 
+                  o
+                  |
+                ,'~'.
+               /     \
+              |   ____|_
+              |  '___,,_'         .----------------.
+              |  ||(o |o)|       ( KILL ALL HUMANS! )
+              |   -------         ,----------------'
+              |  _____|         -'
+              \  '####,
+               -------
+             /________\
+           (  )        |)
+           '_ ' ,------|\         _
+          /_ /  |      |_\        ||
+         /_ /|  |     o| _\      _|| 
+        /_ / |  |      |\ _\____//' |
+       (  (  |  |      | (_,_,_,____/
+        \ _\ |   ------|        
+         \ _\|_________|
+          \ _\ \__\\__\
+          |__| |__||__|
+       ||/__/  |__||__|
+               |__||__|
+               |__||__|
+               /__)/__)
+              /__//__/
+             /__//__/
+            /__//__/.
+          .'    '.   '.
+         (_kOs____)____)
+          
+^C
+!
+line con 0
+line aux 0
+line vty 0 4
+ session-timeout 60 
+ transport input ssh
+line vty 5 15
+ access-class test in
+ transport input all
+!
+scheduler allocate 20000 1000
+ntp access-group peer 11
+ntp server 204.17.177.3
+ntp server 204.17.177.8
+ntp server 198.60.22.240
+end

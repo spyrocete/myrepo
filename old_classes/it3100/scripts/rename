@@ -1,0 +1,39 @@
+#!/bin/bash                                                                     
+
+echo "What is the new name of the computer?"
+read name
+echo "what is the last three digits of the ip address?"
+read ip
+
+# IP range                                                                      
+iprange='144.38.217.'
+
+# HostName for server                                                           
+# Server name must have the periode added to the front.
+new_server_name='.archpacman.com'
+
+# DNS Servers                                                                   
+dns1='144.38.217.195'
+dns2='144.38.217.197'
+
+# Names that are used on your config.
+old_hostname='clone.archpacman.com'
+old_server_name='clone'
+old_ip='144.38.217.196'
+old_dns1='144.38.217.195'
+old_dns2='144.38.217.197'
+
+sed s/$old_hostname/$name$new_server_name/ /etc/network/interfaces | sed s/$old_ip/$iprange$ip/ | sed s/$old_dns1/$dns1/ | sed s/$old_dns2/$dns2/ > /etc/network/mytemp
+cat /etc/network/mytemp > /etc/network/interfaces
+rm /etc/network/mytemp
+
+sed s/$old_hostname/$name$new_server_name/ /etc/hosts | sed s/$old_servername/$name/ | sed s/$old_ip/$iprange$ip/ > /etc/mytemp
+cat /etc/mytemp > /etc/hosts
+rm /etc/mytemp
+
+sed s/$old_servername/$name/ /etc/hostname > /etc/mytemp
+cat /etc/mytemp > /etc/hostname
+rm /etc/mytemp
+
+echo "Wait for about 5 seconds then restart the vm"
+ifdown eth0; ifup eth0

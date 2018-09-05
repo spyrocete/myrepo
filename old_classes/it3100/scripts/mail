@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo apt-get install mailutils exim4-config
+sudo dpkg-reconfigure exim4-config

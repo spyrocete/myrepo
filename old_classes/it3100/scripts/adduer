@@ -1,0 +1,12 @@
+#!/bin/bash                                                                     
+
+echo "what is the user name"
+read userAcct
+echo "What is the user id"
+read userid
+
+#userAcct="alice"                                                               
+userPass="thelifeis"
+#userid=4001                                                                    
+groupadd --gid $userid $userAcct
+useradd -m --gid $userid --uid $userid $userAcct && echo -e "$userPass\n$userPass\n" | passwd $userAcct > /dev/null 2>&1 && echo " User account has been created." || echo " ERR -- User acount creation failed!"

@@ -1,0 +1,4 @@
+ip: 144.38.217.199
+site1: org.archpacman.com:time
+site2: latex.archpacman.com:write
+site3: calc.archpacman.com:plus

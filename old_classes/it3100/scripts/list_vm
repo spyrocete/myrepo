@@ -1,0 +1,22 @@
+Virtual machines created for acoulter.
+            Machine Name RAM(MB)  Server_Name Num  VLAN MAC               B ROM      Running Course
+                   clone     256         None  52  2031 52:54:00:08:00:33                0/0 IT3100
+                     ns1     128     cordelia  71  2031 52:54:00:08:00:46 c None         1/1 IT3100
+                     ns2     128     cordelia 148  2031 52:54:00:08:00:93 c None         1/1 IT3100
+                     mta     128    desdemona 209  2031 52:54:00:08:00:D0 c None         1/1 IT3100
+                    dhcp     256     cordelia 276  2031 52:54:00:08:01:13 c None         1/1 IT3100
+                    http     256     cordelia 334  2031 52:54:00:08:01:4D c None         1/1 IT3100
+                     res     128         None 387  2031 52:54:00:08:01:82                0/0 IT3100
+                     win    1024         None 620  2031 52:54:00:08:02:6B                0/0 IT3100
+                    win2    1024         None 621  2031 52:54:00:08:02:6C                0/0 IT3100
+                  linuxd     128         None 623  2031 52:54:00:08:02:6E                0/0 IT3100
+                    disk     256         None 662  2031 52:54:00:08:02:95                0/0 IT3100
+                    data     512         None 663  2031 52:54:00:08:02:96                0/0 IT3100
+                 linuxd2     128         None 722  2031 52:54:00:08:02:D1                0/0 IT3100
+                    ntfs     256         None 729  2031 52:54:00:08:02:D8                0/0 IT3100
+                     smb     256         None 782  2031 52:54:00:08:03:0D                0/0 IT3100
+                    ldap     256         None 784  2031 52:54:00:08:03:0F                0/0 IT3100
+                     afs     256         None 1034  2031 52:54:00:08:04:09                0/0 IT3100
+                kerberos     256         None 1046  2031 52:54:00:08:04:15                0/0 IT3100
+                  linuxb     128         None 1104  2031 52:54:00:08:04:4F                0/0 IT3100
+                 smb-pdc     256    desdemona 1105  2031 52:54:00:08:04:50 c None         1/1 IT3100

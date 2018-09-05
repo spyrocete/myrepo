@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [ -f $HOME/homework/bash/.bashrc ]; then
+        source $HOME/homework/bash/.bashrc
+fi

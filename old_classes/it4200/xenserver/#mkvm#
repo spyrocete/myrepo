@@ -1,0 +1,134 @@
+#!/bin/bash
+
+xe template-list
+echo "What template do you want?"
+read template_name
+
+xe vm-install template=$template_name new-name-label=$vm_name
+
+# Disable boot from had disk
+xe vbd-list vm-uuid=[VM uuid] userdevice=0
+xe vbd-param-set uuid=[device UUID] bootable=false
+
+# choose a cd
+xe cd-list
+xe vm-cd-add vm="newVM" cd-name="debian-7.0.0-i386-netinst.iso" device=3
+xe vbd-list vm-name-label="newVM" userdevice=3
+xe vbd-param-set  uuid=[device uuid] bootable=true
+xe vm-param-set uuid=[VM uuid] other-config:install-repository=cdrom
+
+# show network list
+xe network-list
+
+# add physical network interface to vm
+xe vif-create vm-uuid=[VM uuid] network-uuid=[network uuid] mac="[new mac address]" device=0
+
+# start vm
+xe vm-start vm=$vm_name
+
+# retrieve domain number
+xe vm-param-list uuid=[VM uuid] | grep dom-id
+
+#retrieve vnc port
+xenstore-read /local/domain/[domain]/console/vnc-port
+
+# remote connect using last two digits of prev command
+# vncviewer -via root@[xenserver] localhost:[port]
+"Ubuntu Trusty 14.04 (64-bit)"
+#!/bin/bash
+
+#### Varibles ####
+# this is the mac address for the vm change this every time
+vm_mac="00:16:3E:E9:1D:77"
+network_id="966cfe6b-8de6-b908-8f30-aec3a91830fb"
+media_cd="ubuntu-14.04.1-server-amd64.iso"
+template_name="Ubuntu Trusty 14.04 (64-bit)"
+
+# xe template-list
+# echo "What template do you want to use?"
+# read template_name
+
+echo "What do you want to name your vm?"
+read vm_name
+
+# Create vm
+vm_id=$(xe vm-install template="$template_name" new-name-label=$vm_name)
+
+# Disable boot from had disk
+temp_dev_id=$(xe vbd-list vm-uuid=$vm_id userdevice=0 | head -n1 | sed 's/^.*://') 
+dev_id=$(echo $temp_dev_id | tr -s [:space:])
+
+xe vbd-param-set uuid=$dev_id bootable=false
+
+
+# choose a cd
+# xe cd-list
+xe vm-cd-add vm=$vm_name cd-name=$media_cd device=3
+# Getting the vbd uuid
+temp_bdev_id=$(xe vbd-list vm-name-label=$vm_name userdevice=3 | head -n1 | sed 's/^.*://') 
+bdev_id=$(echo $temp_bdev_id | tr -s [:space:])
+
+# setting the cd to bootble
+xe vbd-param-set uuid=$bdev_id bootable=true
+xe vm-param-set uuid=$vm_id other-config:install-repository=cdrom
+
+# show network list
+# xe network-list
+
+# add physical network interface to vm
+xe vif-create vm-uuid=$vm_id network-uuid=$network_id mac=$vm_mac device=0
+# device=0 must be changed for every vm created
+
+# start vm
+echo "Starting vm"
+xe vm-start vm=$vm_name
+
+# retrieve domain number
+temp_dom_num=$(xe vm-param-list uuid=$vm_id | grep dom-id | sed 's/^.*://')
+dom_num=$(echo $temp_dom_num | tr -s [:space:])
+
+#retrieve vnc port
+echo "your vnc port is"
+xenstore-read /local/domain/$dom_num/console/vnc-port
+
+
+
+####################################
+################################
+#code I made for script
+temp=$(xe vbd-list vm-uuid=e3a66d13-fc57-3d21-d785-44e520329308 userdevice=0 | head -n1 | sed 's/^.*://') 
+
+echo $temp | tr -s [:space:]
+
+
+
+# different way to mount a iso image in vm
+xe-mount-iso-sr /vm/iso/ubuntu-12.04.5-server-i386.iso -o bind
+xe vdi-list
+
+
+00:16:3E:E9:1D:76
+
+# network config fil
+auto lo
+iface lo inet loopback
+
+iface eth0 inet static
+address 192.168.0.101
+gateway 192.168.0.1
+netmask 255.255.255.0
+dns-nameservers 8.8.8.8 8.8.4.4
+
+
+#### get ubuntu 14.04 working ####
+sudo vi /usr/lib/python2.4/site-packages/grub/GrubConf.py.
+# to goto line do :/line number
+Change line 428 from:
+if arg.strip() == "${saved_entry}":
+into:
+
+if arg.strip() == "${saved_entry}" or arg.strip() == "${next_entry}":
+
+TEMPLATE_UUID=`xe template-list name-label="Ubuntu Lucid Lynx 10.04 (64-bit)" params=uuid --minimal`
+NEW_TEMPLATE_UUID=`xe vm-clone uuid=$TEMPLATE_UUID new-name-label="Ubuntu Trusty 14.04 (64-bit)"`
+xe template-param-set other-config:default_template=true other-config:debian-release=trusty uuid=$NEW_TEMPLATE_UUID

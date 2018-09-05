@@ -1,0 +1,69 @@
+mysql> \. 10.sql
+Database changed
+--------------
+SELECT TaxAuthority,TaxArea 
+       FROM TaxAreaAuthority 
+       	    WHERE TaxAuthority REGEXP "county*" AND TaxArea="city2"
+--------------
+
++--------------+---------+
+| TaxAuthority | TaxArea |
++--------------+---------+
+| county1      | city2   |
++--------------+---------+
+1 row in set (0.00 sec)
+
+--------------
+SELECT TaxAuthority 
+       FROM TaxAreaAuthority 
+       	    WHERE TaxAuthority REGEXP "state*" AND TaxArea="city2"
+--------------
+
++--------------+
+| TaxAuthority |
++--------------+
+| state1       |
++--------------+
+1 row in set (0.00 sec)
+
+--------------
+drop table if exists temp_rate
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+create table temp_rate 
+SELECT TaxAuthority, Effective, AuthTaxRate
+       FROM TaxRates       
+       WHERE TaxAuthority="city2"
+       AND YEAR(Effective)="1994"
+       GROUP BY AuthTaxRate
+UNION
+SELECT TaxAuthority, Effective, AuthTaxRate
+       FROM TaxRates
+       WHERE YEAR(Effective)="1994"
+       AND MONTH(Effective)="10"
+       AND TaxRates.TaxAuthority IN
+(SELECT TaxAuthority 
+       FROM TaxAreaAuthority 
+       	    WHERE TaxAuthority REGEXP "county*" AND TaxArea="city2"
+	    OR TaxAuthority REGEXP "state*" AND TaxArea="city2")
+--------------
+
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+--------------
+SELECT SUM(AuthTaxRate) as "total rate" 
+       FROM temp_rate
+--------------
+
++------------+
+| total rate |
++------------+
+|        5.6 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> exit

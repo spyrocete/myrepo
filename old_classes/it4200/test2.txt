@@ -1,0 +1,17 @@
+https://test2c.archpacman.com/links.html
+
+
+
+htaccess file
+
+
+RewriteCond %{HTTP_USER_AGENT} "Chrome" [OR]
+RewriteCond %{TIME_HOUR} >0800
+RewriteCond %{TIME_HOUR} <1700
+RewriteRule SecretFile.html SecretFile.html [L]
+RewriteRule SecretFile.html - [F]
+
+RewriteCond %{QUERY_STRING} make=(\w+)&model=(\w+)&year=(\w+)
+RewriteRule vehicles.php /vehicles.php/%3/%1/%2? [R]
+
+

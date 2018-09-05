@@ -1,0 +1,215 @@
+
+!
+! Last configuration change at 05:00:59 UTC Tue Nov 25 2014 by andrew
+! NVRAM config last updated at 05:01:05 UTC Tue Nov 25 2014 by andrew
+! NVRAM config last updated at 05:01:05 UTC Tue Nov 25 2014 by andrew
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname coulter-2800-2
+!
+boot-start-marker
+boot system flash:/c2800nm-adventerprisek9-mz.151-4.M8.bin
+boot-end-marker
+!
+!
+enable secret 4 LH1sMlHzZ8Am/pLL.V74lU1ornKVmusR9iuQFShaBpg
+!
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authorization exec default local none 
+!
+!
+!
+!
+!
+aaa session-id common
+!
+!
+dot11 syslog
+ip source-route
+!
+!
+ip cef
+!
+!
+!
+no ip domain lookup
+ip domain name docdoc.us
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+voice-card 0
+!
+crypto pki token default removal timeout 0
+!
+!
+!
+!
+license udi pid CISCO2811 sn FCZ10337086
+username andrew privilege 15 secret 4 Dbz21iKNu21UyqFfQL7eibCfwIszy1sazj26fRT1igQ
+username cbl privilege 15 secret 4 c5LFTnp3A5C3Ds2sCA3PU0Csl6Q1V1MpHyKNktEi5tI
+!
+redundancy
+!
+!
+ip ssh time-out 60
+ip ssh version 2
+ip ssh pubkey-chain
+  username andrew
+   key-hash ssh-rsa 9AE74D3CD68D7B5D84539612B6F7561A acoulter@lear
+  quit
+ip scp server enable
+! 
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 74.123.12.153 255.255.255.255
+!
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/0.102
+ description uplink and is connected to vlan 102
+ encapsulation dot1Q 102
+ ip address 74.123.12.138 255.255.255.252
+ ipv6 address 2604:2C00:FFE4:1100::/64 eui-64
+ ipv6 enable
+ ipv6 ospf network point-to-point
+ ipv6 ospf 65535 area 100
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1.400
+ description link between 2800s
+ encapsulation dot1Q 400
+ ip address 74.123.12.150 255.255.255.252
+ ipv6 address 2604:2C00:FFE4:1200::2/64
+ ipv6 enable
+ ipv6 ospf network point-to-point
+ ipv6 ospf 65535 area 100
+!
+interface FastEthernet0/1.3330
+ description for vm2 on vlan 3330
+ encapsulation dot1Q 3330
+ ip address 74.123.12.145 255.255.255.252
+ ipv6 address 2604:2C00:FFE4:1400::1/64
+ ipv6 enable
+!
+!
+router eigrp 12345
+ network 74.123.12.136 0.0.0.3
+ network 74.123.12.148 0.0.0.3
+ redistribute connected metric 1 10 255 1 1500
+ redistribute static metric 1 10 255 1 1500
+ eigrp router-id 74.123.12.153
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+ip access-list extended vms
+ permit tcp 144.38.0.0 0.0.255.255 host 74.123.12.145 eq 22 ftp www
+ permit tcp 209.33.192.0 0.0.63.255 host 74.123.12.145 eq 22 ftp www
+ deny   tcp any host 74.123.12.145 eq www ftp
+ permit tcp host 204.17.177.11 host 74.123.12.146 eq domain
+ permit udp host 204.17.177.11 host 74.123.12.146 eq domain
+ deny   tcp any host 74.123.12.146 eq domain
+ deny   udp any host 74.123.12.146 eq domain
+ permit ip any any
+!
+ipv6 router ospf 65535
+ redistribute connected
+ redistribute static
+!
+!
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+mgcp profile default
+!
+!
+!
+!
+!
+banner motd 
+
+$$$$$$$$$$$$$$$$""$o$o$o$o$o$oo$$""$$$$$$$$$$$$$$$
+$$$$$$$$$$$$""o$$$$$$$$$$"$"$$$$$$$o$"$$$$$$$$$$$$
+$$$$$$$$$"$o$$$$""$oo $ ""      """$$$oo"$$$$$$$$$
+$$$$$$$"o$$$$"   ""o  $oo o o       ""$$$o"$$$$$$$
+$$$$$"o$$$"       oo$$$$$$$$$$o        "$$$o"$$$$$
+$$$$"o$$$  $  o$$$$$$$$$$$$$$"$$oo       "$$$ $$$$
+$$$"$$$"   "$$$$$$$$$$$$$$$$o$o$$$"        $$$o$$$
+$$ $$$    o$$$$$$$$$$$$$$$$$$$$$$$$o o   o  "$$o"$
+$"$$$"    o$$$$$$$$$"$$$$$$"" "$$$$$$"$$$$$  $$$"$
+$o$$"    o$$$$$$$$$$o""$$$""""ooo"$$$$$$$$"   $$$"
+$o$$"    o$$$$$$$$$$            ""oo"$"$o""   $$$o
+o$$$     o$$$$$$$$$$                """""$    o$$o
+o$$$    o$$$$$$$$$$$$o                   "o "oo$$o
+o$$$  oo$$$$$$$$$$$$$$$$ooooooo$$$$$oo    $"$ "$$o
+o$$$"  ""  $$$$$$$$$$$$$$$$$$$$$$$$$$$$o    " $$$
+$ $$$       "$$$$$$$$$$$$$$$$$$$$$$$$$$$o    o$$"$
+$$"$$o       "$$$$$$$$$$$$$$$$$$$$$$$$$$$o   $$$o$
+$$o$$$o       $$""$$$$$$$$$$$$$$$$$$$$$$$o  $$$ $$
+$$$o"$$o    "$""  "$""$$$$$$$$$$$$$$$$$$$oo$$$"$$$
+$$$$o"$$$o        "     $$$$$$$$$$$$$$$$$o$$"o$$$$
+$$$$$$o"$$$o         oo$$$$$$$$$$$$$$$$$$$$"o$$$$$
+$$$$$$$$o"$$$$ooooo$$$$$$$$$$$$$$$$$$$$$$"o$$$$$$$
+$$$$$$$$$$o""$$$$$$$$$$$$$$$$$$$$$$$$$"oo$$$$$$$$$
+$$$$$$$$$$$$$o$""$$$$$$$$$$$$$$$$$""oo$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$o$o$"$"$"$"$oo$o$$$$$$$$$$$$$$$$ 
+
+
+!
+line con 0
+line aux 0
+line vty 0 4
+ session-timeout 60 
+ transport input ssh
+line vty 5 15
+ transport input all
+!
+scheduler allocate 20000 1000
+ntp access-group peer 11
+ntp server 204.17.177.3
+ntp server 204.17.177.8
+ntp server 198.60.22.240
+end

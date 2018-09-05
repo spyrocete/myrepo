@@ -1,0 +1,183 @@
+* http
+** status codes
+** five catigories
+400 client side errors
+500 server side erros
+100 
+200
+300
+** defualt web ports
+** how it works
+** pre fork
+is none thearded 
+
+** worker 
+is theared process
+** what layer
+it is on 7 of the iso
+* hosts
+** virtal host
+# do not put wild card in here because it makes apache use name base
+<virtalhost 144.38.204.12>
+** name
+multiple going to one
+** ip
+one going to one
+ssl will only work on ip based
+* xenserver 
+** hyperviser
+it is the software that runs the vms
+** what is virtualiztion
+
+* apache
+** direcotry 
+** allow, deny
+restrict ip 
+the rule
+restrict part of an ip
+domain names or parts of domain names
+** authintication
+*** realm
+*** authfile
+*** httpasswd
+** a2enmod
+** a2ensite
+** restart 
+** reload
+** listenn
+go to /etc/apache/ports.conf
+add listen derective
+NameVirtalhost *:8899
+listen 8899
+# create file for site
+<ritahost ip:8899>
+server name jo.b.com
+documentroot /var/ww
+
+
+** name virtual host 
+** default
+# these should alwasy be in here
+server name
+document root
+** htaccess files
+it shows the server down
+allow override <something>
+<directory /var/www>
+Override allow all
+<dricotyr>
+* quata
+** soft limit
+you can go over than your grace piered wil begin
+** hard limit 
+it will not allow you to go over at all
+* hands on config virtaul host
+** point these two domains to the same ip
+test1a.<your domain>
+test1b.<your domain>
+** this one may be used for name or ip
+test1c.<your domain>
+** might have to do allow, deny
+** directory
+** might be on a different port
+** htaccesss
+* mod_rewrite
+sudo a2enmod rewrite
+** in virtual host conator
+RewriteEngine On
+RewriteLog /var/log/apache2/rewrite.log
+RewriteLogLevel 9
+RewriteRule foo.html /bar.html
+# sytix is from /to [flag]
+** rewrite rules
+they are evuwated in order
+capture user input 
+(.*)
+* egnix
+sudo service apache2 stop
+suddo apt-get install nginx-light
+cd /etc/nginx
+cd /etc/nginx/sites-enabled
+* vhost config
+DeflateFilterNote Input instream
+DeflateFilterNote Output instream
+DeflateFilterNote Ratio ratio
+* 
+<dirc /var/www/site>
+Options +Multiviews
+</dirc>
+add type-map .var
+
+# in the content /var/www/site/index.var
+URI: index.html
+
+URI: index.html.en
+Content-Type: text/html
+Content-Language: en
+
+URI: index.html.de
+Content-Type: text/html
+Content-Language: de
+
+URI: index.html.fr
+Content-Type: text/html
+Content-Language: fr
+
+* mods enabled.conf
+* type maps
+* ssl
+** encryption keys
+public key is used for encrypting 
+the private key is used to decrypt
+** tls
+transport layer security
+** cert
+# x509 it is a self sign cert 
+openssl req -new -x509 -nodes -out server.crt -keyout server.key
+
+# in vhost file
+SSEngin On
+SSLCertificateFile /etc/apache2/server.crt
+SSLCertificateKeyFile /etc/apache2/server.key
+
+# bash
+sudo enablessl
+* proxy apache
+** setup
+a2enmod proxy 
+a2enmod proxy_balancer
+
+vertual host
+<Proxy balancer://mycluster>
+BalancerMemeber http://144.38..1
+BalancerMemeber http://144.38..2
+BalancerMemeber http://144.38..2 loadfactor=5 # valuse are 1-100
+</Proxy>
+ProxyPass / balancer://mycluster
+
+sudo service apache2 restart
+* proxy squid
+** sudo service squid3 restart
+# should show squid running and it will show the prosid
+netstat =atu | grep prosid
+
+cd /etc/squid
+squid.conf 
+
+acl BAD src 144.38.204.116
+http_access deny BAD
+acl nocookies dstdomain .cookies.com
+
+acl noMozilla browser -i Mozilla
+http_access deny noMozilla
+
+http_access nocookies
+http_access allow all
+* mysql
+** replication
+mysql is asynchronous which means the changes take longer to accur
+reading is pointed to the slave 
+and write is for the master
+** mysql cluster
+synchronous
+read and write on nodes

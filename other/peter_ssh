@@ -1,0 +1,24 @@
+# it4500
+# 144.38.219.0
+# 2041
+
+Host bsd
+     HostName 144.38.219.13
+     ProxyCommand ssh -l gqiao ssh.cs.dixie.edu exec nc %h %p
+     User guokui
+
+Host buff
+     HostName 144.38.219.15
+     ProxyCommand ssh -l gqiao ssh.cs.dixie.edu exec nc %h %p
+     User cituser
+
+Host ophelia
+     HostName ophelia
+     ProxyCommand ssh -l gqiao ssh.cs.dixie.edu exec nc %h %p
+     User gqiao
+
+
+################################################################
+#                      For tests                               #
+################################################################
+

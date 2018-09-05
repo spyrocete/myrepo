@@ -1,0 +1,80 @@
+#!/bin/bash
+
+echo "Type the new hostname"
+read my_hostname
+
+echo "Type new ip address last two or three digits only"
+read my_ip
+
+
+# for school ssh
+user_name=acoulter
+
+# normal user for account on the vm server
+nser_user=andrew
+
+# ser_user must be root user
+ser_user=root
+server_ip=144.38.204.103
+
+# IP range                
+# ip range must be followed by a period                                         
+iprange=144.38.204.
+# last two or three of the ip only
+my_gateway=144.38.204.1
+my_netmask=255.255.255.0
+my_dns1=8.8.8.8
+my_dns2=8.8.4.4
+
+
+
+
+
+# -o ServerAliveInterval=30
+#ssh $user_name@ssh.cs.dixie.edu
+
+
+ssh -l $ser_user $server_ip<<ENDSSH
+
+echo "auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address "$iprange$my_ip"
+gateway "$my_gateway"
+netmask "$my_netmask"
+dns-nameservers "$my_dns1 $my_dns2"
+" > /etc/network/interfaces
+
+echo ""$my_hostname"
+
+" > /etc/hostname
+
+
+echo "127.0.0.1	localhost
+"$iprange$my_ip"	"$my_hostname"
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+" > /etc/hosts
+
+poweroff
+ENDSSH
+
+# adds server to ssh config on localhost
+
+# add if statment to set $class
+# if whatever
+# class=it4400
+# sed -i '/'$class/a \
+# Host '$my_hostname' \
+#      HostName '$iprange$my_ip' \
+#      User '$nser_user' \
+# ' ~/.ssh/config
+
+

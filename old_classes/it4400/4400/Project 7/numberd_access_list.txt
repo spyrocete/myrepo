@@ -1,0 +1,17 @@
+garay-2800-1#show access-lists 1
+Standard IP access list 1
+    10 permit 204.17.177.8
+    20 permit 204.17.177.3
+    30 deny   any
+
+garay-2800-2#show access-lists 1
+Standard IP access list 1
+    10 permit 204.17.177.8
+    20 permit 204.17.177.3 (1 match)
+    30 deny   any
+
+garay-3750#show access-lists 1
+Standard IP access list 1
+    10 permit 204.17.177.8
+    20 permit 204.17.177.3
+    30 deny   any

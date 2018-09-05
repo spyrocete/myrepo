@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+if [ "$1" eq "u" ]; 
+do
+cat $HOME/homework/local_scripts/ssh_config > $HOME/.ssh/config
+echo "The ssh config was updated successfully."
+fi
+
+if [ "$1" eq "c" ]; 
+do
+cat $HOME/.ssh/config > $HOME/homework/local_scripts/ssh_config
+echo "The ssh config was copied to successfully."
+fi

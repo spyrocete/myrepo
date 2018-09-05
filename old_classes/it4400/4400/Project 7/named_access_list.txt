@@ -1,0 +1,22 @@
+garay-2800-1#show access-lists ssh_access
+Standard IP access list ssh_access
+    30 permit 209.33.215.102
+    20 permit 144.38.192.40
+    10 permit 192.168.1.2
+    40 deny   any
+
+
+garay-2800-2#show access-lists ssh_access
+Standard IP access list ssh_access
+    30 permit 209.33.215.102
+    20 permit 144.38.192.40
+    10 permit 192.168.1.2
+    40 deny   any
+
+
+garay-3750#show access-lists ssh_access
+Standard IP access list ssh_access
+    30 permit 209.33.215.102
+    20 permit 144.38.192.40 (4 matches)
+    40 permit 192.168.1.2
+    50 deny   any

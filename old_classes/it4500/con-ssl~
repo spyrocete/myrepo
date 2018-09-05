@@ -1,0 +1,1 @@
+mysql --ssl-ca=ca-cert.pem -u joe -p -h 144.38.222.69

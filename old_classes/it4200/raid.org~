@@ -1,0 +1,29 @@
+systemctl stop dhcpcd.service
+
+ip link
+
+ip link set enp2s0f0 up
+
+ip addr add 144.38.204.76/27 dev enp2s0f0
+
+# may need to be my gateway instead of ip
+
+ip route add default via 144.38.204.76
+
+emacs /etc/resolv.conf
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+#search example.com
+
+//archiso> /c0/u0 show
+
+Unit     UnitType  Status         %RCmpl  %V/I/M  Port  Stripe  Size(GB)
+------------------------------------------------------------------------
+u0       RAID-10   DEGRADED*      -       -       -     256K    931.303   
+u0-0     RAID-1    OK             -       -       -     -       -         
+u0-0-0   DISK      OK             -       -       p0    -       465.651   
+u0-0-1   DISK      OK             -       -       p1    -       465.651   
+u0-1     RAID-1    DEGRADED       -       -       -     -       -         
+u0-1-0   DISK      DEGRADED       -       -       -     -       465.651   
+u0-1-1   DISK      WARNING        -       -       p3    -       465.651   
+u0/v0    Volume    -              -       -       -     -       931.303  

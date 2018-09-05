@@ -1,0 +1,365 @@
+
+garay-2800-1#show run
+Building configuration...
+
+
+Current configuration : 3674 bytes
+!
+! Last configuration change at 15:15:09 MST Thu Nov 20 2014 by rgaray
+! NVRAM config last updated at 15:15:10 MST Thu Nov 20 2014 by rgaray
+! NVRAM config last updated at 15:15:10 MST Thu Nov 20 2014 by rgaray
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname garay-2800-1
+!
+boot-start-marker
+boot system flash:/c2800nm-adventerprisek9-mz.151-4.M8.bin
+boot-end-marker
+!
+!
+enable secret 4 udgz67QmD//uWCPPKtLj/R2knKfLOghINgx0l9fB.PY
+!
+aaa new-model
+!
+!
+aaa authentication login default local
+!
+!
+!
+!
+!
+aaa session-id common
+!
+clock timezone MST -7 0
+clock summer-time MDT recurring
+!
+dot11 syslog
+ip source-route
+!
+!
+ip cef
+!
+!
+!
+ip domain name router1.babeezr.us
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+voice-card 0
+!
+crypto pki token default removal timeout 0
+!
+!
+!
+!
+license udi pid CISCO2811 sn FTX1114A20X
+username rgaray privilege 15 secret 4 udgz67QmD//uWCPPKtLj/R2knKfLOghINgx0l9fB.PY
+username cbl privilege 15 secret 4 c5LFTnp3A5C3Ds2sCA3PU0Csl6Q1V1MpHyKNktEi5tI
+!
+redundancy
+!
+!
+ip ssh version 2
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description loopback interface
+ ip address 74.123.12.249 255.255.255.255
+!
+interface FastEthernet0/0
+ description int f1/0/22 port f0/0 router1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/0.11
+ encapsulation dot1Q 11
+ ip address 74.123.12.230 255.255.255.252
+ ipv6 address 2604:2C00:FFE7:E001::/64 eui-64
+ ipv6 enable
+ ipv6 ospf network point-to-point
+ ipv6 ospf 65535 area 100
+!
+interface FastEthernet0/1
+ description f1/0/21 port f0/1 router1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1.13
+ encapsulation dot1Q 13
+ ip address 74.123.12.245 255.255.255.252
+ ipv6 address 2604:2C00:FFE7:E003::1/64
+ ipv6 enable
+ ipv6 ospf network point-to-point
+ ipv6 ospf 65535 area 100
+!
+interface FastEthernet0/1.3317
+ encapsulation dot1Q 3317
+ ip address 74.123.12.241 255.255.255.252
+ ipv6 address 2604:2C00:FFE7:E202::1/64
+!
+interface FastEthernet0/1.3333
+!
+!
+router eigrp 12345
+ network 74.123.12.228 0.0.0.3
+ network 74.123.12.244 0.0.0.3
+ redistribute connected metric 1 10 255 1 1500
+ redistribute static metric 1 10 255 1 1500
+ eigrp router-id 74.123.12.249
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+ip access-list standard ssh_access
+ permit 209.33.215.102
+ permit 144.38.192.40
+ permit 192.168.1.2
+ deny   any
+!
+ip access-list extended extenze
+ permit tcp 144.38.0.0 0.0.255.255 any eq ftp 22 www
+ permit tcp 209.33.0.0 0.0.255.255 any eq ftp 22 www
+ permit tcp 192.168.0.0 0.0.255.255 any eq ftp 22 www
+ deny   tcp any 74.123.12.240 0.0.0.3 eq www
+ deny   tcp any 74.123.12.240 0.0.0.3 eq ftp
+ permit tcp host 74.123.12.240 host 204.17.177.11 eq domain
+ permit tcp host 74.123.12.240 host 204.17.177.21 eq domain
+ permit udp host 74.123.12.240 host 204.17.177.21 eq domain
+ permit udp host 74.123.12.240 host 204.17.177.11 eq domain
+ permit ip any any
+!
+access-list 1 permit 204.17.177.8
+access-list 1 permit 204.17.177.3
+access-list 1 deny   any
+ipv6 router ospf 65535
+ router-id 74.123.12.249
+ redistribute connected metric 1
+ redistribute static metric 1
+!
+!
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+mgcp profile default
+!
+!
+!
+!
+!
+banner motd ^C
+------------------------------------
+THIS IS MINE
+------------------------------------
+^C
+!
+line con 0
+line aux 0
+line vty 0 4
+ access-class ssh_access in
+ length 0
+ transport input telnet ssh
+line vty 5 15
+ access-class ssh_access in
+ length 0
+ transport input telnet ssh
+!
+scheduler allocate 20000 1000
+ntp access-group peer 1
+ntp server 204.17.177.3
+ntp server 204.17.177.8
+end
+
+
+
+garay-2800-1#show ip eigrp neighbors
+EIGRP-IPv4 Neighbors for AS(12345)
+H   Address                 Interface       Hold Uptime   SRTT   RTO  Q  Seq
+                                            (sec)         (ms)       Cnt Num
+1   74.123.12.246           Fa0/1.13          11 22:02:34    1   200  0  78
+0   74.123.12.229           Fa0/0.11          14 22:15:06    1   200  0  104
+
+
+garay-2800-1#show ip route eigrp
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+       + - replicated route, % - next hop override
+
+Gateway of last resort is 74.123.12.229 to network 0.0.0.0
+
+D*EX  0.0.0.0/0 [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+      10.0.0.0/30 is subnetted, 1 subnets
+D EX     10.244.0.112
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+      74.0.0.0/8 is variably subnetted, 73 subnets, 4 masks
+D        74.123.12.0/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.12.32/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.12.64/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.12.96/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.12.128/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.12.160/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.12.164/30
+           [90/31488] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.12.168/30
+           [90/28928] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.12.172/30
+           [90/28928] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.12.176/30
+           [170/31488] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.12.180/30
+           [170/31488] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.12.188/32
+           [170/156672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.12.189/32
+           [170/156928] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.12.190/32
+           [170/156928] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.12.192/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.12.224/30
+           [90/28416] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.12.232/30
+           [90/28416] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.12.236/30
+           [170/2560005120] via 74.123.12.246, 00:10:06, FastEthernet0/1.13
+D EX     74.123.12.248/32
+           [170/2560005120] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.12.250/32
+           [170/2560005120] via 74.123.12.246, 00:10:06, FastEthernet0/1.13
+D        74.123.13.0/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.13.32/27
+           [90/28928] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.13.32/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.13.64/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.13.96/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.13.128/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.13.160/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.13.164/30
+           [90/28928] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.13.168/30
+           [90/28928] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.13.172/30
+           [170/2560028928] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.13.176/30
+           [170/2560028928] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.13.180/30
+           [90/31488] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.13.184/32
+           [170/2560028672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.13.185/32
+           [170/2560028928] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.13.186/32
+           [170/2560028928] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.13.192/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.13.224/27
+           [90/28928] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.13.224/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.14.32/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.14.36/30
+           [90/28928] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.14.40/30
+           [90/28928] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.14.44/30
+           [170/2560005888] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.14.48/30
+           [170/2560005888] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.14.52/30
+           [90/31488] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.14.56/32
+           [170/2560005632] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.14.57/32
+           [170/2560005888] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.14.58/32
+           [170/2560005888] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D        74.123.14.96/30
+           [90/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.14.136/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.14.152/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.14.168/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.14.184/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.14.216/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.14.255/32
+           [170/156416] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.15.24/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.15.40/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.15.56/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.15.88/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.15.104/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.15.120/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.15.136/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.15.152/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.15.168/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.15.184/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.15.216/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11
+D EX     74.123.15.248/29
+           [170/28672] via 74.123.12.229, 00:10:06, FastEthernet0/0.11

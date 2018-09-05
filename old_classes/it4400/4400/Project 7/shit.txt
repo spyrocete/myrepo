@@ -1,0 +1,152 @@
+#ip acce
+garay-3750(config)#ip access-list st
+garay-3750(config)#ip access-list standard ssh
+garay-3750(config)#ip access-list standard ssh_access
+garay-3750(config-std-nacl)#per
+garay-3750(config-std-nacl)#permit 74.123.12.224
+garay-3750(config-std-nacl)#permit 144.38.192.40
+garay-3750(config-std-nacl)#permit 209.33.215.102
+garay-3750(config-std-nacl)#deny any
+garay-3750(config-std-nacl)#line
+garay-3750(config-std-nacl)#line v
+garay-3750(config-std-nacl)#line vt
+garay-3750(config-std-nacl)#end
+garay-3750#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+garay-3750(config)#line vt
+garay-3750(config)#line vty 0 15
+garay-3750(config-line)#acce
+garay-3750(config-line)#access-class ss
+garay-3750(config-line)#access-class ssh
+garay-3750(config-line)#access-class ssh_ac
+garay-3750(config-line)#access-class ssh_access
+garay-3750(config-line)#access-class ssh_access i
+garay-3750(config-line)#access-class ssh_access in len
+garay-3750(config-line)#access-class ssh_access in
+garay-3750(config-line)#len
+garay-3750(config-line)#length 0
+garay-3750(config-line)#tran
+garay-3750(config-line)#transport inp
+garay-3750(config-line)#transport input ss
+garay-3750(config-line)#transport input ssh tel
+garay-3750(config-line)#transport input ssh telnet
+garay-3750(config-line)#end
+garay-3750#show
+garay-3750#show acc
+garay-3750#show acce
+garay-3750#show access-li
+garay-3750#show access-lists
+Standard IP access list block
+Standard IP access list ssh_access
+    30 permit 209.33.215.102
+    20 permit 144.38.192.40
+    10 permit 74.123.12.224
+    40 deny   any
+garay-3750#show access-lists
+Standard IP access list block
+Standard IP access list ssh_access
+    30 permit 209.33.215.102
+    20 permit 144.38.192.40 (4 matches)
+    10 permit 74.123.12.224
+    40 deny   any
+
+garay-2800-2(config)#ace
+garay-2800-2(config)#ip acce
+garay-2800-2(config)#ip access-list st
+garay-2800-2(config)#ip access-list standard 1
+garay-2800-2(config-std-nacl)#per
+garay-2800-2(config-std-nacl)#permit 204.17.177.8
+garay-2800-2(config-std-nacl)#permit 204.17.177.3
+garay-2800-2(config-std-nacl)#den
+garay-2800-2(config-std-nacl)#deny an
+garay-2800-2(config-std-nacl)#deny any
+garay-2800-2(config-std-nacl)#end
+garay-2800-2#conf
+garay-2800-2#configure t
+Enter configuration commands, one per line.  End with CNTL/Z.
+garay-2800-2(config)#n
+garay-2800-2(config)#nt
+garay-2800-2(config)#ntp acce
+garay-2800-2(config)#ntp access-group pe
+garay-2800-2(config)#ntp access-group peer 1
+
+
+
+garay-2800-1(config)#ip acce
+garay-2800-1(config)#ip access-list ext
+garay-2800-1(config)#ip access-list extended extenze
+garay-2800-1(config-ext-nacl)#per
+garay-2800-1(config-ext-nacl)#permit tcp ?
+  A.B.C.D       Source address
+  any           Any source host
+  host          A single source host
+  object-group  Source network object group
+
+garay-2800-1(config-ext-nacl)#permit tcp 144.38.0.0 0.0.255.255 ?
+  A.B.C.D       Destination address
+  any           Any destination host
+  eq            Match only packets on a given port number
+  gt            Match only packets with a greater port number
+  host          A single destination host
+  lt            Match only packets with a lower port number
+  neq           Match only packets not on a given port number
+  object-group  Destination network object group
+  range         Match only packets in the range of port numbers
+
+garay-2800-1(config-ext-nacl)#permit tcp 144.38.0.0 0.0.255.255 an
+garay-2800-1(config-ext-nacl)#permit tcp 144.38.0.0 0.0.255.255 any ?
+  ack          Match on the ACK bit
+  dscp         Match packets with given dscp value
+  eq           Match only packets on a given port number
+  established  Match established connections
+  fin          Match on the FIN bit
+  fragments    Check non-initial fragments
+  gt           Match only packets with a greater port number
+  log          Log matches against this entry
+  log-input    Log matches against this entry, including input interface
+  lt           Match only packets with a lower port number
+  match-all    Match if all specified flags are present
+  match-any    Match if any specified flag is present
+  neq          Match only packets not on a given port number
+  option       Match packets with given IP Options value
+  precedence   Match packets with given precedence value
+  psh          Match on the PSH bit
+  range        Match only packets in the range of port numbers
+  reflect      Create reflexive access list entry
+  rst          Match on the RST bit
+  syn          Match on the SYN bit
+  time-range   Specify a time-range
+  tos          Match packets with given TOS value
+  ttl          Match packets with given TTL value
+  urg          Match on the URG bit
+  <cr>
+
+garay-2800-1(config-ext-nacl)#permit tcp 144.38.0.0 0.0.255.255 any e
+garay-2800-1(config-ext-nacl)#$144.38.0.0 0.0.255.255 any eq 21 22 80
+garay-2800-1(config-ext-nacl)#$209.33.192.0 0.0.255.255 any eq 21 22 80
+garay-2800-1(config-ext-nacl)#$192.168.1.2 0.0.255.255 any eq 21 22 80
+garay-2800-1(config-ext-nacl)#
+garay-2800-1(config-ext-nacl)#deny tcp host 74.123.12.242 eq domain any
+garay-2800-1(config-ext-nacl)#deny udp host 74.123.12.242 eq domain any
+garay-2800-1(config-ext-nacl)#permit ip any any
+garay-2800-1(config)#int f0/1.3333
+garay-2800-1(config-subif)#ip access-group extenze in
+garay-3750(config)#ip access-list extended ping_allow
+garay-3750(config-ext-nacl)#permit icmp 144.38.0.0 0.0.255.255 74.123.12.224 0.0.0.255
+garay-3750(config-ext-nacl)#permit icmp host 209.33.215.102 74.123.12.224 0.0.0.255
+garay-3750(config-ext-nacl)#deny tcp 74.123.12.224 0.0.0.255 any eq dom
+garay-3750(config-ext-nacl)#deny tcp 74.123.12.224 0.0.0.255 any eq domain
+garay-3750(config-ext-nacl)#deny udp 74.123.12.224 0.0.0.255 any eq domain
+garay-3750(config-ext-nacl)#deny udp 74.123.12.224 0.0.0.255 any eq ntp
+garay-3750(config-ext-nacl)#deny tcp 74.123.12.224 0.0.0.255 any eq ntp
+                                                                     ^
+% Invalid input detected at '^' marker.
+
+garay-3750(config-ext-nacl)#deny tcp 74.123.12.224 0.0.0.255 any eq 123
+garay-3750(config-ext-nacl)#perr
+garay-3750(config-ext-nacl)#perm
+garay-3750(config-ext-nacl)#permit ip
+garay-3750(config-ext-nacl)#permit ip an
+garay-3750(config-ext-nacl)#permit ip any an
+garay-3750(config-ext-nacl)#permit ip any any
+garay-3750(config-if)#ip access-group ping_allow in

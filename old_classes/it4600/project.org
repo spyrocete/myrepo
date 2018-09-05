@@ -1,0 +1,37 @@
+* ansible
+** ssh
+Since ansible is ssh based I will need to setup ssh on all of the servers. I 
+will also need to have the root user enabled for ssh. I may try to get ansible
+working as non root user just because it is better to not have root login enabled
+over ssh. 
+
+** config files
+
+** applications
+I will try to push some applications to multiple servers most likely I will use this
+for setting up my two apache servers to install apache, emacs, and whatever else I 
+may need later on. 
+** create some users and groups
+I would like to make some users and groups. I want to push the same file to each
+user it does not matter what the file is. 
+
+** apache servers
+With anisable I am going to push some configurations to two vms. I want to build 
+create two apache servers and have them replicate so that if one goes down the
+other one could take over. I want to configure the virtual host file and the var/www/ folder
+The reason I want to push those files and folders is to make it easy for me to 
+make websites. 
+
+* Docker
+** install process
+The install process I will need a running instance of ubuntu Docker will run on
+top of ubuntu. 
+** container
+I will create what docker calls a container which is simular to a vm except it
+is more light wieght. I will install a few applications in it probably emacs
+and some other random ones. Then I should be able to transfer this container
+to another server and run all of the apps I installed in it. 
+** install from hub
+I will also install some applications from the docker hub which is like a git
+repository for docker apps.
+** 

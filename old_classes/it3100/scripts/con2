@@ -1,0 +1,7 @@
+#!/bin/bash
+
+co=$(grep $1 ip_of_vms | sed s/$1://)
+
+ssh andrew@$co
+
+

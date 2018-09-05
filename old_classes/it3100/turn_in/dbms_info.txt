@@ -1,0 +1,12 @@
+mysql_ip: 144.38.217.211
+mysql: data.archpacman.com
+ns1_ip: 144.38.217.195
+ns1: ns1.archpacman.com
+http_ip: 144.38.217.199
+http: http.archpacman.com
+user1: ebay:hellothere:stonewall 
+user2: snow:itwillneverbe:crazy
+user3: sam:followmehome:hair
+url: elgg.archpacman.com
+user: jake
+pass: f

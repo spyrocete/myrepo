@@ -1,0 +1,41 @@
+* http
+** status codes
+** five catigories
+400 client side errors
+500 server side erros
+100 
+200
+300
+** defualt web ports
+** how it works
+** pre fork
+is none thearded 
+
+** worker 
+is theared process
+
+* hosts
+** name
+
+** ip
+* xenserver 
+** hyperviser
+it is the software that runs the vms
+** what is virtualiztion
+
+* apache
+** direcotry 
+** allow, deny
+the rule
+** authintication
+*** realm
+*** authfile
+*** httpasswd
+** a2enmod
+** a2ensite
+** restart 
+** reload
+** listen
+go to /etc/apache/ports
+add listen derective
+** name virtual host 

@@ -1,0 +1,4 @@
+#!/bin/bash
+citv powerdownvm $1
+citv bootvm $1 c
+citv showvm > ~/project/it3100/stats_vm

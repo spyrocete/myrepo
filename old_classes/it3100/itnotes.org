@@ -1,0 +1,277 @@
+* smtp
+** install commands
+*** sudo apt-get install exim4 mailutils
+*** sudo dpkg-reconfigure exim4-config
+** install instructions
+*** system mail name
+**** mail.archpacman.com
+*** ip address to listen to 
+**** 127.0.0.1 ; ::1 ; $mail_server_name
+*** destinations to accept mail from
+**** mail.archpacman.com; archpacman.com
+*** ip host for smart host
+**** stumail.cs.dixie.edu
+** switch to dns
+*** commands
+**** sudo emacs /etc/bind/db.archpacman.com
+**** @  IN  MX  10 mail
+**** mail IN  MX  10 mail
+**** users  IN  A  $myip
+**** mail IN  A  $mail_server_ip
+***** This is using A record mail as an alias to www may not work
+**** www  IN  A  $mail_server_ip
+**** change serial number in the file
+**** sudo service bind9 restart
+** testing time 
+*** use dig
+**** dig @$my_ns1_ip archpacman.com MX | grep MX
+*** make user
+**** sudo adduser archie
+**** sudo adduser john
+*** send mail to john as logged in with archie
+**** mailx john
+*** log in and read mail from archie 
+**** mailx
+***** mailx just by its self will read mail
+***** type the number in front of the user to read that email
+*** email outside of system 
+**** mailx spyrocete@gmail.com
+* http app
+** have to have index and a key word and it has to have link to php app and that php page has to have keywords on it
+* mail 
+** telnet hostname connect to and port number
+*** pp3
+* reverse dns
+** whatever ip you have do it in this way reverse order
+*** in-adder.arpa.e
+** reverse name 
+** soa record is still the same 
+** name server are still the same
+** Host names are the same
+** PTR record is a reverse lookup
+** if you leave the dig blank it will do a A record lookupxs
+* for loop
+** for x in a b c d; do
+command
+command
+$x 
+done
+for x in 'ls'; do echo; done
+for i in 'seq -w 1 10'; do
+citv ceatevm bar$
+* gspace
+the 
+/gspace/que
+* dns
+** cach and look up server
+** recursion 
+*** walk the dns
+** lan
+*** local and rest are the world
+** SOA
+*** serial number
+*** ttl 
+** ptr record
+*** revers lookup 
+** named comp
+*** runs in /var/cach/bind
+* etc password
+** chmod g+s .
+*** will make the files made by the user that folder will make it the group 
+** 
+* xfs another filesystme
+* ramdrive
+** when you install linux it will use ramdrive and load a file system on ram.
+* handers
+** 
+* apache modules 
+* url to document in apache2
+** a2ensite
+** what site is used in the apache if it is not found it uses the defualt
+** hostname matching 
+* virtual host selecton is the same thing as above
+* authorization table
+** user and the hostname or ip is improtant
+* remote connection to mysql
+** user db host where the mysql server is running.
+* ldap
+
+** ldapsearch
+-x -H ldapi:///
+-D 'cn=admin,dc=hostname,dc=net'
+-b 'ou=
+
+** config
+slap commands are used but they can get missed up by slapd if the run at the
+same time. ldap commands are safer to use becuase they run through slapd.
+
+** dit
+dc= archpacman, dc=com
+cn is shot for common name
+
+** use hdb
+
+** schema
+a class def of what attributs exist in a class
+
+** changes that will need to be made
+use ldap search command
+
+*** -Y external 
+only works on local mechian
+dc=dsctux is a search filter
+
+** modify the did
+cat ou-People.ldlf
+sudo ldapadd 
+
+*** the ou-People.ldlf
+this file will be scanned and put into the database by slapd
+ 
+*** make posixAccount 
+
+*** all .ldlf files must be manually made
+showdow lastcahnge: when the pass was lst changeed
+shadowMaz: this is how many days it will 
+shadowarning: is how many days user will have to change the pass
+*** formating for ldif files
+it is : numb
+
+*** the gid number must match in the group ldlf file
+
+*** double :: means the pass was hashed
+
+** client
+ldap://144.38.
+
+the local admin is the root on your comp to mainly to look at password hashs
+** nsswitch.cof 
+makes it so you can use ldap users
+add ldap in there
+running whoai is running as normally user
+if root is not working the name maybe who am i
+** security
+| root_server     | full r,w            |
+| non-root-server | user/group -pass    |
+| root-client     | user/group ro +pass |
+| non-root-server | user/group ro -pass |
+| any body        | nothing             |
+
+** destigushed name
+** password for ldap
+for non root user /etc/ldap.cof
+for root user /etc/ldap.sercret
+to use ladp for the local files /etc/nsswitch.conf
+** ip based controls
+cannot be done on ladp it has to be done through a different service
+** ladp.sercret
+it is stored as plain text if you want ot change the password just edit it 
+and press enter when done than save the file
+** bind ldap 
+contacting cred and it is 
+it is a
+** testing the server
+slapcat -b 
+ldapsearch = tests the bind creds
+test ldapsearch -x -D "uid=jflasjf" 
+ldapsearch -x 
+groups = cliet as root 
+su - user = tests if you have accesss to the userpass
+grep values from = 
+* ldap trouble shooting
+** server running
+** slapd on server running and ports open
+** data in dit exists
+** client-server connect
+using the ldapsearch command
+** clint configu
+ladap sercet
+* ntfs
+** fg
+** bg
+** client side
+hard mount = the kernel treats this like a hard drive as much as possible
+soft mount = it is better if it is on
+** fstab 
+no interrupts
+intr,soft 
+noitr
+* samba pdc
+** windows nt4
+** primary domain controler
+** client machine
+*** domain admin
+** trust account
+*** machine first as one time account
+*** domanin shares
+homos
+profiles
+newtlogon
+** smb.conf
+logon path = \\%N\%U\.windows_profile
+os level = 80 means if it goes down than 
+the folder has to have the .v2
+the config file should not have a .v2
+* samba-ldap intergration 
+
+** samba pdc, nfs, and linux client
+*** these will have ldap installed
+** ldap in the dit will have an added class for samba
+** admins that will be made
+make three admins prev non-prev and samba
+** when adding the samba config shema needs to be run as admin
+** ldap config needs to have proper white spaces
+** add to smb.conv
+kernal oplocks = no
+oplocks = no
+strict locking = no
+
+* users
+ldap admin
+postime8
+
+kerbros key: Radioactive12
+** kerberos admin
+kerbadmin: Toomanypass
+** kerberos users
+kuser: tomtomnav
+kuser2: tomtomnav
+* karbaros afs
+** kdc ( key distribution center
+sending out keys and giving them out
+will give a ticket out to a client 
+ticket has id, when it was made
+** tgs ( ticket granting service)
+** tgt ( ticket granting ticket)
+it is the master login 
+** as (authenic server)
+** reaalm
+it is like a domain
+** principal
+any entity that is involved in the process any thing with cred
+s in the sys
+a principal would be made if we need to make a user
+** policy
+it is like a group in linux
+** discovery
+dns they are called srv records
+
+* afs
+** cells are like realms
+** /afs is not a directory it is a virtual folder
+** token
+** aklog using the tgt to checkout a token
+** tokens allows to see all of the tokens like klist on kerbos
+** unlog will delete the token
+*** for afs to work
+**** must have a pricipal for afs cell
+**** export a key and store on afs server
+**** the key is with the ldap server so it can authinicate to the server
+**** afs admin must be created
+**** install open afs
+**** create net cell
+**** afsclient on server 
+** kerberos can use multiply times of encryptions
+** afs can only use a few encryption methods 
+** can configure the 
+** need to remember the kvno number

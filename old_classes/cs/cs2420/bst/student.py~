@@ -1,0 +1,56 @@
+class Student:
+    def __init__(self,last_name,first_name,SSN,email,num):
+        self.name1 = last_name
+        self.name2 = first_name
+        self.SSN = SSN
+        self.email = email
+        self.num = num
+    def Getlastname(self):
+        return self.name1
+    
+    def Setlastname(self,new):
+        self.lastname = new
+        return self.name1
+
+    def Getfirstname(self):
+        return self.name2
+    
+    def Setfirstname(self,new2):
+        self.firstname = new2
+        return self.name2
+
+    def GetSSN(self):
+        return self.SSN
+    
+    def SetSSN(self,new3):
+        self.SSN = new3
+        return self.SSN
+
+    def Getemail(self):
+        return self.email
+    
+    def Setemail(self,new4):
+        self.email = new4
+        return
+
+    def Getnum(self):
+        return self.num
+
+    def Setnum(self,new5):
+        self.num = new5
+        return self.num
+    
+    def __eq__(self,other):
+        return self.GetSSN() == other.GetSSN()
+    def __ne__(self,other):
+        return self.GetSSN() != other.GetSSN()
+    def __le__(self,other):
+        return self.GetSSN() <= other.GetSSN()
+    def __lt__(self,other):
+        return self.GetSSN() < other.GetSSN()
+    def __gt__(self,other):
+        return self.GetSSN() > other.GetSSN()
+    def __ge__(self,other):
+        return self.GetSSN() >= other.GetSSN()
+    
+    

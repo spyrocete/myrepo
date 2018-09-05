@@ -1,0 +1,30 @@
+* sets 
+a U b will show all numbers in each set and not take out dupes
+a + b will take everything
+a N b will only take out the ones that are in both
+
+* unions
+# the things after the select must match
+select state from blublu
+U
+select state from blue
+
+* lap 9
+or in unions
+and is intersection
+5 suj - parts
+* review
+** union
+includes everything but duplicates
+nartraul join or equa join
+** intersect
+it will show what in both of them sets
+trans join left 
+** add
+includes everything and duplicates
+full join
+** relational subtraction
+{1,2,3} - {4,2,3} = 1
+** relational divide 
+it will usally say give all
+

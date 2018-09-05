@@ -1,0 +1,30 @@
+squid: 144.38.204.79:3128
+dansgaurdian: 144.38.204.79:8282
+
+browser restricted: Firefox
+
+squid acl
+   acl blue browser Firefox
+   acl clock time R F 8:00-17:00
+   http_access deny blue clock
+
+   acl bad_urls dstdom_regex -i "/etc/squid3/bad.txt"
+   http_access deny bad_urls
+
+   acl no_corn url_regex -i "/etc/squid3/bad.txt"
+   http_access deny no_corn
+
+   acl POST method POST
+   http_access deny POST
+
+The links below will change between two sites do to the load balance
+links:
+
+apple:		       http://www.archpacman.com
+chicken:               http://www.archpacman.com
+blocked evil computer: http://www.archpacman.com/phrase.html
+ppt file:              http://www.presentationmagazine.com/powerpoint-templates/00278.ppt
+
+Researched urlregx I used to to block rock in the url. 
+urlregx:               http://www.rock.com
+reverse proxy is the links that have been using above.

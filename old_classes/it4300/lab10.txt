@@ -1,0 +1,96 @@
+mysql> \. 11.sql
+Database changed
+--------------
+SELECT city
+       FROM s
+       UNION
+         SELECT city
+	   FROM j
+--------------
+
++--------+
+| city   |
++--------+
+| London |
+| Paris  |
+| Athens |
+| Rome   |
+| Oslo   |
++--------+
+5 rows in set (0.00 sec)
+
+--------------
+SELECT city
+       FROM s
+       UNION
+         SELECT city
+	   FROM j
+	   UNION
+	     SELECT city
+	       FROM p
+--------------
+
++--------+
+| city   |
++--------+
+| London |
+| Paris  |
+| Athens |
+| Rome   |
+| Oslo   |
++--------+
+5 rows in set (0.00 sec)
+
+--------------
+SELECT DISTINCT city
+       FROM j
+       WHERE EXISTS
+       (SELECT * FROM s WHERE s.city = j.city)
+--------------
+
++--------+
+| city   |
++--------+
+| Paris  |
+| Athens |
+| London |
++--------+
+3 rows in set (0.00 sec)
+
+--------------
+SELECT DISTINCT city
+       FROM j
+       WHERE EXISTS
+       	(SELECT * FROM p WHERE j.city = p.city AND EXISTS
+	 (SELECT * FROM s WHERE s.city = p.city))
+--------------
+
++--------+
+| city   |
++--------+
+| Paris  |
+| London |
++--------+
+2 rows in set (0.00 sec)
+
+--------------
+SELECT city
+       FROM j
+       WHERE NOT EXISTS
+       (SELECT * FROM p where p.city = j.city)
+       UNION
+         SELECT city
+	   FROM s
+	 WHERE NOT EXISTS
+	 (SELECT * FROM p where p.city = s.city)
+--------------
+
++--------+
+| city   |
++--------+
+| Athens |
+| Oslo   |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> exit

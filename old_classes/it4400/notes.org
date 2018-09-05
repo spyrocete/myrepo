@@ -1,0 +1,696 @@
+* project 2
+** rollover cable
+this will be needed for connecting a consule 
+** crossover cable
+will be needed for connecting switch to switch or same device to device.g 
+* class 2
+** bridge
+seperate two collosion areas
+
+** switch 
+it is a improvement on switch
+** stp
+blocking
+learning
+forwarding
+
+** collsion domains 
+any where a collsion can happen
+** broadcast domain 
+it is were anythig can be sent to something else
+** access switch
+is what you plug your computer into
+** fire time boot
+say no 
+
+enabled #
+router(config) config stuff like 
+config-line 
+config-router
+
+** ommands
+show run
+write mem
+show startup
+
+get into config mod
+
+do # can run commands outside of config mod
+ 
+** ungrading ios
+# this will show all of the files that are on flash mem
+show flash 
+
+erase startup-config
+erase nvram
+
+include is grep for cisco
+begin will start the search at that point
+
+** version
+show version
+
+
+* sshxs
+* vlan
+** untag 
+is for users not routers 
+** trunk
+inbetween two vlans
+** vlan header
+vlan 
+** native vlan
+untagged vlan on a trunk
+
+** router on a stick
+it is a router with just one port 
+** make vlan
+vlan number
+** switchport access vlan x
+witchpor tmode access 
+ranges 
+
+switchport mode trunk
+contrlling wich vlans cant be spported on a trunk
+swichport trunk allowed vlan x-y
+
+vlan hu
+
+dot1q
+
+access or trunk
+** vtp
+vlan trunking protocol
+this will pass teh vlans from one router to another
+vtp mode transparent mode off
+show vtp status
+* network trouble shooting
+** cdp 
+show cdp naibers
+cdp run
+no cdp run
+
+** ned to get rid of something
+put a no in front of it
+
+** interfact status
+enable 
+** show mac address table
+show mac address table
+** include 
+grep for cisco
+* project 4
+** trunking
+conf t
+int port-channel <port number>
+switchport trunk encapsulation dotlq
+switchport trunk native vlan <vlan nubmer>
+** convergencaae
+time it takes other routers to learn the new route
+** igp 
+used in a signle as
+** egp 
+used betewwn different as
+** as 
+network under the control of a single organization
+** lsa 
+it gets flooding to all the routers with new routers
+** areas
+it is the backbonwil
+*** why break up into smaller areaas
+security, speedt
+*** area boader routers
+** router ospf <process_id>
+router-d ip address
+network ipaddress <sub_wildcard> <area> <eareaid>
+# proecese-id must be the same for areas to talk to each other
+** loopback ip
+can get back to it on ssh and not have to remember alll of the ips 
+*** config 
+config router_id to be the loopback ip 
+must be /32
+** wildcard mask
+acl flip the subnet 
+show ip ospf database
+show ip route
+** pasive
+does not send out ospf
+** not useing
+router ospf <pid>
+
+** default route
+default-information originate
+default-information originate always
+** arp
+might have to clear if you change your ip address
+it is good for touble shooting
+** ping
+mtu maxium fram
+df option on ping will force it to send the whole packet.
+
+
+* project 6
+32
+16
+8
+4
+2
+1
+anything 25 and above we work in the last oct
+
+** pick one of the 30s and break it up
+# config loopback 0
+int lo0
+  ip address  255.255.255.255
+  ip ospf network point-to-point
+  ip ospf message-digest-key 1 md5 OSPFisMYfavorite
+router ospf num
+router osp 65535
+router-id loopback ip
+network ip 0.0.0..3
+int 
+
+routr id 
+give it same ip as loopback address
+
+areas 0 authinicahtion message-digest
+network [ip that is up link to router] 0.0.0.0.3 area 0
+#  so my ip needs to have .0.0.0.0.3 to my ip
+# go into ip uplin
+# go to website and paste the key after the md5
+# now do it again on another vlanipr
+
+** 
+** create anotehr area
+area 100
+are 100 auth mess-digest
+network 
+
+# 2800
+int lo0 
+ip address 
+router osp 65535
+router-id loopback ip
+network ip 0.0.0..3
+int 
+
+# do no ip route
+
+# go onto 3750 take off all of the statick 
+** go back into 2800
+show ip route con
+# 
+ospf 
+redistibut con metric 1 subnets
+** 2800
+f0/1 make another sub int on this
+# conntect 2800s to each other through f0/1 
+# put them on the same network make sure the can ping each other
+** ntp
+copy and paste the two lines on that
+ntp server ip
+show ntp associ
+shwo clock
+# extra thing 
+service imestamps log datetime msec locatol showtimezon year
+** summory address
+# do this on your switch only
+router ospf num
+summory-address ip mask [regular]
+
+
+** switch
+router ospf 65535
+router-id 74.123.12.157
+log-adjacency-changes
+area 0 authentication message-digest
+network 74.123.12.128 0.0.0.31 area 0
+
+interface Loopback0
+ip address 74.123.12.157 255.255.255.255
+ip ospf message-digest-key 1 md5 OSPFisMYfavorite
+ip ospf network point-to-point
+
+interface Vlan400
+description link for 2800s
+no ip address
+ip ospf message-digest-key 1 md5 OSPFisMYfavorite
+ip ospf network point-to-point
+
+interface Vlan114
+description uplink for switch
+ip address 74.123.12.130 255.255.255.252
+ip ospf message-digest-key 1 md5 OSPFisMYfavorite
+ip ospf network point-to-point
+
+interface FastEthernet1/0/18
+description router 1 f0/1
+switchport access vlan 3314
+switchport trunk encapsulation dot1q
+switchport trunk allowed vlan 114,400,3314
+switchport mode trunk
+
+interface FastEthernet1/0/22
+description router 2 f0/1
+switchport access vlan 3330
+switchport trunk encapsulation dot1q
+switchport trunk allowed vlan 114,400,3330
+switchport mode trunk
+
+** router1
+
+interface Loopback0
+ip address 74.123.12.156 255.255.255.255
+ip ospf message-digest-key 1 md5 OSPFisMYfavoriet
+ip ospf network point-to-point
+
+interface FastEthernet0/1.400
+description vlan 400 between 2800s
+encapsulation dot1Q 400
+ip address 74.123.12.149 255.255.255.252
+ip ospf message-digest-key 1 md5 OSPFisMYfavoriet
+ip ospf network point-to-point
+
+router ospf 65535
+router-id 74.123.12.156
+area 51 authentication message-digest
+network 74.123.12.150 0.0.0.3 area 51
+
+
+
+** router2
+interface Loopback0
+ip address 74.123.12.156 255.255.255.255
+ip ospf message-digest-key 1 md5 OSPFisMYfavoriet
+
+interface FastEthernet0/1.400
+description vlan 400 link between 2800s
+encapsulation dot1Q 400
+ip address 74.123.12.150 255.255.255.252
+ip ospf message-digest-key 1 md5 OSPFisMYfavoriet
+ip ospf network point-to-point
+
+router ospf 65535
+router-id 74.123.12.156
+area 51 authentication message-digest
+network 74.123.12.149 0.0.0.3 area 51
+
+** test
+
+router ospf 65535
+no network 74.123.12.156 0.0.0.0 area 0
+
+
+router ospf 65535
+no network 74.123.12.149 0.0.0.3 area 51
+network 74.123.12.148 0.0.0.3 area 51
+
+
+router ospf 65535
+area 0 authentication message-digest
+no network 74.123.12.156 0.0.0.0 area 0
+network 74.123.12.156 0.0.0.31 area 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* project 6/2
+** acls
+deny 
+permit
+remark = comment
+*** startndered
+1-99
+extended range (100-199)
+additiona
+deny all is implied
+**** 1300-1999 standered
+match just the ip
+**** 2000-  extended
+matchs ports as welly 
+
+*** acl range
+access-list{1-99}{permit|deny} match_one
+
+*** example
+access-list 5 permit [ip]
+
+*** match network
+access-ilst 10 permite [ip.subnet]
+
+access list 16 deny any
+
+*** int f0/0
+ip access-group <acl number> {in|out}
+
+show ip access-list
+show ip int f-/-
+access-list 2 permite ip log
+
+access-list 2 permite [ip] [netmask]
+
+access-list 2 permite 144.38.1.0 0.0.0.127
+
+# original ip 14.38.1.12.0/22
+access-list 2 permite 144.38.1.12.0 0.0.3.253
+
+** advanced acls
+*** can match more
+protocl types ports source port, dest port, 
+
+
+*** exxamples
+# block traffic from anybody to ssh server
+access-list  102 deney tcp any 144.38.10 0.0.0.1 eq 22
+
+a 102 permit 
+
+*** if you want to specify a protocol you can only do one per line
+  
+*** new way
+ip acceess-list <standered | extened>
+
+ip access-lit extended test1
+  permit tcp any ip eq 22
+  deney any any
+  
+access-class ip in
+
+ntp accesss-group peer name or numbeer
+ntp access-group peer query only serv server only name number
+
+*** sysloag
+push all routers to a single server 
+splunk is on
+logstash
+loggin <ip>
+loggin source-interface <interface name>
+* acla
+put log at the end of the acl command to see output echo to termial
+when block in for dns*  the source is the outside so. 
+* test section 1 to 6
+back of chapters for quetoins
+how large ismc addre ss 6 bytes
+** dls 
+dslam is what you plug into 
+** cable 
+is almost the same as dsl
+** trunk vlan 
+into all 2800 and router
+vlan 303
+
+
+
+* glue records 
+it is for ivp6 
+
+* ivp6
+** cidr 
+is classless 
+extendeds the life of it.
+** ospf 
+is 
+32 hex digits 
+* guest speaker michael hanson
+convergent 
+network engineir
+** first task
+skywest did not have high end routers or switchs
+he needed to upgrade it all. The routers were in use
+100 percent.
+
+All of the backend was using public ip. They had a /24
+of private ips. 
+
+30000 lines of code based on 1.1.1.8. 
+
+Buid it correctly from the ground up. 
+
+** have background in computers
+different expirence in different os windows, mac, linux.
+ 
+** bought two air lines
+The it department would float between the two air lines.
+They bought a skywest ink to cover over the two air lines.
+
+** BGP
+peer with info west and centry link. 
+
+** why have offsite
+mission critical things that are needed. to launch the 
+network is needed if the network went out for a day and
+a half it might put it out of buisness.
+
+** fuel truck
+they had to go teh their back up location.
+They have to make dont thknk sure that they data people that give 
+flight info and stuff like that. They must be kept up and
+running with all the stuff mpls
+
+** routing protocals
+doing the wrong protocal could bring down the whole 
+network. 
+
+** misteaks
+Everyone makes misteaks. If you dont know what is going
+on then ask questions.
+
+** example
+500 email notifications they lost access to all lan links.
+routes were being injected by centery link. 
+
+** peer 
+in order to peer with centry link he must do a major 
+work around. 
+
+** 9am christmas
+2000 its raining and the power went out. the transfer
+switch will kick in. The transfer switch failed so 
+within 23 minutes the data center went down.
+
+** mpls cloud
+if one of them goes down in a remote area then they will
+have to use cell phones and call the pilot to get the 
+flight. 
+
+** wan excellerator
+it will cache the files on a kernal level. It will fill
+up the hard drives and then erase the oldest file.
+** fly
+fly and repair plans and if they fall behind they can
+get shutdown in a day and a half. 
+
+** palowata
+They use hardware firewall. 
+
+** ivp6 
+They are not implementing ivp6. He likes the challege
+of trying to figure out problems.
+* guest speaker jar
+10 gig goes into 6800
+ibose filtering
+7600 router feeds 50 plus sites that are feed with one gig fiber links
+another fire wall 
+** ether cannal trunking 
+2 gigs going through the whole network
+** 2019 they will be 10 gb
+nelsons law yo will see a 50% increase every year.
+** banwith
+windows updates 
+testing 
+
+** upgrading 
+will be getting a another 2gb pip that will provide
+redunency. 
+** ip
+lan /24  public
+ewifi /20 
+public /20
+voip /24
+camera /24
+** devices 
+30k in an average day
+** wifi
+rukkus is what they use
+60 users per ap
+The more ap you get inthere the more they interfer 
+wifi radio is kind of like a hub
+** crim view
+every student has an ipad. most of them have just n some of ac.
+** filtering
+erate gives funding for data and they must filter.
+** searching
+https cannot be filtered. 
+google has a way to turn off but it will be changed soon enough
+docdoc go does have https and it cannot be disabled.
+not running ipv6 
+They use eigrp for the most part.
+
+** dms
+They get the time and ip and port number. 
+/16
+** load balbncer
+f5 
+haproxy
+** a guuy
+every weekend some guy is trying to look for porn.
+he kept trying to get on and he kept blocking the mac 
+after three times the guy did not come back.
+** intrushion protrction
+bro is that one that they use.
+
+** back
+the data center 
+
+** what he looks for
+versitlity 
+be able to do it all. They want someone with a bachalers degree.
+full time tech starts at 40k.

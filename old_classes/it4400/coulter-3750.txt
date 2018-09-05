@@ -1,0 +1,344 @@
+####################################
+# login for raidius                #
+####################################
+username: clarson
+password: plastic
+
+
+####################################
+# free radius working              #
+####################################
+
+acoulter@silicon:/net/144.38.192.167/vol/student_account/home/a/acoulter$ ssh clarson@74.123.12.130
+Password: 
+
+coulter-3750#
+
+
+###########################################
+# snm get for both routers and switch     #
+###########################################
+
+andrew@ubuntu:~$ snmpget -v2c -c pool 74.123.12.157 sysName.0
+SNMPv2-MIB::sysName.0 = STRING: coulter-3750.docdoc.us
+andrew@ubuntu:~$ snmpget -v2c -c pool 74.123.12.156 sysName.0
+SNMPv2-MIB::sysName.0 = STRING: coulter-2800-1.docdoc.us
+andrew@ubuntu:~$ snmpget -v2c -c pool 74.123.12.156 sysName.0
+SNMPv2-MIB::sysName.0 = STRING: coulter-2800-1.docdoc.us
+andrew@ubuntu:~$ 74.123.12.153
+74.123.12.153: command not found
+andrew@ubuntu:~$ snmpget -v2c -c pool 74.123.12.153 sysName.0
+SNMPv2-MIB::sysName.0 = STRING: coulter-2800-2.docdoc.us
+
+
+####################################
+#  syslog-ng                       #
+####################################
+
+andrew@ubuntu:~$ sudo tail /var/log/cisco.log
+Dec  9 00:37:50 74.123.12.153 : %SYS-5-CONFIG_I: Configured from console by andrew on vty0 (144.38.195.11)
+Dec  9 00:37:51 74.123.12.153 : %SYS-6-LOGGINGHOST_STARTSTOP: Logging to host 74.123.12.142 port 514 started - CLI initiated
+Dec  9 00:40:02 74.123.12.156 : %SYS-5-CONFIG_I: Configured from console by andrew on vty1 (144.38.195.11)
+Dec  9 00:40:08 74.123.12.156 : %SYS-6-LOGGINGHOST_STARTSTOP: Logging to host 74.123.12.142 port 514 started - reconnection
+Dec  9 00:40:31 74.123.12.157 : %SYS-5-CONFIG_I: Configured from console by andrew on vty11 (144.38.195.11)
+Dec  9 00:40:37 74.123.12.157 : %SYS-6-LOGGINGHOST_STARTSTOP: Logging to host 74.123.12.142 Port 514 started - reconnection
+
+
+####################################
+#  show run                        #
+####################################
+
+coulter-3750#show run
+Building configuration...
+
+Current configuration : 7270 bytes
+!
+! Last configuration change at 04:06:23 UTC Tue Dec 9 2014 by andrew
+! NVRAM config last updated at 04:01:35 UTC Tue Dec 9 2014 by andrew
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname coulter-3750
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$7aiK$6JW6qddaI.Zvcbk9rXiZv0
+!
+username andrew privilege 15 secret 5 $1$W5c5$K.xS6cXgW3vncNkntfnf5/
+username cbl privilege 15 secret 5 $1$HvAo$0a3M/JIdJTEdMHz.61BKc1
+username clarson privilege 15 secret 5 $1$t1O9$xrdfPn/2miJcHRzHy.vtn1
+!
+!
+aaa new-model
+!
+!
+aaa group server radius RadiusServers
+ server 74.123.12.42 auth-port 1812 acct-port 1813
+!
+aaa authentication login default group RadiusServers local
+aaa authentication enable default group RadiusServers enable
+aaa authorization exec default group RadiusServers local 
+aaa authorization network default group RadiusServers local 
+!
+!
+!
+aaa session-id common
+switch 1 provision ws-c3750-24ts
+system mtu routing 1500
+vtp mode transparent
+authentication mac-move permit
+ip routing
+no ip domain-lookup
+ip domain-name docdoc.us
+!
+!
+ipv6 unicast-routing
+!
+!
+crypto pki trustpoint TP-self-signed-3409859712
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3409859712
+ revocation-check none
+ rsakeypair TP-self-signed-3409859712
+!
+!
+crypto pki certificate chain TP-self-signed-3409859712
+ certificate self-signed 01
+  3082024E 308201B7 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 33343039 38353937 3132301E 170D3933 30333031 30303031 
+  33325A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 34303938 
+  35393731 3230819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100D1FF E16766C5 4C1B4E17 5B022ECC 51C4E5A0 6E3B1ABF D20B134D 9223ED1E 
+  18100C6F 97C1EB75 AAF582EE F371F66F A4638A21 E9A3F28A ABC59AEB 5983F9BC 
+  E22EE33B F08ECD88 803A2BD9 4EA73AA3 38DBFCCD 9EA4C629 2BBEFCBD C2B45572 
+  DDADF7DF ACE246D4 288262B3 BECB806F DC7CB408 AA23BC99 66A45F96 E5FA086E 
+  98090203 010001A3 76307430 0F060355 1D130101 FF040530 030101FF 30210603 
+  551D1104 1A301882 16636F75 6C746572 2D333735 302E646F 63646F63 2E757330 
+  1F060355 1D230418 30168014 60A5F192 B9C8C9F6 E4876035 7A995B15 0429160A 
+  301D0603 551D0E04 16041460 A5F192B9 C8C9F6E4 8760357A 995B1504 29160A30 
+  0D06092A 864886F7 0D010104 05000381 810062F1 03C7F610 10AB80A9 C03CC983 
+  1C5A7342 C7020738 BB5E395E E005806D 6CD70D86 C0F3DF71 DCC5F222 2DD2B2FC 
+  4686523B 8794E04B 8D4ADF00 2EC840F4 925B4B50 3B007A24 F5CB861D 8E9A8D2A 
+  0FC47734 2BAC2427 0608489A 42031171 3C435DC2 DA5F77E9 5F8B3910 6BAC7134 
+  A08B8571 515147C2 3BF04E00 0EAB1E0C FCBA
+  quit
+!
+!         
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 101-102 priority 24576
+!
+vlan internal allocation policy ascending
+!
+vlan 101
+ name r1
+!
+vlan 102
+ name router2
+!
+vlan 114
+ name out-going
+!
+vlan 400
+ name link-r1-r2
+!         
+vlan 3314
+ name vm1
+!
+vlan 3330
+ name vm2
+!
+ip ssh time-out 60
+ip scp server enable
+!
+!
+!
+interface Loopback0
+ ip address 74.123.12.157 255.255.255.255
+!
+interface Port-channel1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 114,3314,3330
+ switchport mode trunk
+!
+interface FastEthernet1/0/1
+!
+interface FastEthernet1/0/2
+!
+interface FastEthernet1/0/3
+!
+interface FastEthernet1/0/4
+!
+interface FastEthernet1/0/5
+!
+interface FastEthernet1/0/6
+!
+interface FastEthernet1/0/7
+!
+interface FastEthernet1/0/8
+!
+interface FastEthernet1/0/9
+!
+interface FastEthernet1/0/10
+!
+interface FastEthernet1/0/11
+!
+interface FastEthernet1/0/12
+!
+interface FastEthernet1/0/13
+!
+interface FastEthernet1/0/14
+!
+interface FastEthernet1/0/15
+!
+interface FastEthernet1/0/16
+ description main uplink for switch
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 114
+ switchport trunk allowed vlan 114,3314,3330
+ spanning-tree vlan 3314 cost 5
+!
+interface FastEthernet1/0/17
+!
+interface FastEthernet1/0/18
+ description router 1 f0/1
+ switchport access vlan 3314
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 400,3314
+ switchport mode trunk
+ spanning-tree portfast trunk
+!
+interface FastEthernet1/0/19
+!
+interface FastEthernet1/0/20
+ description router 1 uplink f0/0
+ switchport access vlan 101
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 101,114
+ switchport mode trunk
+ spanning-tree portfast trunk
+!
+interface FastEthernet1/0/21
+ description port channel with 23
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 114,3314,3330
+ switchport mode trunk
+ channel-group 1 mode active
+ spanning-tree vlan 114 cost 6
+!
+interface FastEthernet1/0/22
+ description router 2 f0/1
+ switchport access vlan 3330
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 400,3330
+ switchport mode trunk
+ spanning-tree portfast trunk
+!
+interface FastEthernet1/0/23
+ description port channel with 21
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 114,3314,3330
+ switchport mode trunk
+ channel-group 1 mode active
+ spanning-tree vlan 114 cost 6
+!         
+interface FastEthernet1/0/24
+ description router 2 uplink f0/0
+ switchport access vlan 102
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 102,114
+ switchport mode trunk
+ spanning-tree portfast trunk
+!
+interface GigabitEthernet1/0/1
+!
+interface GigabitEthernet1/0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan101
+ description router 1 uplink f0/0
+ ip address 74.123.12.133 255.255.255.252
+ ipv6 address 2604:2C00:FFE4:1000::/64 eui-64
+ ipv6 enable
+ ipv6 ospf network point-to-point
+ ipv6 ospf 65535 area 100
+!
+interface Vlan102
+ description router 2 uplink f0/0
+ ip address 74.123.12.137 255.255.255.252
+ ipv6 address 2604:2C00:FFE4:1100::/64 eui-64
+ ipv6 enable
+ ipv6 ospf network point-to-point
+ ipv6 ospf 65535 area 100
+!
+interface Vlan114
+ description uplink for switch
+ ip address 74.123.12.130 255.255.255.252
+ ipv6 address 2604:2C00:FFDF:114::/64 eui-64
+ ipv6 enable
+ ipv6 ospf network point-to-point
+ ipv6 ospf 65535 area 0
+!         
+!
+router eigrp 12345
+ network 74.123.12.128 0.0.0.3
+ network 74.123.12.132 0.0.0.3
+ network 74.123.12.136 0.0.0.3
+ redistribute connected metric 1 10 255 1 1500
+ redistribute static metric 1 10 255 1 1500
+ eigrp router-id 74.123.12.157
+!
+ip classless
+no ip http server
+no ip http secure-server
+!
+!
+ip access-list standard snmp
+ permit 74.123.12.142
+ deny   any
+!
+ip radius source-interface Loopback0 
+logging trap debugging
+logging facility syslog
+logging source-interface Loopback0
+logging 74.123.12.142
+ipv6 router ospf 65535
+ router-id 74.123.12.157
+ log-adjacency-changes
+ summary-prefix 2604:2C00:FFE4::/48
+ redistribute connected metric 1
+ redistribute static metric 1
+!
+!
+!
+snmp-server community pool RO snmp
+snmp-server location utah
+snmp-server contact andrew
+radius-server host 74.123.12.42 auth-port 1812 acct-port 1813 key <secret_key>
+!
+!
+line con 0
+line vty 0 4
+ session-timeout 60 
+ transport input ssh
+line vty 5 15
+ transport input ssh
+!
+ntp clock-period 36029334
+ntp server 198.60.22.240
+ntp server 204.17.177.3
+ntp server 204.17.177.8
+end
+

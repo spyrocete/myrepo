@@ -1,0 +1,15 @@
+* {query string 
+it is anything followed after the ? on the url
+[L] breaks out of the loop is the last thing to be evl
+* http_referer
+it can be used to control hot linking
+* read the readings in 
+* compression
+* nginx 
+Interpet a config file for it.
+* practical
+mode rewrite, create robots.txt, and ssl.
+Make websites on windows 
+make test2a and test2b both will be ip based and must be on windows server.
+
+

@@ -1,0 +1,86 @@
+#--------------------------------------
+# vm1 ping, traceroute, and ifconfig
+#--------------------------------------
+
+andrew@ubuntu:~$ ping 204.17.177.14
+PING 204.17.177.14 (204.17.177.14) 56(84) bytes of data.
+64 bytes from 204.17.177.14: icmp_seq=1 ttl=58 time=1.10 ms
+64 bytes from 204.17.177.14: icmp_seq=2 ttl=58 time=1.20 ms
+64 bytes from 204.17.177.14: icmp_seq=3 ttl=58 time=1.27 ms
+64 bytes from 204.17.177.14: icmp_seq=4 ttl=58 time=1.18 ms
+^C
+--- 204.17.177.14 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3005ms
+rtt min/avg/max/mdev = 1.109/1.194/1.275/0.064 ms
+andrew@ubuntu:~$ traceroute 204.17.177.14
+traceroute to 204.17.177.14 (204.17.177.14), 30 hops max, 60 byte packets
+ 1  74.123.12.145 (74.123.12.145)  1.741 ms  2.131 ms  2.978 ms
+ 2  74.123.12.137 (74.123.12.137)  2.357 ms  2.334 ms  2.435 ms
+ 3  74.123.12.129 (74.123.12.129)  0.934 ms  3.048 ms  3.091 ms
+ 4  10.244.0.113 (10.244.0.113)  1.335 ms  1.480 ms  1.372 ms
+ 5  10.248.2.189 (10.248.2.189)  0.768 ms  0.915 ms  0.803 ms
+ 6  10.250.15.246 (10.250.15.246)  1.402 ms  1.149 ms  1.031 ms
+ 7  cougarmountain.infowest.com (204.17.177.14)  1.144 ms  1.093 ms  1.077 ms
+andrew@ubuntu:~$ ifconfig
+eth0      Link encap:Ethernet  HWaddr 52:54:00:08:00:eb  
+          inet addr:74.123.12.146  Bcast:74.123.12.147  Mask:255.255.255.252
+          inet6 addr: fe80::5054:ff:fe08:eb/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1007 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:862 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:123656 (123.6 KB)  TX bytes:116708 (116.7 KB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:48 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:48 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:3664 (3.6 KB)  TX bytes:3664 (3.6 KB)
+
+
+#--------------------------------------
+# vm2 ping, traceroute, and ifconfig
+#--------------------------------------
+
+andrew@ubuntu:~$ ping 204.17.177.14
+PING 204.17.177.14 (204.17.177.14) 56(84) bytes of data.
+64 bytes from 204.17.177.14: icmp_seq=1 ttl=58 time=1.14 ms
+64 bytes from 204.17.177.14: icmp_seq=2 ttl=58 time=1.40 ms
+64 bytes from 204.17.177.14: icmp_seq=3 ttl=58 time=1.34 ms
+64 bytes from 204.17.177.14: icmp_seq=4 ttl=58 time=1.35 ms
+^C
+--- 204.17.177.14 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3005ms
+rtt min/avg/max/mdev = 1.148/1.311/1.401/0.096 ms
+andrew@ubuntu:~$ traceroute 204.17.177.14
+traceroute to 204.17.177.14 (204.17.177.14), 30 hops max, 60 byte packets
+ 1  74.123.12.141 (74.123.12.141)  2.179 ms  2.689 ms  3.210 ms
+ 2  74.123.12.133 (74.123.12.133)  0.851 ms  1.217 ms  1.172 ms
+ 3  74.123.12.129 (74.123.12.129)  1.054 ms  1.349 ms  1.239 ms
+ 4  10.244.0.113 (10.244.0.113)  1.891 ms  1.886 ms  1.997 ms
+ 5  10.248.2.189 (10.248.2.189)  0.853 ms  0.947 ms  0.829 ms
+ 6  10.250.15.246 (10.250.15.246)  0.975 ms  1.232 ms  1.116 ms
+ 7  cougarmountain.infowest.com (204.17.177.14)  1.006 ms  0.965 ms  1.083 ms
+andrew@ubuntu:~$ ifconfig
+eth0      Link encap:Ethernet  HWaddr 52:54:00:08:00:e5  
+          inet addr:74.123.12.142  Bcast:74.123.12.143  Mask:255.255.255.252
+          inet6 addr: fe80::5054:ff:fe08:e5/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:546 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:679 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:97289 (97.2 KB)  TX bytes:113657 (113.6 KB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:32 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:32 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:2368 (2.3 KB)  TX bytes:2368 (2.3 KB)
+
+

@@ -1,0 +1,31 @@
+function switch_mac {
+# clear all options
+setxkbmap -model "pc105" -layout "hr,us" -option ""  
+
+# set the Apple keyboard
+setxkbmap -rules "evdev" -model "pc105" -layout "hr,us" -option "terminate:ctrl_alt_bksp,lv3:rwin_switch,grp:shifts_toggle,caps:ctrl_modifier,altwin:swap_lalt_lwin"
+
+# swap the grave-tilde with less-greater key
+#  - variant without dead keys
+xmodmap -e "keycode  94 = grave asciitilde"
+xmodmap -e "keycode  49 = less greater less greater bar brokenbar bar brokenbar"
+}
+
+function switch_pc {
+# clear settings
+setxkbmap -model "pc105" -layout "hr,us" -option ""
+
+# pc keyobard
+setxkbmap -rules "evdev" -model "pc105" -layout "hr,us" -option "terminate:ctrl_alt_bksp,lv3:rwin_switch,grp:shifts_toggle,caps:ctrl_modifier"
+}
+
+if [ "$1" = "n" ]; then
+switch_mac
+echo "Keyboard was switched to mac layout"
+fi
+
+if [ "$1" = "m" ]; then
+switch_pc
+echo "Keyboard was switched to pc layout"
+fi
+

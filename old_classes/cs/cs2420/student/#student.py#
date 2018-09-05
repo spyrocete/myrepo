@@ -1,0 +1,135 @@
+
+import urllib2  # the lib that handles the url stuff
+import time
+
+class students:
+    def __init__(self, name, last, ssn, email, age):
+        self.name = name
+        self.last = last
+        self.ssn = ssn
+        self.email = email
+        self.age = age
+        
+    def getname(self):
+        return self.name
+
+    def getlast(self):
+        return self.last
+
+    def getssn(self):
+        return self.ssn        
+
+    def getemail(self):
+        return self.email
+
+    def getage(self):
+        return self.age    
+
+
+def mkstudent():
+    data = urllib2.urlopen("http://cit.cs.dixie.edu/cs/2420/ssn/InsertNames.txt")
+#    data = urllib2.urlopen("http://org.archpacman.com/name.txt")
+ 
+    t = time.time()
+    studentlst=[]
+    # f = students("fake", "fake", "fake", "fake", "fake")
+    # studentlst.append(f)
+    
+    duplicate = False
+    for line in data: # files are iterable
+        words = line.split()
+        s = students(words[0], words[1], words[2], words[3], words[4])
+#    print studentlst[0].getname(words[0])
+        for i in studentlst:
+            if words[2] == i.getssn():
+                duplicate = True
+
+        if duplicate:
+            print "error student ssn is already entered"
+            print s.getname()
+            duplicate = False
+
+
+        elif not duplicate:
+            studentlst.append(s)
+
+    endt = time.time()
+    ending = endt - t
+    print "total time for adding students to list", ending
+    return studentlst
+
+def average(studentlst):
+    ave = 0.0
+    avet = time.time()
+    aos = len(studentlst)
+    for i in studentlst:
+        tempint = i.getage()
+        ave += int(tempint)
+    print "added", ave
+    print "devided by", aos
+    total = ave/aos
+    print "The avrage age is", total
+    avetend = time.time()
+    totalavet = avetend - avet
+    print "total time took to get average", totalavet
+
+def deletestudents(studentlst):
+#    deldata = urllib2.urlopen("http://org.archpacman.com/delname.txt")    
+    deldata = urllib2.urlopen("http://cit.cs.dixie.edu/cs/2420/ssn/DeleteNames.txt")    
+    startt = time.time()
+    delcount = 0
+    
+    for line in deldata:
+        deleted = False
+        for i in range(len(studentlst)-1):
+            if line.strip() == studentlst[i].getssn():
+                deleted = True
+                delcount += 1
+                a = studentlst[i]
+                b = studentlst[-1]
+                studentlst[i] = b
+                studentlst[-1] = a
+                del studentlst[-1]
+                break
+
+        if not deleted:
+            print "The ssn was not in deleted list", line
+
+    endt = time.time()
+    totalt = endt - startt
+    print "time it took to delete", totalt
+    print "Amount of names deleted", delcount
+   
+
+def retrievestudents(studentlst):
+   # redata = urllib2.urlopen("http://org.archpacman.com/rename.txt")        
+    redata = urllib2.urlopen("http://cit.cs.dixie.edu/cs/2420/ssn/RetrieveNames.txt")        
+    startt = time.time()
+    count = 0
+    ave = 0.0
+
+    for line in redata:
+        retrieved = False
+        for i in studentlst:
+            if line.strip() == i.getssn():
+                retrieved = True
+                count += 1
+                ave += int(i.getage())
+                break
+
+        if not retrieved:
+            print "the ssn was not in retrieve list", line
+
+    endt = time.time()
+    totalt = endt - startt
+    totalave = ave/count
+    print "average from retrieve is", totalave
+    print "Time it took for ave from retrieve list", totalt
+
+def main():
+    studentlst = mkstudent()
+    average(studentlst)
+    deletestudents(studentlst)
+    retrievestudents(studentlst)
+
+main()

@@ -1,0 +1,22 @@
+https://test2c.archpacman.com/links.html
+
+
+RewriteCond %{QUERY_STRING} id=789&loggedin
+RewriteCond %{QUERY_STRING} id=789&$
+RewriteRule products.html products.html [L]
+RewriteRule products.html /login.php [R]
+
+RewriteCond %{HTTP_REFERER} 144.38.197.21 [NC]
+RewriteRule .*\.(jpg|png) http://p1.pichost.me/i/34/1574442.jpg # [R] [NC]
+
+RewriteCond %{HTTP_USER_AGENT} "Chrome" [OR]
+RewriteCond %{TIME_HOUR} >0800
+RewriteCond %{TIME_HOUR} <1700
+RewriteRule SecretFile.html SecretFile.html [L]
+RewriteRule SecretFile.html - [F]
+
+
+RewriteCond %{QUERY_STRING} make=(\w+)&model=(\w+)&year=(\w+)
+RewriteRule vehicles.php /vehicles.php/%3/%1/%2? [R]
+
+

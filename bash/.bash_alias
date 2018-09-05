@@ -1,0 +1,129 @@
+# my functions
+
+function kickme {
+cat ~/current.txt
+echo "What host do you want to logout?"
+read comp   
+ssh $comp<<EOF
+pkill -u acoulter
+EOF
+}
+
+function vncssh {
+output=$(ssh desdemona<<EOF
+citv showvm | grep $1
+EOF)
+output2=$(echo $output | egrep -o vm\:[0-9]+)
+echo $output2
+    ssh -f -L 5901:$output2 acoulter@ssh.cs.dixie.edu sleep 10;
+    vncviewer localhost:5901
+}
+
+function vncsshp {
+output=$(ssp ophelia<<EOF
+citv showvm | grep $1
+EOF)
+output2=$(echo $output | egrep -o vm\:[0-9]+)
+echo $output2
+    ssh -f -L 5902:$output2 gqiao@ssh.cs.dixie.edu sleep 10;
+    vncviewer localhost:5902
+}
+
+function showcit {
+	 ssh ophelia<<EOF
+	 citv showvm
+EOF
+}
+
+function cib {
+    ssh ophelia<<EOF
+    citv powerdownvm $1; citv bootvm $1 c
+EOF
+}
+
+function getting {
+    git add --all
+    git commit -am "auto gen quick git commit"
+    if [ $HOSTNAME = "ArchDesktop" ]; then
+       echo "you are using desktop"
+       	git pull homework master     
+    	git push homework master
+    else
+	git pull
+	git push
+    fi
+}
+
+function git_pull {
+    git add --all
+    git commit -am "auto gen quick git commit"
+    if [ $HOSTNAME = "ArchDesktop" ]; then
+       echo "you are using desktop"
+       	git pull homework master     
+    else
+	git pull
+    fi
+}
+
+
+function blockg {
+    git add --all
+    git commit -am "auto gen quick git commit"
+    if [ $HOSTNAME = "ArchDesktop" ]; then
+       git pull
+       git push
+    else
+       git pull block master     
+       git push block master
+    fi
+}
+
+function playmc {
+    if [ -d ~/Documents ]; then
+       java -jar ~/Documents/minecraft/Minecraft.jar
+    else
+       java -jar ~/documents/minecraft/Minecraft.jar
+    fi
+}
+
+if ($(sw_vers -productVersion > /dev/null 2>&1 )); then
+   export CLICOLOR=1
+   export LSCOLORS=ExFxCxDxBxegedabagacad
+   alias ls='ls -G'
+else
+   alias ls='ls --color'
+fi
+
+# qq for quick ref
+# -o ServerAliveInterval=100
+gbash='/homework/bash'
+
+alias G='getting'
+alias GP='git_pull'
+alias B='cib'
+
+# The ssh-copy-id command can only take the name from the local config.
+alias ssh-copy-id='cat ~/homework/config > ~/.ssh/config;ssh-copy-id'
+alias ec='emacs ~/homework/config'
+alias ssh='ssh -o ServerAliveInterval=100 -F ~/homework/config'
+alias scp='scp -F ~/homework/config'
+alias ssp='ssh -F ~/homework/peter_ssh'
+#alias ls='ls'
+alias V='vncssh'
+alias S='showcit'
+alias skype='apulse32 skype'
+alias e='emacs -nw'
+
+alias ea='emacs ~$gbash/.bash_alias;source ~$gbash/.bash_alias'
+alias eb='emacs ~$gbash/.bashrc;source ~$gbash/.bashrc'
+alias aup="yaourt -Syu --aur"
+alias pacup="sudo pacman --noconfirm -Syu" 
+
+# load module for virtual box
+alias vbox='sudo modprobe vboxdrv;sudo modprobe -r kvm_intel;sudo modprobe kvm_intel nested=1;echo "mods loaded"'
+
+# for starting different x sessions.
+alias xa='startx ~/.xinitrc awesome'
+alias xk='startx ~/.xinitrc kde'
+alias xg='startx ~/.xinitrc gnome'
+alias xx='startx ~/.xinitrc xfce'

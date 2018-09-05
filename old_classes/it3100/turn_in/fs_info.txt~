@@ -1,0 +1,4 @@
+host:        144.38.214.8
+devices:     /dev/sda5, /dev/sda6, /dev/sda7, /dev/sda8, /dev/sda9, /dev/sda10, /dev/sda11, /dev/sda12, /dev/sda13, /dev/sda14
+homedevice:  /dev/sda3
+mountpoints: /space/e1, /space/e2, /space/e3, /space/e4, /space/v1, /space/v2, /space/v3, /space/ 1, /space/2, /space/3

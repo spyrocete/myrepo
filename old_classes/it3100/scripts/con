@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Andrew Coulter
+
+echo
+echo
+echo "what server do you want to ssh into"
+echo
+cat ip_of_vms # ip_of_vms is the name of the file were my vm and ips are
+read choice
+
+
+co=$(grep $choice ip_of_vms | sed s/$choice://)
+
+ssh andrew@$co

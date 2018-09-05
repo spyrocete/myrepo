@@ -1,0 +1,10 @@
+#!/bin/bash
+
+array=(cordelia ophelia desdemona)
+
+for i in "${array[@]}"
+do
+    ssh $i 'ps -aux | grep adorado'
+
+done
+

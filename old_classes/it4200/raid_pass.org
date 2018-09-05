@@ -1,0 +1,302 @@
+* raid0
+** show 
+Unit     UnitType  Status         %RCmpl  %V/I/M  Port  Stripe  Size(GB)
+------------------------------------------------------------------------
+u0       RAID-0    OK             -       -       -     64K     931.303   
+u0-0     DISK      OK             -       -       p0    -       465.651   
+u0-1     DISK      OK             -       -       p1    -       465.651   
+u0/v0    Volume    -              -       -       -     -       931.303   
+** cfdisk
+                      Disk: /dev/sda
+            Size: 931.3 GiB, 999978696704 bytes, 1953083392 sectors
+          Label: gpt, identifier: 5CA525F8-FB4F-4D41-AC41-03A65BE3109E
+
+    Device           Start          End      Sectors     Size Type
+>>  /dev/sda1         2048   1953083358   1953081311   931.3G Linux filesystem  
+
+
+
+      [  Delete  ]  [   Quit   ]  [   Type   ]  [   Help   ]  [   Write  ]
+
+
+
+                           Change the partition type
+
+* raid10
+** show 
+Unit     UnitType  Status         %RCmpl  %V/I/M  Port  Stripe  Size(GB)
+------------------------------------------------------------------------
+u0       RAID-10   OK             -       -       -     256K    931.303   
+u0-0     RAID-1    OK             -       -       -     -       -         
+u0-0-0   DISK      OK             -       -       p0    -       465.651   
+u0-0-1   DISK      OK             -       -       p1    -       465.651   
+u0-1     RAID-1    OK             -       -       -     -       -         
+u0-1-0   DISK      OK             -       -       p2    -       465.651   
+u0-1-1   DISK      OK             -       -       p3    -       465.651   
+u0/v0    Volume    -              -       -       -     -       931.303  
+** cfdisk
+
+
+                                 Disk: /dev/sda
+            Size: 931.3 GiB, 999978696704 bytes, 1953083392 sectors
+          Label: gpt, identifier: CAD0F698-2FF1-4B2C-9779-04732C91289E
+
+    Device           Start          End      Sectors     Size Type
+>>  /dev/sda1         2048   1953083358   1953081311   931.3G Linux filesystem  
+
+
+
+
+
+
+
+      [  Delete  ]  [   Quit   ]  [   Type   ]  [   Help   ]  [   Write  ]
+
+
+
+                          Delete the current partition
+** benchmark
+Version  1.97       ------Sequential Output------ --Sequential Input- --Rando\
+m-                                                                            
+Concurrency   1     -Per Chr- --Block-- -Rewrite- -Per Chr- --Block-- --Seeks\
+--                                                                            
+Machine        Size K/sec %CP K/sec %CP K/sec %CP K/sec %CP K/sec %CP  /sec %\
+CP                                                                            
+archiso         12G   664  97 230029  41 81820  11  3384  94 265724  20 826.5\
+  21                                                                          
+Latency             18391us     794ms     820ms   14760us   54519us     868ms
+Version  1.97       ------Sequential Create------ --------Random Create------\
+--                                                                            
+archiso             -Create-- --Read--- -Delete-- -Create-- --Read--- -Delete\
+--                                                                            
+              files  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %\
+CP                                                                            
+                 16 +++++ +++ +++++ +++ 21111  21 +++++ +++ +++++ +++ +++++ +\
+++                                                                            
+Latency              5980us     445us     476us     167us      26us     258us
+1.97,1.97,archiso,1,1412293315,12G,,664,97,230029,41,81820,11,3384,94,265724,\
+20,826.5,21,16,,,,,+++++,+++,+++++,+++,21111,21,+++++,+++,+++++,+++,+++++,+++\
+,18391us,794ms,820ms,14760us,54519us,868ms,5980us,445us,476us,167us,26us,258u\
+s
+** degraded benchmark
+Version  1.97       ------Sequential Output------ --Sequential Input- --Random-
+Concurrency   1     -Per Chr- --Block-- -Rewrite- -Per Chr- --Block-- --Seeks--
+Machine        Size K/sec %CP K/sec %CP K/sec %CP K/sec %CP K/sec %CP  /sec %CP
+archiso         12G   665  97 216104  38 61388   9  3391  93 278238  19 674.8  19
+Latency             18740us     753ms     928ms   17104us     123ms     198ms
+Version  1.97       ------Sequential Create------ --------Random Create--------
+archiso             -Create-- --Read--- -Delete-- -Create-- --Read--- -Delete--
+              files  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP
+                 16 +++++ +++ +++++ +++ 20986  21 +++++ +++ +++++ +++ +++++ +++
+Latency             12889us     819us     470us     201us      20us     259us
+1.97,1.97,archiso,1,1412328682,12G,,665,97,216104,38,61388,9,3391,93,278238,19,674.8,19,16\
+,,,,,+++++,+++,+++++,+++,20986,21,+++++,+++,+++++,+++,+++++,+++,18740us,753ms,928ms,17104u\
+s,123ms,198ms,12889us,819us,470us,201us,20us,259us
+
+*** sub2
+# raid 10
+| files | create   | read     | delete   | create   | read     | delete   |
+| files | /sec-%CP | /sec-%CP | /sec-%CP | /sec-%CP | /sec-%CP | /sec-%CP |
+| 16    | na       | na       | 21111-21 | na       | na       | na       |
+| na    | 54519us  | 445us    | 476us    | 167us    | 26us     | 258u     |
+
+
+# raid 5 
+
+| file  | create   | read     | delete   | create   | read     | delete   |
+| files | /sec %CP | /sec %CP | /sec %CP | /sec %CP | /sec %CP | /sec %CP |
+| 16    | na       | na       | 19578-19 | na       | na       | na       |
+| na    | 1378us   | 464us    | 527us    | 175us    | 27us     | 256us    |
+
+*** sub
+
+| siz  | per char       |        block |     rewrite |   per char  |       block  |      seeks  |
+| Size | K/sec    | %CP |  K/sec | %CP | K/sec | %CP | K/sec | %CP |  K/sec | %CP |  /sec | %CP |
+| 12G  | 664      |  97 | 230029 |  41 | 81820 |  11 |  3384 |  94 | 265724 |  20 | 826.5 |  21 |
+
+
+| size | perchar       |        block |     rewrite |    per char |        block |   seeks     |
+| Size | K/sec   | %CP |  K/sec | %CP | K/sec | %CP | K/sec | %CP |  K/sec | %CP |  /sec | %CP |
+| 12G  | 669     |  98 | 294962 |  50 | 99071 |  14 |  3047 |  87 | 391115 |  27 | 562.5 |  23 |
+
+
+** degraded
+
+//archiso> /c0/u0 show
+
+Unit     UnitType  Status         %RCmpl  %V/I/M  Port  Stripe  Size(GB)
+------------------------------------------------------------------------
+u0       RAID-10   DEGRADED*      -       -       -     256K    931.303   
+u0-0     RAID-1    OK             -       -       -     -       -         
+u0-0-0   DISK      OK             -       -       p0    -       465.651   
+u0-0-1   DISK      OK             -       -       p1    -       465.651   
+u0-1     RAID-1    DEGRADED       -       -       -     -       -         
+u0-1-0   DISK      DEGRADED       -       -       -     -       465.651   
+u0-1-1   DISK      WARNING        -       -       p3    -       465.651   
+u0/v0    Volume    -              -       -       -     -       931.303  
+
+** rebuild
+
+Unit     UnitType  Status         %RCmpl  %V/I/M  Port  Stripe  Size(GB)
+------------------------------------------------------------------------
+u0       RAID-10   REBUILDING     59%     -       -     256K    931.303
+u0-0     RAID-1    OK             -       -       -     -       -
+u0-0-0   DISK      OK             -       -       p0    -       465.651
+u0-0-1   DISK      OK             -       -       p1    -       465.651
+u0-1     RAID-1    REBUILDING     18%     -       -     -       -
+u0-1-0   DISK      DEGRADED       -       -       p2    -       465.651
+u0-1-1   DISK      OK             -       -       p3    -       465.651
+u0/v0    Volume    -              -       -       -     -       931.303
+
+
+** after
+
+//archiso> /c0/u0 show
+
+Unit     UnitType  Status         %RCmpl  %V/I/M  Port  Stripe  Size(GB)
+------------------------------------------------------------------------
+u0       RAID-10   OK             -       -       -     256K    931.303   
+u0-0     RAID-1    OK             -       -       -     -       -         
+u0-0-0   DISK      OK             -       -       p0    -       465.651   
+u0-0-1   DISK      OK             -       -       p1    -       465.651   
+u0-1     RAID-1    OK             -       -       -     -       -         
+u0-1-0   DISK      OK             -       -       p2    -       465.651   
+u0-1-1   DISK      OK             -       -       p3    -       465.651   
+u0/v0    Volume    -              -       -       -     -       931.303  
+
+* rai5d
+
+** show
+//archiso> /c0/u0 show
+
+
+Unit     UnitType  Status         %RCmpl  %V/I/M  Port  Stripe  Size(GB)
+------------------------------------------------------------------------
+u0       RAID-5    OK             -       -       -     64K     1396.95   
+u0-0     DISK      OK             -       -       p0    -       465.651   
+u0-1     DISK      OK             -       -       p1    -       465.651   
+u0-2     DISK      OK             -       -       p2    -       465.651   
+u0-3     DISK      OK             -       -       p3    -       465.651   
+u0/v0    Volume    -              -       -       -     -       1396.95   
+
+
+** cfdisk
+
+                                              Disk: /dev/sdc
+                                                    Size: 1.4 TiB, 1499968045056 bytes, 2929625088 sectors
+                                                 Label: gpt, identifier: A02BA5A6-083B-45A3-A748-330CA9CE951D
+
+    Device                                     Start                        End                   Sectors                 Size Type
+>>  /dev/sdc1                                   2048                 2929625054                2929623007                 1.4T Linux
+
+
+
+
+
+                                             [  Delete  ]  [   Quit   ]  [   Type   ]  [   Help   ]  [   Write  ]
+
+
+** benchmark 
+
+Version  1.97       ------Sequential Output------ --Sequential Input- --Random-
+Concurrency   1     -Per Chr- --Block-- -Rewrite- -Per Chr- --Block-- --Seeks--
+Machine        Size K/sec %CP K/sec %CP K/sec %CP K/sec %CP K/sec %CP  /sec %CP
+archiso         12G   669  98 294962  50 99071  14  3047  87 391115  27 562.5  23
+Latency             12036us     534ms     480ms   17850us     100ms    1378ms
+Version  1.97       ------Sequential Create------ --------Random Create--------
+archiso             -Create-- --Read--- -Delete-- -Create-- --Read--- -Delete--
+              files  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP
+                 16 +++++ +++ +++++ +++ 19578  19 +++++ +++ +++++ +++ +++++ +++
+Latency             13043us     464us     527us     175us      27us     256us
+1.97,1.97,archiso,1,1412361207,12G,,669,98,294962,50,99071,14,3047,87,391115,27,562.5,23,16,,,,,+++++,+++,+++++,+++,19578,19,+++++,+++,+++++,+++,+++++,+++,12\
+036us,534ms,480ms,17850us,100ms,1378ms,13043us,464us,527us,175us,27us,256us
+
+*** read
+
+| files | /sec %CP | /sec %CP | /sec %CP | /sec %CP | /sec %CP | /sec %CP |
+| 16    | na       | na       | 19578-19 | na       | na       | na       |
+| na    | 1378ms   | 464us    | 527us    | 175us    | 27us     | 256us    |
+
+*** sub
+
+version,mechine,concurrency,size,k/sec,%cp,
+1.97,archiso,1,12G,,669,98,294962,50,99071,14,3047,87,391115,27,562.5,23,16,,,,,+++++,+++,+++++,+++,19578,19,+++++,+++,+++++,+++,+++++,+++,12\
+036us,534ms,480ms,17850us,100ms,1378ms,13043us,464us,527us,175us,27us,256us
+
+
+| Size | K/sec | %CP |  K/sec | %CP | K/sec | %CP | K/sec | %CP |  K/sec | %CP |  /sec | %CP |
+| 12G  |   669 |  98 | 294962 |  50 | 99071 |  14 |  3047 |  87 | 391115 |  27 | 562.5 |  23 |
+
+*** sub3
+
+  1.97       ------Sequential Output------ --Sequential Input- --Random-
+     -PerChr- --Block-- -Rewrite- -PerChr- --Block-- --Seeks--
+        Size K/sec %CP K/sec %CP K/sec %CP K/sec %CP K/sec %CP  /sec %CP
+         12G   669  98 294962  50 99071  14  3047  87 391115  27 562.5  23
+             12036us     534ms     480ms   17850us     100ms    1378ms
+
+
+       size -PerChr- --Block-- -Rewrite- -PerChr- --Block-- --Seeks--
+
+         12G   669  98 294962  50 99071  14  3047  87 391115  27 562.5  23
+             12036us     534ms     480ms   17850us     100ms    1378ms
+
+| Size | K/sec | %CP |  K/sec | %CP | K/sec | %CP | K/sec | %CP |  K/sec | %CP |  /sec | %CP |
+| 12G  |   669 |  98 | 294962 |  50 | 99071 |  14 |  3047 |  87 | 391115 |  27 | 562.5 |  23 |
+
+
+             -Create-- --Read--- -Delete-- -Create-- --Read--- -Delete--
+              files  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP
+                 16 +++++ +++ +++++ +++ 19578  19 +++++ +++ +++++ +++ +++++ +++
+             13043us     464us     527us     175us      27us     256us
+
+| -Create-- | --Read--- | -Delete-- | -Create-- | --Read--- | -Delete-- |     |       |     |       |     |       |     |
+| files     | /sec      | %CP       | /sec      | %CP       | /sec      | %CP | /sec  | %CP | /sec  | %CP | /sec  | %CP |
+| 16        | +++++     | +++       | +++++     | +++       | 19578     |  19 | +++++ | +++ | +++++ | +++ | +++++ | +++ |
+| 13043us   | 464us     | 527us     | 175us     | 27us      | 256us     |     |       |     |       |     |       |     |
+
+------Sequential Create------ --------Random Create--------
+** degraded
+Unit     UnitType  Status         %RCmpl  %V/I/M  Port  Stripe  Size(GB)
+------------------------------------------------------------------------
+u0       RAID-5    DEGRADED       -       -       -     64K     1396.95   
+u0-0     DISK      OK             -       -       p0    -       465.651   
+u0-1     DISK      DEGRADED       -       -       -     -       465.651   
+u0-2     DISK      OK             -       -       p2    -       465.651   
+u0-3     DISK      OK             -       -       p3    -       465.651   
+u0/v0    Volume    -              -       -       -     -       1396.95  
+
+
+** degraded benchmark
+ersion  1.97       ------Sequential Output------ --Sequential Input- --Random-
+Concurrency   1     -Per Chr- --Block-- -Rewrite- -Per Chr- --Block-- --Seeks--
+Machine        Size K/sec %CP K/sec %CP K/sec %CP K/sec %CP K/sec %CP  /sec %CP
+archiso         12G   648  95 309647  53 118654  16  3172  89 380201  25 550.6  15
+Latency             17605us     569ms     603ms   18597us   91066us    1200ms
+Version  1.97       ------Sequential Create------ --------Random Create--------
+archiso             -Create-- --Read--- -Delete-- -Create-- --Read--- -Delete--
+              files  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP
+                 16 +++++ +++ +++++ +++ 17691  17 +++++ +++ +++++ +++ +++++ +++
+Latency             18444us     455us     466us     204us      30us     257us
+|   1.97 |  1.97 | archiso |       1 | 1412339389 | 12G    |         |   648 |    95 | 309647 |   53 | 118654 | 16 | 3172 | 89 | 380201 | 25 | 550.6 | 15 | 16 |   |   |   |   | +++++ | +++ | +++++ | +++ | 17691 | 17 | +++++ | +++ | +++++ | +++ | +++++ | +++ | 1\ |
+| 7605us | 569ms | 603ms   | 18597us |    91066us | 1200ms | 18444us | 455us | 466us |  204us | 30us |  257us |    |      |    |        |    |       |    |    |   |   |   |   |       |     |       |     |       |    |       |     |       |     |       |     |    |
+* Best read speed
+the raid 10 was better but not by hardly any it should have close to double the speed
+when it comes to read compaired to raid 5. I am not sure why there is not as much 
+difference it could have to do with raid 5 having 64k strip and raid 10 having 256k strip.
+
+Raid 5 was faster then raid 10 which is the way it should. 
+
+I think raid 5 seems to be the best for all around gerneral use. I would use raid 10 if I was 
+more concerned with keeping my data safe. I would never use raid 0 just cause its to risky.
+I would use raid 5 for most anything else if I need raid at all.
+
+I did not do much different although I used screen instead of running with -q which I assume
+stands for quiet. I prefer using screen that way I can reattache and view what is going on and
+its easier to stop the program if needed. I did use arch linux which I am sure did not make any
+difference.
+
+I learned how to acutally do raid and it was not as hard as I thought it would be. The tw_cli
+works pretty good with it. I also learned about fake raid which is supposedly the worse then
+software raid and hardware raid. 
+

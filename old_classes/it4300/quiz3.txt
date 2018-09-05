@@ -1,0 +1,847 @@
+
+
+Skip To Content My Dashboard
+
+    Guokui Qiao
+    Inbox
+    Settings
+    Logout
+    Help
+
+    Courses & Groups
+    My Courses
+    Customize
+        CS-2810-01 SP14 Spring 2014 Enrolled as: Student
+        CS-4307-01 SP14 Spring 2014 Enrolled as: Student
+        HUM-1010-50B Spring 2014 Enrolled as: Student
+        View all courses (3)
+    Assignments
+    Recently Graded
+        Final Test SQL CS-4307-01 SP14
+        9: Mandelbrot part 3 CS-2810-01 SP14
+        8: Mandelbrot part 2 CS-2810-01 SP14
+        7: Mandelbrot part 1 CS-2810-01 SP14
+        12: Modern Microprocessors CS-2810-01 SP14
+        Correction Factor CS-4307-01 SP14
+        Final Test (Design) CS-4307-01 SP14
+        Cultural Review Paper HUM-1010-50B
+    Grades
+    Calendar
+
+CS-4307 Spring 2014
+
+    Home
+    Announcements
+    Assignments
+    Discussions
+    Grades
+    People
+    Files
+    Syllabus
+    Quizzes
+    Conferences
+    Collaborations
+    Chat
+
+    My Dashboard
+    CS-4307
+    Quizzes
+    Quiz 3 AdvancedSQL
+
+Submission Details:
+Time: 	19 minutes
+Current Score: 	23 out of 35
+Kept Score: 	23 out of 35
+Quiz 3 AdvancedSQL
+
+    Due Apr 11 at 11am
+    Points 35
+    Questions 35
+    Time Limit None
+
+Attempt History
+  	Attempt 	Time 	Score
+LATEST 	Attempt 1 	19 minutes 	23 out of 35
+Score for this quiz: 23 out of 35
+Submitted Apr 23 at 11:25am
+This attempt took 19 minutes.
+ 
+Question 1
+0 / 1 pts
+The CREATE TABLE statement is used to…
+The CREATE TABLE statement is used to…
+Correct Answer
+ 
+create a new table
+ 
+change existing database
+You Answered
+ 
+create a new database
+ 
+change existing table
+ 
+Question 2
+1 / 1 pts
+Which would add a new DATABASE named db?
+Which would add a new DATABASE named db?
+ 
+CREATE NEW DATABASE db;
+ 
+CREATE db;
+ 
+CREATE db FROM NEW DATABASE;
+Correct!
+ 
+CREATE DATABASE db;
+ 
+Question 3
+1 / 1 pts
+<p>If A={1,2,3] and B={2,3,4}</p> <p>What would A union B be?</p>
+
+If A={1,2,3] and B={2,3,4}
+
+What would A union B be?
+ 
+{4}
+ 
+{1}
+Correct!
+ 
+{1,2,3,4}
+ 
+{2,3}
+ 
+Question 4
+1 / 1 pts
+What is a trigger?﻿
+What is a trigger?﻿
+ 
+A trigger is part of data extraction process.
+Correct!
+ 
+A trigger is executed when certain event occurs.
+ 
+A trigger defines relations between tables.
+ 
+Trigger is the green hornet's horse.
+ 
+Question 5
+1 / 1 pts
+Skip to question text.
+
+ The flowing tables are used for this question:
+
+Customers
+1 	Bob
+2 	Bill
+3 	Bart
+
+ 
+
+Balances
+2 	100
+3 	200
+4 	300
+
+=======================================
+
+Alpha Result
+2 	Bill 	100
+3 	Bart 	200
+4 	NULL 	300
+
+ 
+
+Beta Result
+1 	Bob 	NULL
+2 	Bill 	100
+3 	Bart 	200
+4 	NULL 	300
+
+ 
+
+Cappa Result
+1 	Bob 	NULL
+2 	Bill  	100
+3 	Bart 	200
+
+ 
+
+Delta Result
+2 	Bill 	100
+3 	Bart 	200
+
+ 
+
+Customers FULL JOIN Balances
+Correct!
+ 
+Beta
+ 
+Delta
+ 
+Alpha
+ 
+Cappa
+ 
+Question 6
+0 / 1 pts
+(SELECT ______ <br>FROM ______) <br>UNION ALL <br>(SELECT ______ <br>FROM ______);
+(SELECT ______
+FROM ______)
+UNION ALL
+(SELECT ______
+FROM ______);
+ 
+Relational subtraction
+Correct Answer
+ 
+Relational Addition
+You Answered
+ 
+Relational Union
+ 
+Relational Division
+ 
+Question 7
+1 / 1 pts
+<p>SELECT ______ <br>FROM ______ <br>WHERE IN <br>(SELECT ______ <br>FROM ______);</p>
+
+SELECT ______
+FROM ______
+WHERE IN
+(SELECT ______
+FROM ______);
+ 
+Relational Subtraction
+Correct!
+ 
+Relational Intersection
+ 
+Relational Union
+ 
+Relational Addition
+ 
+Question 8
+1 / 1 pts
+<p>Which of the following SQL clauses is used to DELETE data from a database table?</p>
+
+Which of the following SQL clauses is used to DELETE data from a database table?
+ 
+REMOVE
+ 
+CLEAR
+Correct!
+ 
+DELETE
+ 
+DROP DATA
+ 
+Question 9
+1 / 1 pts
+<p>Which of the following is used to change data in a table?</p>
+
+Which of the following is used to change data in a table?
+ 
+modify
+ 
+edit
+ 
+correct
+Correct!
+ 
+update
+ 
+Question 10
+0 / 1 pts
+<p>DELETE FROM table WHERE column=value;</p> <p>Would this statement execute without error?</p> <p> </p>
+
+DELETE FROM table WHERE column=value;
+
+Would this statement execute without error?
+
+ 
+Correct Answer
+ 
+YES
+ 
+Only in ORACLE
+ 
+Only on Tuesdays
+You Answered
+ 
+NO
+ 
+Question 11
+0 / 1 pts
+Which would remove a database table?
+Which would remove a database table?
+Correct Answer
+ 
+DROP TABLE table;
+ 
+ZAP TABLE table;
+You Answered
+ 
+DELETE TABLE table;
+ 
+REMOVE TABLE table;
+ 
+Question 12
+1 / 1 pts
+<p>If A={1,2,3] and B={2,3,4}</p> <p>What would A add B be?</p>
+
+If A={1,2,3] and B={2,3,4}
+
+What would A add B be?
+Correct!
+ 
+{1,2,2,3,3,4}
+ 
+{2,3}
+ 
+{1,2,3,4}
+ 
+{1,4}
+ 
+Question 13
+1 / 1 pts
+Skip to question text.
+
+ The flowing tables are used for this question:
+
+Customers
+1 	Bob
+2 	Bill
+3 	Bart
+
+ 
+
+Balances
+2 	100
+3 	200
+4 	300
+
+=======================================
+
+Alpha Result
+2 	Bill 	100
+3 	Bart 	200
+4 	NULL 	300
+
+ 
+
+Beta Result
+1 	Bob 	NULL
+2 	Bill 	100
+3 	Bart 	200
+4 	NULL 	300
+
+ 
+
+Cappa Result
+1 	Bob 	NULL
+2 	Bill  	100
+3 	Bart 	200
+
+ 
+
+Delta Result
+2 	Bill 	100
+3 	Bart 	200
+
+ 
+
+Customers NATURAL JOIN Balances
+ 
+Alpha
+Correct!
+ 
+Delta
+ 
+Beta
+ 
+Cappa
+ 
+Question 14
+1 / 1 pts
+<p>(SELECT ______ <br>FROM ______) <br>UNION <br>(SELECT _____ <br>FROM ______);</p>
+
+(SELECT ______
+FROM ______)
+UNION
+(SELECT _____
+FROM ______);
+ 
+Relational division
+Correct!
+ 
+Relational union
+ 
+Relational intersection
+ 
+Relational multiply
+ 
+Question 15
+1 / 1 pts
+<p>SELECT _____ <br>FROM _____ <br>WHERE NOT EXISTS <br>(SELECT _____ <br>FROM _____);</p>
+
+SELECT _____
+FROM _____
+WHERE NOT EXISTS
+(SELECT _____
+FROM _____);
+ 
+Relational Division
+Correct!
+ 
+Relational Subtraction
+ 
+Relational Addition
+ 
+Relational Intersection
+ 
+Question 16
+1 / 1 pts
+When inserting data in a table do you always have to specify a list of all column names you are inserting values for?
+When inserting data in a table do you always have to specify a list of all column names you are inserting values for?
+Correct!
+ 
+No
+ 
+Yes
+ 
+Question 17
+1 / 1 pts
+<p>Which of the following is correct?</p>
+
+Which of the following is correct?
+Correct!
+ 
+insert into customer (first,last) values ('bob','nielson');
+ 
+insert into first,last values 'bob','nielson';
+ 
+insert into customer first,last values 'bob','nielson';
+ 
+insert (first,last) values ('bob','nielson');
+ 
+Question 18
+0 / 1 pts
+<p>SELECT _____ <br>FROM ______, ______;</p>
+
+SELECT _____
+FROM ______, ______;
+ 
+Relational Error
+Correct Answer
+ 
+Relational Multiply
+You Answered
+ 
+Relational Add
+ 
+Relational Division
+ 
+Question 19
+0 / 1 pts
+<p>SELECT _______ <br>FROM _____ <br>WHERE NOT EXISTS <br> (SELECT _____ FROM _____ <br> WHERE NOT EXISTS <br> (SELECT _____ FROM ____ <br> WHERE _____=______));</p>
+
+SELECT _______
+FROM _____
+WHERE NOT EXISTS
+(SELECT _____ FROM _____
+WHERE NOT EXISTS
+(SELECT _____ FROM ____
+WHERE _____=______));
+ 
+Relational Subtraction
+You Answered
+ 
+Relational Jion
+ 
+Relational Problem
+Correct Answer
+ 
+Relational Division
+ 
+Question 20
+0 / 1 pts
+<p>CREATE USER 'someuser'@'localhost' PASSWORD 'mypass';</p> <p> </p> <p>Would this statement work?</p>
+
+CREATE USER 'someuser'@'localhost' PASSWORD 'mypass';
+
+ 
+
+Would this statement work?
+Correct Answer
+ 
+NO
+ 
+Only in MYSQL
+You Answered
+ 
+YES
+ 
+Only in ORACLE
+ 
+Question 21
+1 / 1 pts
+What is a view?﻿
+What is a view?﻿
+ 
+A view is a special stored procedure executed when certain event occurs.
+ 
+A view is a database diagram.
+ 
+A view is a special data table. With very specific properties. Some of those properties are ACID.
+Correct!
+ 
+A view is a virtual table
+ 
+Question 22
+1 / 1 pts
+Which SQL statement inserts data into a table called Projects?﻿
+Which SQL statement inserts data into a table called Projects?﻿
+Correct!
+ 
+INSERT INTO Projects (ProjectName, ProjectDescription) VALUES ('Content Development', 'Website content development project')
+ 
+INSERT Projects VALUES ('Content Development', 'Website content development project')
+ 
+SAVE INTO Projects (ProjectName, ProjectDescription) VALUES ('Content Development', 'Website content development project')
+ 
+INSERT Projects ('Content Development', 'Website content development project')
+ 
+Question 23
+1 / 1 pts
+<p>Which of the following commands is used to delete data froma a SQL database table?</p>
+
+Which of the following commands is used to delete data froma a SQL database table?
+ 
+DESTROY
+Correct!
+ 
+DELETE
+ 
+ERASE
+ 
+REMOVE
+ 
+Question 24
+1 / 1 pts
+The TRUNCATE TABLE…﻿
+The TRUNCATE TABLE…﻿
+ 
+delete the rest of the rows in a table
+ 
+checks if the table has primary key specified
+ 
+deletes the table
+Correct!
+ 
+deletes all rows from a table
+ 
+Question 25
+0 / 1 pts
+Skip to question text.
+
+ The flowing tables are used for this question:
+
+Customers
+1 	Bob
+2 	Bill
+3 	Bart
+
+ 
+
+Balances
+2 	100
+3 	200
+4 	300
+
+=======================================
+
+Alpha Result
+2 	Bill 	100
+3 	Bart 	200
+4 	NULL 	300
+
+ 
+
+Beta Result
+1 	Bob 	NULL
+2 	Bill 	100
+3 	Bart 	200
+4 	NULL 	300
+
+ 
+
+Cappa Result
+1 	Bob 	NULL
+2 	Bill  	100
+3 	Bart 	200
+
+ 
+
+Delta Result
+2 	Bill 	100
+3 	Bart 	200
+
+ 
+
+Customers EQUA JOIN Balances
+ 
+Beta
+You Answered
+ 
+Cappa
+Correct Answer
+ 
+Delta
+ 
+Alpha
+ 
+Question 26
+1 / 1 pts
+<p>If A={1,2,3] and B={2,3,4}</p> <p>What would A subtract B be?</p>
+
+If A={1,2,3] and B={2,3,4}
+
+What would A subtract B be?
+ 
+{4}
+ 
+{1,2,3,4}
+Correct!
+ 
+{1}
+ 
+{2,3}
+ 
+Question 27
+1 / 1 pts
+The difference between the DELETE and TRUNCATE SQL clauses is:﻿
+The difference between the DELETE and TRUNCATE SQL clauses is:﻿
+Correct!
+ 
+The TRUNCATE clause deletes all rows in a database table, while the DELETE clause can have a WHERE condition and might or might not delete all rows in a table.
+ 
+The TRUNCATE clause is identical to the DELETE clause
+ 
+The DELETE clause deletes all rows in a database table, while the TRUNCATE clause can have a WHERE condition and might or might not delete all rows in a table.
+ 
+The DELETE clause deletes the table while the TRUNCATE clause deletes only the records in the table.
+ 
+Question 28
+1 / 1 pts
+Skip to question text.
+
+ The flowing tables are used for this question:
+
+Customers
+1 	Bob
+2 	Bill
+3 	Bart
+
+ 
+
+Balances
+2 	100
+3 	200
+4 	300
+
+=======================================
+
+Alpha Result
+2 	Bill 	100
+3 	Bart 	200
+4 	NULL 	300
+
+ 
+
+Beta Result
+1 	Bob 	NULL
+2 	Bill 	100
+3 	Bart 	200
+4 	NULL 	300
+
+ 
+
+Cappa Result
+1 	Bob 	NULL
+2 	Bill  	100
+3 	Bart 	200
+
+ 
+
+Delta Result
+2 	Bill 	100
+3 	Bart 	200
+
+ 
+
+Customers LEFT JOIN Balances
+ 
+Beta
+ 
+Delta
+Correct!
+ 
+Cappa
+ 
+Alpha
+ 
+Question 29
+1 / 1 pts
+Which command should a use to change the value of rating to 'PG' for movie_id 23 in table movies
+Which command should a use to change the value of rating to 'PG' for movie_id 23 in table movies
+ 
+UPDATE movies rating="PG" WHERE movie_id=23;
+ 
+rating='PG';
+ 
+CHANGE rating TO 23 FOR movie_id=23 IN movies;
+Correct!
+ 
+UPDATE movies SET rating="PG" WHERE movie_id=23;
+ 
+Question 30
+0 / 1 pts
+What does the UNION ALL operator do?﻿
+What does the UNION ALL operator do?﻿
+Correct Answer
+ 
+The UNION operator combines the results of two or more queries into a one result that includes all the rows from the queries in the union with duplicates
+ 
+The UNION operator behaves the same as the JOIN SQL clause.
+ 
+The UNION operator sorts the selected result set.
+You Answered
+ 
+The UNION operator combines the results of two or more queries into a one result that includes all the rows from the queries in the union without duplicates
+ 
+Question 31
+1 / 1 pts
+Skip to question text.
+
+ The flowing tables are used for this question:
+
+Customers
+1 	Bob
+2 	Bill
+3 	Bart
+
+ 
+
+Balances
+2 	100
+3 	200
+4 	300
+
+=======================================
+
+Alpha Result
+2 	Bill 	100
+3 	Bart 	200
+4 	NULL 	300
+
+ 
+
+Beta Result
+1 	Bob 	NULL
+2 	Bill 	100
+3 	Bart 	200
+4 	NULL 	300
+
+ 
+
+Cappa Result
+1 	Bob 	NULL
+2 	Bill  	100
+3 	Bart 	200
+
+ 
+
+Delta Result
+2 	Bill 	100
+3 	Bart 	200
+
+Customers RIGHT JOIN Balances
+Correct!
+ 
+Alpha
+ 
+Cappa
+ 
+Beta
+ 
+Delta
+ 
+Question 32
+0 / 1 pts
+What is the MYSQL privilege used by the GRANT command to give a user READ-ONLY rights?
+What is the MYSQL privilege used by the GRANT command to give a user READ-ONLY rights?
+Correct Answer
+ 
+SELECT
+You Answered
+ 
+READ
+ 
+VIEW
+ 
+READ-ONLY
+ 
+Question 33
+0 / 1 pts
+<p><span>INSERT INTO table;<br class="kix-line-break">(column-1, column-2, ... column-n)<br class="kix-line-break">VALUES;<br class="kix-line-break">(value-1, value-2, ... value-n);</span></p> <p><span> </span></p> <p><span>Will This work?</span></p>
+
+INSERT INTO table;
+(column-1, column-2, ... column-n)
+VALUES;
+(value-1, value-2, ... value-n);
+
+ 
+
+Will This work?
+Correct Answer
+ 
+No
+You Answered
+ 
+Yes
+ 
+Question 34
+0 / 1 pts
+<p>Which is correct?</p>
+
+Which is correct?
+ 
+delete * from table students;
+Correct Answer
+ 
+delete from students;
+ 
+delete from table students;
+You Answered
+ 
+delete * from students;
+ 
+Question 35
+1 / 1 pts
+There are triggers for…﻿
+There are triggers for…﻿
+ 
+insert and delete only
+ 
+insert and update only
+ 
+update and delete only
+Correct!
+ 
+update, delete and insert
+Quiz Score: 23 out of 35
+Instructure, makers of the open source learning management system Canvas Help Privacy policy Terms of service Facebook Twitter
+

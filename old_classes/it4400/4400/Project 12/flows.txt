@@ -1,0 +1,44 @@
+garay-2800-1#show ip flow export
+Flow export v9 is enabled for main cache
+  Export source and destination details :
+  VRF ID : Default
+    Source(1)       74.123.12.249 (Loopback0)
+    Destination(1)  74.123.12.242 (9995)
+  Version 9 flow records
+  284 flows exported in 45 udp datagrams
+  0 flows failed due to lack of export packet
+  0 export packets were sent up to process level
+  0 export packets were dropped due to no fib
+  0 export packets were dropped due to adjacency issues
+  0 export packets were dropped due to fragmentation failures
+  0 export packets were dropped due to encapsulation fixup failures
+
+
+
+garay-2800-2#show ip flow export
+Flow export v9 is enabled for main cache
+  Export source and destination details :
+  VRF ID : Default
+    Source(1)       74.123.12.250 (Loopback0)
+    Destination(1)  74.123.12.242 (9995)
+  Version 9 flow records
+  177 flows exported in 23 udp datagrams
+  0 flows failed due to lack of export packet
+  0 export packets were sent up to process level
+  0 export packets were dropped due to no fib
+  0 export packets were dropped due to adjacency issues
+  0 export packets were dropped due to fragmentation failures
+  0 export packets were dropped due to encapsulation fixup failures
+
+
+
+root@ubuntu:/var/cache/nfdump# nfdump -r /var/cache/nfdump/nfcapd.201412081902 -o extended -s record/bytes
+Aggregated flows 2
+Top 10 flows ordered by bytes:
+Date flow start          Duration Proto      Src IP Addr:Port          Dst IP Addr:Port   Flags Tos  Packets    Bytes      pps      bps    Bpp Flows
+2014-12-08 19:03:03.476    43.988 TCP      144.38.192.40:57815 ->    74.123.12.242:22    .AP...  16      110     8636        2     1570     78     1
+2014-12-08 19:03:03.476    43.936 TCP      74.123.12.242:22    ->    144.38.192.40:57815 .AP...  16       69     6456        1     1175     93     1
+Summary: total flows: 2, total bytes: 15092, total packets: 179, avg bps: 2744, avg pps: 4, avg bpp: 84
+Time window: 2014-12-08 19:03:03 - 2014-12-08 19:03:47
+Total flows processed: 2, Blocks skipped: 0, Bytes read: 224
+Sys: 0.001s flows/second: 1060.4     Wall: 0.000s flows/second: 17543.9

@@ -1,0 +1,390 @@
+####################################
+# login for raidius                #
+####################################
+username: clarson
+password: plastic
+
+<<<<<<< HEAD
+
+####################################
+# net flow                         #
+####################################
+coulter-2800-2(config)#do show ip flow export
+Flow export v9 is enabled for main cache
+  Export source and destination details : 
+  VRF ID : Default
+    Source(1)       74.123.12.153 (Loopback0)
+    Destination(1)  74.123.12.142 (9995) 
+  Version 9 flow records
+  43 flows exported in 3 udp datagrams
+  0 flows failed due to lack of export packet
+  0 export packets were sent up to process level
+  0 export packets were dropped due to no fib
+  0 export packets were dropped due to adjacency issues
+  0 export packets were dropped due to fragmentation failures
+  0 export packets were dropped due to encapsulation fixup failures
+
+
+
+####################################
+# nf dump log from server          #
+####################################
+
+Aggregated flows 124
+Top 10 flows ordered by bytes:
+Date flow start          Duration Proto      Src IP Addr:Port          Dst IP Addr:Port   Flags Tos  Packets    Bytes      pps      bps    Bpp Flows
+2014-12-08 20:09:52.852     3.772 TCP      74.123.12.146:22    ->   61.197.203.243:45100 .AP.S.   0       16     3437        4     7289    214     1
+2014-12-08 20:10:00.388     3.568 TCP      74.123.12.146:22    ->   61.197.203.243:46886 .AP.S.   0       16     3437        4     7706    214     1
+2014-12-08 20:10:11.300     3.728 TCP      74.123.12.146:22    ->   61.197.203.243:49490 .AP.S.   0       16     3437        4     7375    214     1
+2014-12-08 20:10:46.624     3.744 TCP      74.123.12.146:22    ->   61.197.203.243:57940 .AP.S.   0       16     3437        4     7344    214     1
+2014-12-08 20:10:03.944     3.260 TCP      74.123.12.146:22    ->   61.197.203.243:47766 .AP.S.   0       15     3385        4     8306    225     1
+2014-12-08 20:10:26.416     3.532 TCP      74.123.12.146:22    ->   61.197.203.243:53116 .AP.S.   0       15     3385        4     7667    225     1
+2014-12-08 20:10:33.136     3.604 TCP      74.123.12.146:22    ->   61.197.203.243:54687 .AP.S.   0       15     3385        4     7513    225     1
+2014-12-08 20:10:42.900     3.724 TCP      74.123.12.146:22    ->   61.197.203.243:57036 .AP.S.   0       15     3385        4     7271    225     1
+2014-12-08 20:10:39.556     3.344 TCP      74.123.12.146:22    ->   61.197.203.243:56224 .AP.S.   0       15     3385        4     8098    225     1
+2014-12-08 20:10:07.216     4.084 TCP      74.123.12.146:22    ->   61.197.203.243:48524 .AP.S.   0       15     3385        3     6630    225     1
+
+Summary: total flows: 124, total bytes: 106577, total packets: 722, avg bps: 2796, avg pps: 2, avg bpp: 147
+Time window: 2014-12-08 20:05:57 - 2014-12-08 20:11:02
+Total flows processed: 124, Blocks skipped: 0, Bytes read: 7692
+Sys: 0.002s flows/second: 43677.4    Wall: 0.000s flows/second: 133764.8  
+
+
+####################################
+# show run                         #
+####################################
+
+coulter-2800-2#show run
+Building configuration...
+
+
+Current configuration : 5449 bytes
+!
+! Last configuration change at 04:01:07 UTC Tue Dec 9 2014 by andrew
+! NVRAM config last updated at 04:37:20 UTC Tue Dec 9 2014 by andrew
+! NVRAM config last updated at 04:37:20 UTC Tue Dec 9 2014 by andrew
+=======
+!
+! Last configuration change at 05:00:59 UTC Tue Nov 25 2014 by andrew
+! NVRAM config last updated at 05:01:05 UTC Tue Nov 25 2014 by andrew
+! NVRAM config last updated at 05:01:05 UTC Tue Nov 25 2014 by andrew
+>>>>>>> d701c12f0657a281c041776084691d567631b9ac
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname coulter-2800-2
+!
+boot-start-marker
+boot system flash:/c2800nm-adventerprisek9-mz.151-4.M8.bin
+boot-end-marker
+!
+!
+enable secret 4 LH1sMlHzZ8Am/pLL.V74lU1ornKVmusR9iuQFShaBpg
+!
+aaa new-model
+!
+!
+<<<<<<< HEAD
+aaa group server radius RadiusServers
+ server name raidus
+!
+aaa authentication login default group RadiusServers local
+aaa authentication enable default group RadiusServers enable
+aaa authorization exec default group RadiusServers local 
+aaa authorization network default group RadiusServers local 
+=======
+aaa authentication login default local
+aaa authorization exec default local none 
+>>>>>>> d701c12f0657a281c041776084691d567631b9ac
+!
+!
+!
+!
+!
+aaa session-id common
+!
+!
+dot11 syslog
+ip source-route
+!
+!
+ip cef
+!
+!
+!
+no ip domain lookup
+ip domain name docdoc.us
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+voice-card 0
+!
+crypto pki token default removal timeout 0
+!
+!
+!
+!
+license udi pid CISCO2811 sn FCZ10337086
+username andrew privilege 15 secret 4 Dbz21iKNu21UyqFfQL7eibCfwIszy1sazj26fRT1igQ
+username cbl privilege 15 secret 4 c5LFTnp3A5C3Ds2sCA3PU0Csl6Q1V1MpHyKNktEi5tI
+<<<<<<< HEAD
+username clarson privilege 15 secret 4 QjT6Z8pgHC9jJ6D5O9gYisDANlg/DMZi.qfaGcmwBQ2
+=======
+>>>>>>> d701c12f0657a281c041776084691d567631b9ac
+!
+redundancy
+!
+!
+ip ssh time-out 60
+ip ssh version 2
+ip ssh pubkey-chain
+  username andrew
+   key-hash ssh-rsa 9AE74D3CD68D7B5D84539612B6F7561A acoulter@lear
+  quit
+ip scp server enable
+! 
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 74.123.12.153 255.255.255.255
+<<<<<<< HEAD
+!         
+=======
+!
+>>>>>>> d701c12f0657a281c041776084691d567631b9ac
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/0.102
+ description uplink and is connected to vlan 102
+ encapsulation dot1Q 102
+ ip address 74.123.12.138 255.255.255.252
+ ipv6 address 2604:2C00:FFE4:1100::/64 eui-64
+ ipv6 enable
+ ipv6 ospf network point-to-point
+ ipv6 ospf 65535 area 100
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1.400
+ description link between 2800s
+ encapsulation dot1Q 400
+ ip address 74.123.12.150 255.255.255.252
+ ipv6 address 2604:2C00:FFE4:1200::2/64
+ ipv6 enable
+ ipv6 ospf network point-to-point
+ ipv6 ospf 65535 area 100
+!
+interface FastEthernet0/1.3330
+ description for vm2 on vlan 3330
+ encapsulation dot1Q 3330
+ ip address 74.123.12.145 255.255.255.252
+<<<<<<< HEAD
+ ip flow ingress
+ ip flow egress
+=======
+>>>>>>> d701c12f0657a281c041776084691d567631b9ac
+ ipv6 address 2604:2C00:FFE4:1400::1/64
+ ipv6 enable
+!
+!
+router eigrp 12345
+ network 74.123.12.136 0.0.0.3
+ network 74.123.12.148 0.0.0.3
+ redistribute connected metric 1 10 255 1 1500
+ redistribute static metric 1 10 255 1 1500
+ eigrp router-id 74.123.12.153
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+<<<<<<< HEAD
+ip flow-export source Loopback0
+ip flow-export version 9
+ip flow-export destination 74.123.12.142 9995
+!
+!
+ip access-list standard snmp
+ permit 74.123.12.142
+ deny   any
+=======
+!
+>>>>>>> d701c12f0657a281c041776084691d567631b9ac
+!
+ip access-list extended vms
+ permit tcp 144.38.0.0 0.0.255.255 host 74.123.12.145 eq 22 ftp www
+ permit tcp 209.33.192.0 0.0.63.255 host 74.123.12.145 eq 22 ftp www
+ deny   tcp any host 74.123.12.145 eq www ftp
+ permit tcp host 204.17.177.11 host 74.123.12.146 eq domain
+ permit udp host 204.17.177.11 host 74.123.12.146 eq domain
+ deny   tcp any host 74.123.12.146 eq domain
+ deny   udp any host 74.123.12.146 eq domain
+ permit ip any any
+!
+<<<<<<< HEAD
+ip radius source-interface Loopback0 
+logging trap debugging
+logging facility syslog
+logging source-interface Loopback0
+logging 74.123.12.142
+=======
+>>>>>>> d701c12f0657a281c041776084691d567631b9ac
+ipv6 router ospf 65535
+ redistribute connected
+ redistribute static
+!
+!
+!
+!
+!
+<<<<<<< HEAD
+snmp-server community pool RO snmp
+snmp-server location utah
+snmp-server contact andrew
+!
+!
+radius server raidus
+ address ipv4 74.123.12.42 auth-port 1812 acct-port 1813
+ key 7 10660C0B001E010615142B3837
+!
+=======
+!
+!
+>>>>>>> d701c12f0657a281c041776084691d567631b9ac
+!
+!
+control-plane
+!
+!
+<<<<<<< HEAD
+!         
+=======
+!
+>>>>>>> d701c12f0657a281c041776084691d567631b9ac
+!
+mgcp profile default
+!
+!
+!
+!
+!
+<<<<<<< HEAD
+banner motd ^C
+
+=======
+banner motd 
+
+>>>>>>> d701c12f0657a281c041776084691d567631b9ac
+$$$$$$$$$$$$$$$$""$o$o$o$o$o$oo$$""$$$$$$$$$$$$$$$
+$$$$$$$$$$$$""o$$$$$$$$$$"$"$$$$$$$o$"$$$$$$$$$$$$
+$$$$$$$$$"$o$$$$""$oo $ ""      """$$$oo"$$$$$$$$$
+$$$$$$$"o$$$$"   ""o  $oo o o       ""$$$o"$$$$$$$
+$$$$$"o$$$"       oo$$$$$$$$$$o        "$$$o"$$$$$
+$$$$"o$$$  $  o$$$$$$$$$$$$$$"$$oo       "$$$ $$$$
+$$$"$$$"   "$$$$$$$$$$$$$$$$o$o$$$"        $$$o$$$
+$$ $$$    o$$$$$$$$$$$$$$$$$$$$$$$$o o   o  "$$o"$
+$"$$$"    o$$$$$$$$$"$$$$$$"" "$$$$$$"$$$$$  $$$"$
+$o$$"    o$$$$$$$$$$o""$$$""""ooo"$$$$$$$$"   $$$"
+$o$$"    o$$$$$$$$$$            ""oo"$"$o""   $$$o
+o$$$     o$$$$$$$$$$                """""$    o$$o
+o$$$    o$$$$$$$$$$$$o                   "o "oo$$o
+o$$$  oo$$$$$$$$$$$$$$$$ooooooo$$$$$oo    $"$ "$$o
+o$$$"  ""  $$$$$$$$$$$$$$$$$$$$$$$$$$$$o    " $$$
+$ $$$       "$$$$$$$$$$$$$$$$$$$$$$$$$$$o    o$$"$
+$$"$$o       "$$$$$$$$$$$$$$$$$$$$$$$$$$$o   $$$o$
+$$o$$$o       $$""$$$$$$$$$$$$$$$$$$$$$$$o  $$$ $$
+$$$o"$$o    "$""  "$""$$$$$$$$$$$$$$$$$$$oo$$$"$$$
+$$$$o"$$$o        "     $$$$$$$$$$$$$$$$$o$$"o$$$$
+$$$$$$o"$$$o         oo$$$$$$$$$$$$$$$$$$$$"o$$$$$
+$$$$$$$$o"$$$$ooooo$$$$$$$$$$$$$$$$$$$$$$"o$$$$$$$
+$$$$$$$$$$o""$$$$$$$$$$$$$$$$$$$$$$$$$"oo$$$$$$$$$
+$$$$$$$$$$$$$o$""$$$$$$$$$$$$$$$$$""oo$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$o$o$"$"$"$"$oo$o$$$$$$$$$$$$$$$$ 
+<<<<<<< HEAD
+
+^C
+=======
+
+
+>>>>>>> d701c12f0657a281c041776084691d567631b9ac
+!
+line con 0
+line aux 0
+line vty 0 4
+ session-timeout 60 
+ transport input ssh
+line vty 5 15
+ transport input all
+!
+scheduler allocate 20000 1000
+ntp access-group peer 11
+ntp server 204.17.177.3
+ntp server 204.17.177.8
+ntp server 198.60.22.240
+end
+<<<<<<< HEAD
+
+
+####################################
+# free radius working              #
+####################################
+
+
+acoulter@silicon:/net/144.38.192.167/vol/student_account/home/a/acoulter$ ssh clarson@74.123.12.138
+Password: 
+
+
+$$$$$$$$$$$$$$$$""$o$o$o$o$o$oo$$""$$$$$$$$$$$$$$$
+$$$$$$$$$$$$""o$$$$$$$$$$"$"$$$$$$$o$"$$$$$$$$$$$$
+$$$$$$$$$"$o$$$$""$oo $ ""      """$$$oo"$$$$$$$$$
+$$$$$$$"o$$$$"   ""o  $oo o o       ""$$$o"$$$$$$$
+$$$$$"o$$$"       oo$$$$$$$$$$o        "$$$o"$$$$$
+$$$$"o$$$  $  o$$$$$$$$$$$$$$"$$oo       "$$$ $$$$
+$$$"$$$"   "$$$$$$$$$$$$$$$$o$o$$$"        $$$o$$$
+$$ $$$    o$$$$$$$$$$$$$$$$$$$$$$$$o o   o  "$$o"$
+$"$$$"    o$$$$$$$$$"$$$$$$"" "$$$$$$"$$$$$  $$$"$
+$o$$"    o$$$$$$$$$$o""$$$""""ooo"$$$$$$$$"   $$$"
+$o$$"    o$$$$$$$$$$            ""oo"$"$o""   $$$o
+o$$$     o$$$$$$$$$$                """""$    o$$o
+o$$$    o$$$$$$$$$$$$o                   "o "oo$$o
+o$$$  oo$$$$$$$$$$$$$$$$ooooooo$$$$$oo    $"$ "$$o
+o$$$"  ""  $$$$$$$$$$$$$$$$$$$$$$$$$$$$o    " $$$
+$ $$$       "$$$$$$$$$$$$$$$$$$$$$$$$$$$o    o$$"$
+$$"$$o       "$$$$$$$$$$$$$$$$$$$$$$$$$$$o   $$$o$
+$$o$$$o       $$""$$$$$$$$$$$$$$$$$$$$$$$o  $$$ $$
+$$$o"$$o    "$""  "$""$$$$$$$$$$$$$$$$$$$oo$$$"$$$
+$$$$o"$$$o        "     $$$$$$$$$$$$$$$$$o$$"o$$$$
+$$$$$$o"$$$o         oo$$$$$$$$$$$$$$$$$$$$"o$$$$$
+$$$$$$$$o"$$$$ooooo$$$$$$$$$$$$$$$$$$$$$$"o$$$$$$$
+$$$$$$$$$$o""$$$$$$$$$$$$$$$$$$$$$$$$$"oo$$$$$$$$$
+$$$$$$$$$$$$$o$""$$$$$$$$$$$$$$$$$""oo$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$o$o$"$"$"$"$oo$o$$$$$$$$$$$$$$$$ 
+
+coulter-2800-2#
+=======
+>>>>>>> d701c12f0657a281c041776084691d567631b9ac

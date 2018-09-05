@@ -1,0 +1,23 @@
+//
+// Do any local configuration here
+//
+zone "archpacman.com" {
+     type master;
+     file "/etc/bind/db.archpacman.com";
+     allow-transfer { 144.38.217.197; localhost;};
+     notify yes;
+     allow-query {any;};
+};
+
+zone "192-223.217.38.144.in-addr.arpa" {
+    type master;
+     file "/etc/bind/db.192-223.217.144.in-addr.arpa";
+     allow-transfer { 144.38.217.197; localhost;};
+     notify yes;
+     allow-query {any;};
+};
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+

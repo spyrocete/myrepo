@@ -1,0 +1,97 @@
+#-------------
+# IT 4500
+#-------------
+#it4500
+
+Host ka2
+     HostName 144.38.222.68
+     ProxyCommand ssh -l acoulter ssh.cs.dixie.edu exec nc %h %p
+     User root
+
+Host bsd
+     HostName 144.38.222.72
+     ProxyCommand ssh -l acoulter ssh.cs.dixie.edu exec nc %h %p
+     User cituser
+
+Host linux
+     HostName 144.38.222.69
+     ProxyCommand ssh -l acoulter ssh.cs.dixie.edu exec nc %h %p
+     User andrew
+
+Host hp
+     HostName 144.38.222.70
+     ProxyCommand ssh -l acoulter ssh.cs.dixie.edu exec nc %h %p
+     User cituser
+
+Host parrot
+     HostName 144.38.222.71
+     ProxyCommand ssh -l acoulter ssh.cs.dixie.edu exec nc %h %p
+     User cituser
+
+
+# also has ip 73 
+Host bsd
+     HostName 144.38.222.72
+     ProxyCommand ssh -l acoulter ssh.cs.dixie.edu exec nc %h %p
+     User cituser
+
+Host buff
+     HostName 144.38.222.76
+     ProxyCommand ssh -l acoulter ssh.cs.dixie.edu exec nc %h %p
+     User cituser
+
+
+#-------------
+# IT 4600
+#-------------
+#it4600
+
+Host arch
+     HostName 144.38.204.102
+     ProxyCommand ssh -l acoulter ssh.cs.dixie.edu exec nc %h %p
+     User andrew
+
+Host dockhub
+     HostName 144.38.204.103
+     ProxyCommand ssh -l acoulter ssh.cs.dixie.edu exec nc %h %p
+     User andrew
+
+
+#-----------------------
+# static
+#-----------------------
+#static
+
+Host ophelia
+     HostName ophelia
+     ProxyCommand ssh -l acoulter ssh.cs.dixie.edu exec nc %h %p
+     User acoulter
+
+Host desdemona
+     HostName desdemona
+     ProxyCommand ssh -l acoulter ssh.cs.dixie.edu exec nc %h %p
+     User acoulter
+
+Host my
+     HostName 23.88.147.45
+     User andrew
+
+Host my2
+     HostName 23.88.59.13
+     User andrew
+
+Host can
+     HostName 23.88.59.13
+     User matt
+
+Host school
+     HostName ssh.cs.dixie.edu
+     User acoulter
+
+Host peter
+     HostName ssh.cs.dixie.edu
+     User gqiao
+
+Host tim
+     HostName ssh.cs.dixie.edu
+     User tcorcoran

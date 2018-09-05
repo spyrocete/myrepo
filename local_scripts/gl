@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+git add .
+git commit -a -m "$1"
+
+if [ "$HOSTNAME" == "arch_laptop" ]; then
+    git push
+fi
+
+if [ "$2" == "l" ]; then
+    git push lds master
+fi
+
+if [ "$2" == "h" ]; then
+    git push homework master
+fi
+
+if [ "$2" == "n" ]; then
+    git push 
+fi

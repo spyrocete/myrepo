@@ -1,0 +1,90 @@
+snmpget -v2c -c pool 74.123.12.157 sysName.0
+snmpget -v2c -c pool 74.123.12.156 sysName.0
+snmpget -v2c -c pool 74.123.12.153 sysName.0
+
+ip access-list standard snmp
+permit host 74.123.12.142
+deny any
+
+snmp-server community pool RO snmp
+snmp-server location utah
+snmp-server contact andrew
+
+    configure terminal
+      logging host 74.123.12.142 transport udp port 514
+      logging facility syslog
+      logging trap debugging
+      logging source-interface l0
+      logging source 74.123.12.153
+
+
+int f0/1.3330
+ ip flow egress 
+ ip flow ingress 
+ip flow-export destination 74.123.12.142 9995 
+ip flow-export version 9
+ip flow-export source l0
+
+show ip flow export
+
+ip flow-export destination 74.123.12.142 9995 
+no ip flow-export destination 74.123.12.142 161
+no ip flow-export destination 74.123.12.142 36561
+
+* freeradius
+
+radius-server host 172.16.71.146 auth-port 1645 acct-port 1646
+radius-server key hello123
+
+clarson   Cleartext-Password := "plastic"
+        Service-Type = NAS-Prompt-User
+
+
+ clarson Auth-Type := System 
+            Service-Type = NAS-Prompt-User,
+            cisco-avpair = "shell:priv-lvl=15"
+    #for the enable password
+    $enab15$   Cleartext-Password := "plastic"
+            Service-Type = NAS-Prompt-User
+
+
+
+username clarson privilege 15 secret 0 plastic
+aaa new-model
+ip radius source-interface Loopback0 
+
+radius server floss
+  address ipv4 74.123.12.142 auth-port 1812 acct-port 1813
+  key Hereismypass
+no aaa group server radius RadiusServers
+aaa group server radius RadiusServers
+  server name floss
+
+
+aaa authentication login default group RadiusServers local
+aaa authentication enable default group RadiusServers enable
+aaa authorization exec default group RadiusServers local 
+aaa authorization network default group RadiusServers local 
+
+
+
+
+aaa group server radius RadiusServers
+no server 74.123.12.42 auth-port 1812 acct-port 1813
+ server 74.123.12.142 auth-port 1812 acct-port 1813
+
+
+** for switch
+
+username clarson privilege 15 secret 0 plastic
+aaa new-model
+ip radius source-interface Loopback0
+radius-server host 74.123.12.42 auth-port 1812 acct-port 1813 key <secret_key>
+
+aaa group server radius RadiusServers
+  server 74.123.12.42 auth-port 1812 acct-port 1813
+
+aaa authentication login default group RadiusServers local
+aaa authentication enable default group RadiusServers enable
+aaa authorization exec default group RadiusServers local
+aaa authorization network default group RadiusServers local

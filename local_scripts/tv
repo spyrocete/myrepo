@@ -1,0 +1,30 @@
+#!/bin/bash
+
+show="/home/andrew/documents/tv_shows/Prison Break - Complete/"
+season="Prison Break - Season 4"
+ep=$(cat /home/andrew/local_scripts/ep_log)
+
+# when r is passed in as a para when running the command it will minuse 1 from 
+# the episode count.
+if [ "$1" = "r" ]; then
+    lower=$(($ep-1))
+    echo $lower > /home/andrew/local_scripts/ep_log
+    ep=$(cat /home/andrew/local_scripts/ep_log)
+fi
+
+# this will check if the episode is longer then 10 then it will remove the zero
+# from in front of the episode
+if [ "$ep" -lt "10" ]; then
+    curr=$(ls "$show$season/Prison Break "S04E0$ep*)
+else
+   curr=$(ls "$show$season/Prison Break "S04E$ep*)
+fi
+
+# double quates have to be used otherwise the spaces in the file pathes.
+mplayer "$curr"
+
+adder=$(($ep+1))
+
+echo $adder > /home/andrew/local_scripts/ep_log
+
+

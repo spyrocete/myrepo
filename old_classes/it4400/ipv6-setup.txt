@@ -1,0 +1,111 @@
+garay-3750(config)#sdm prefer dual-ipv4-and-ipv6 routing
+
+garay-3750#reload
+
+garay-3750(config)#int vlan 117 -- THIS IS TO FUCK FACE'S NETWORK N SHIT 
+
+garay-3750(config-if)#ipv6 address 2604:2c00:ffdf:117::/64 eui-64
+
+show ipv6 on router then...
+
+garay-3750#ping 2604:2c00:ffdf:117::1
+
+garay-3750(config)#ipv6 unicast-routing
+
+garay-3750(config)#int vlan 11 -- THIS IS TO 2800-1
+
+garay-3750(config-if)#ipv6 address 2604:2c00:ffe7:e001::/64 eui-64
+
+garay-3750#ping ipv6 2604:2C00:FFE7:E001:21B:54FF:FE6A:AC10
+
+garay-3750(config)#int vlan 12 -- THIS IS TO 2800-2
+
+garay-3750(config-if)#ipv6 address 2604:2c00:ffe7:e002::/64 eui-64
+
+
+
+garay-2800-1(config)#ipv6 unicast-routing
+
+garay-2800-1(config)#int f0/0.11 -- THIS IS TO SWITCH
+
+garay-2800-1(config-subif)#ipv6 address 2604:2c00:ffe7:e001::/64 eui-64
+
+garay-2800-1(config)#int f0/1.13 -- THIS IS TO 2800-2
+
+garay-2800-1(config-subif)#ipv6 address 2604:2c00:ffe7:e003::1/64
+
+
+
+garay-2800-2(config)#ipv6 unicast-routing
+
+garay-2800-2(config)#int f0/0.12 -- THIS IS TO SWITCH
+
+garay-2800-2(config-subif)#ipv6 address 2604:2c00:ffe7:e002::/64 eui-64
+
+garay-2800-2(config)#int f0/1.13 -- THIS IS TO 2800-1
+
+garay-2800-2(config-subif)#ipv6 address 2604:2c00:ffe7:e003::2/64
+
+
+
+garay-2800-1(config)#int f0/1.3317 -- THIS IS TO VM1
+
+garay-2800-1(config-subif)#ipv6 address 2604:2c00:ffe7:e202::1/64
+
+
+garay-2800-2(config)#int f0/1.3333 -- THIS IS TO VM2
+
+garay-2800-2(config-subif)#ipv6 address 2604:2c00:ffe7:e402::1/64
+
+
+
+garay-3750(config)#int vlan 117
+
+garay-3750(config-if)#ipv6 ospf 65535 area 0
+
+garay-2800-1(config-subif)#ipv6 ospf network point-to-point
+
+garay-2800-1(config-subif)#ipv6 enable
+
+garay-3750(config)#ipv6 router ospf 65535
+
+garay-3750(config-rtr)#router-id 74.123.12.248
+
+garay-2800-1(config-rtr)#redistribute connected metric 1
+
+garay-2800-1(config-rtr)#redistribute static metric 1
+
+
+
+garay-2800-1(config)#int f0/1.11
+
+garay-2800-1(config-subif)#ipv6 ospf 65535 area 100
+
+garay-2800-1(config-subif)#ipv6 ospf network point-to-point
+
+garay-2800-1(config-subif)#ipv6 enable
+
+garay-2800-1(config)#ipv6 router ospf 65535
+
+garay-2800-1(config-rtr)#router-id 74.123.12.248
+
+garay-2800-1(config-rtr)#redistribute connected metric 1
+
+garay-2800-1(config-rtr)#redistribute static metric 1
+
+
+
+garay-2800-1(config)#int f0/1.12
+
+garay-2800-1(config-subif)#ipv6 ospf 65535 area 100
+
+garay-2800-1(config-subif)#ipv6 ospf network point-to-point
+
+garay-2800-1(config-subif)#ipv6 enable
+
+garay-2800-1(config)#ipv6 router ospf 65535
+
+garay-2800-1(config-rtr)#redistribute connected metric 1
+
+garay-2800-1(config-rtr)#redistribute static metric 1
+

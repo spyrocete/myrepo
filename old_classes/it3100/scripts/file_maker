@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Instructions to run this script.
+# Place this file in the same dirrectory you want to file to be made in.
+# Run follow commands:
+## sudo chmod +x file_maker
+## ./file_maker
+
+
+start=1
+choice="y"
+while true; do 
+    if [ "$choice" == "y" ]; then
+	echo "Enter a number of bytes you want the file to be?"
+	read doubled
+	num=$(($doubled / 2))
+	echo "What do you want to new file to be named?"
+	read name
+	for ((c=$start;c<=$num;c++)); do echo "a" >> $name; done      
+	echo "The following file was made"
+	ls -l | grep $name
+	echo
+	echo "Would you like to make another file? y for yes and n for no"
+	read temp
+	choice=$temp
+    
+    else
+	break
+    fi
+
+done
+
+echo "Done." 

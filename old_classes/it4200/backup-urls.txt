@@ -1,0 +1,16 @@
+HOST=www.archpacman.com/wordpress
+http://${HOST}/index.php
+http://${HOST}/wp-activate.php
+http://${HOST}/wp-blog-header.php
+http://${HOST}/wp-comments-post.php
+http://${HOST}/wp-config.php
+http://${HOST}/wp-config-sample.php
+http://${HOST}/wp-cron.php
+http://${HOST}/wp-links-opml.php
+http://${HOST}/wp-load.php
+http://${HOST}/wp-login.php
+http://${HOST}/wp-mail.php
+http://${HOST}/wp-settings.php
+http://${HOST}/wp-signup.php
+http://${HOST}/wp-trackback.php
+http://${HOST}/xmlrpc.php 

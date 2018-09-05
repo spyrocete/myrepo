@@ -1,0 +1,712 @@
+    1  sudo apt-get install bind9
+    2  sudo emacs /etc/bind/named.conf.local
+    3  sudo apt-get install emacs
+    4  sudo emacs /etc/bind/named.conf.local
+    5  ls
+    6  cd /etc/bind
+    7  ls
+    8  emacs db.archpacman.com
+    9  ls
+   10  sudo emacs db.archpacman.com
+   11  ls
+   12  sudo emacs db.archpacman.com
+   13  sudo service bind9 restart
+   14  sudo service bind9 start
+   15  sudo powerdown
+   16  sudo poweroff
+   17  ls
+   18  sudo less /var/log/syslog
+   19  sudo cat /var/log/syslog
+   20  sudo cat /var/log/syslog | grep named
+   21  sudo emacs /etc/bind/named.conf
+   22  cd /etc/bind
+   23  ls
+   24  emacs named.conf.local
+   25  sudo emacs named.conf.local
+   26  sudo service bind9 start
+   27  sudo cat /var/log/syslog | grep named
+   28  sudo emacs named.conf.local
+   29  ls
+   30  sudo emacs named.conf
+   31  sudo service bind9 start
+   32  sudo apt-get install dnsutils
+   33  ls
+   34  cat named.conf.local
+   35  scp named.conf.local acoulter@ssh.cs.dixie.edu
+   36  scp named.conf.local acoulter@ssh.cs.dixie.edu:named.conf.local
+   37  exit
+   38  emacs /etc/bind/named.conf.local
+   39  sudo emacs /etc/bind/named.conf.local
+   40  sudo emacs /etc/bind/db.archpacman.com
+   41  sudo emacs /etc/bind/named.conf.local
+   42  sudo service bind9 restart
+   43  hostname
+   44  clear
+   45  dig @144.38.217.95 archpacman.com A
+   46  dig @144.38.217.97 archpacman.com A
+   47  dig @144.38.214.2 archpacman.com A
+   48  cd /etc/bind/named/
+   49  cd /etc/bind/
+   50  ls
+   51  sudo emacs named.conf.local
+   52  sudo emacs named.conf
+   53  sudo service bind9 restart
+   54  dig @144.38.214.2 archpacman.com A
+   55  dig @144.38.217.197 archpacman.com A
+   56  dig @144.38.217.195 archpacman.com A
+   57  ls
+   58  sudo db.archpacman.com
+   59  sudo emacs db.archpacman.com
+   60  ls
+   61  emacs named.conf.local
+   62  sudo emacs named.conf.local
+   63  emacs db.archpacman.com
+   64  sudo emacs db.archpacman.com
+   65  sudo service bind9 restart
+   66  dig @144.38.217.195 archpacman.com A
+   67  dig @144.38.192.2 archpacman.com A
+   68  man dig
+   69  dig archpacman.com A
+   70  sudo grep named /var/lo
+   71  dig @144.38.217.195 archpacman.com A
+   72  grep named /var/log/syslog
+   73  cat named.conf.local
+   74  cat named.conf
+   75  cat db.archpacman.com
+   76  sudo emacs /etc/bind/db.archpacman.com
+   77  sudo reboot
+   78  ls
+   79  sudo service bind9 restart
+   80  dig ns1.archpacman.com
+   81  touch ns1
+   82  ls
+   83  sudo emacs /etc/bind/db.archpacman.com
+   84  cat /etc/resolv.conf
+   85  emacs /etc/network/interfaces 
+   86  sudo emacs /etc/network/interfaces 
+   87  la /var
+   88  ls
+   89  ls /
+   90  sudo emacs /etc/bind/db.archpacman.com
+   91  ls
+   92  sudo service bind9 restart
+   93  dig @144.38.217.195 archpacman.com MX | grep MX
+   94  ls /etc/bind
+   95  sudo emacs /etc/bind/db.archpacman.com
+   96  sudo service bind9 restart
+   97  dig @144.38.217.195 archpacman.com MX | grep MX
+   98  sudo emacs /etc/bind/db.archpacman.com
+   99  dig @144.38.217.195 archpacman.com MX | grep MX
+  100  dig @144.38.217.197 archpacman.com MX | grep MX
+  101  ls
+  102  sudo emacs /etc/bind/db.archpacman.com
+  103  sudo service bind restart
+  104  sudo service bind9 restart
+  105  sudo emacs /etc/bind/db.archpacman.com
+  106  ls /etc/bind
+  107  sudo emacs /etc/bind/named.conf.local
+  108  sudo less /var/log/syslog
+  109  sudo emacs /etc/bind/db.archpacman.com
+  110  sudo service bind9 restart
+  111  sudo less /var/log/syslog
+  112  ls
+  113  sudo emacs /etc/bind/db.archpacman.com
+  114  sudo service bind9 restart
+  115  sudo less /var/log/syslog
+  116  sudo emacs /etc/bind/db.archpacman.com
+  117  sudo service bind9 restart
+  118  sudo less /var/log/syslog
+  119  sudo emacs /etc/bind/db.archpacman.com
+  120  sudo service bind9 restart
+  121  sudo less /var/log/syslog
+  122  sudo emacs /etc/bind/db.archpacman.com
+  123  sudo service bind9 restart
+  124  sudo less /var/log/syslog
+  125  sudo emacs /etc/bind/db.archpacman.com
+  126  sudo service bind9 restart
+  127  sudo less /var/log/syslog
+  128  man less
+  129  sudo tail /var/log/syslog
+  130  sudo emacs /etc/bind/db.archpacman.com
+  131  sudo service bind9 restart
+  132  sudo tail /var/log/syslog
+  133  cd /etc/bind
+  134  sudo mv db.archpacman.com backup_db
+  135  sudo emacs db.archpacman.com
+  136  sudo service bind9 restart
+  137  sudo tail /var/log/syslog
+  138  sudo emacs db.archpacman.com
+  139  sudo service bind9 restart
+  140  sudo tail /var/log/syslog
+  141  sudo emacs db.archpacman.com
+  142  sudo service bind9 restart
+  143  sudo tail /var/log/syslog
+  144  dig @144.38.217.195 archpacman.com MX | grep MX
+  145  dig @144.38.217.197 archpacman.com MX | grep MX
+  146  ls
+  147  eixt
+  148  exit
+  149  sudo emacs /etc/bind/db.archpacman.com
+  150  sudo service bind9 restart
+  151  exit
+  152  ls
+  153  dig @144.38.217.195 org.archpacman.com | grep org
+  154  sudo emacs /etc/bind/db.archpacman.com
+  155  sudo service bind9 restart
+  156  sudo emacs /etc/bind/db.archpacman.com
+  157  dig @144.38.217.195 archpacman.com
+  158  dig @144.38.217.197 archpacman.com
+  159  dig @144.38.217.195 org.archpacman.com CNAME
+  160  dig @144.38.217.195 latex.archpacman.com CNAME
+  161  exit
+  162  ls
+  163  dig @144.38.217.195 info.archpacman.com CHNAME | grep info
+  164  emacs /etc/bind/db.archpacman.com
+  165  sudo emacs /etc/bind/db.archpacman.com
+  166  ls
+  167  dig @144.38.217.195 www.archpacman.com
+  168  ls
+  169  sudo emacs /etc/bind/db.archpacman.com
+  170  sudo service bind9 restart
+  171  dig @144.38.217.195 org.archpacman.com CNAME
+  172  sudo emacs /etc/bind/db.archpacman.com
+  173  dig @144.38.217.195 org.archpacman.com CNAME
+  174  tail -f  /var/log/apache2/error.log
+  175  sudo tail  /var/log/apache2/error.log
+  176  ls /var/log
+  177  ls
+  178  dig @8.8.8.8 archpacman.com
+  179  dig @144.38.217.197 calc.archpacman.com CNAME
+  180  dig @144.38.217.195 archpacman.com A
+  181  dig @144.38.217.195 archpacman.com 
+  182  dig @144.38.217.195 org.archpacman.com CNAME
+  183  sudo emacs /etc/bind/db.archpacman.com
+  184  sudo service bind9 restart
+  185  dig @144.38.217.195 test.archpacman.com
+  186  sudo emacs /etc/bind/db.archpacman.com
+  187  sudo service bind9 restart
+  188  dig @144.38.217.195 org.archpacman.com
+  189  sudo emacs /etc/bind/db.archpacman.com
+  190  dig @144.38.217.195 calc.archpacman.com
+  191  sudo service bind9 restart
+  192  dig @144.38.217.195 calc.archpacman.com
+  193  ls
+  194  cd /etc/bind/
+  195  ls
+  196  emacs named.conf.options
+  197  sudo emacs named.conf.options
+  198  sudo service bind9 restart
+  199  tail /var/log/syslog
+  200  exit
+  201  sudo emacs /etc/hostname
+  202  sudo emacs /etc/hosts
+  203  sudo emacs /etc/network/interfaces 
+  204  sudo ifdown eth0; sudo ifup eth0
+  205  sudo reboot
+  206  exit
+  207  ls
+  208  sudo emacs /etc/bind/db.archpacman.com
+  209  sudo service bind9 restart
+  210  less /var/log/syslog
+  211  sudo emacs /etc/bind/db.archpacman.com
+  212  cd /etc/bind/
+  213  ls
+  214  emacs named.conf.options
+  215  sudo emacs named.conf.options
+  216  sudo emacs named.conf
+  217  sudo emacs named.conf.local
+  218  tail /var/log/syslog
+  219  sudo emacs /etc/bind/db.archpacman.com
+  220  sudo service bind9 restart
+  221  tail /var/log/syslog
+  222  exit
+  223  cd /etc/bind/
+  224  ls
+  225  cp db.archpacman.com db.is.forclass.es
+  226  sudo cp db.archpacman.com db.is.forclass.es
+  227  ls
+  228  emacs db.is.forclass.es 
+  229  sudo emacs db.is.forclass.es 
+  230  exit
+  231  ls
+  232  cd /etc/bind
+  233  ls
+  234  emacs db.is.forclass.es
+  235  sudo emacs db.is.forclass.es
+  236  emacs db.archpacman.com
+  237  sudo emacs db.archpacman.com
+  238  sudo emacs db.is.forclass.es
+  239  sudo emacs named.conf.local
+  240  sudo emacs db.archpacman.com
+  241  sudo service restart bind9
+  242  sudo service bind9 restart
+  243  tail /var/log/syslog
+  244  sudo emacs db.archpacman.com
+  245  sudo service bind9 restart
+  246  tail /var/log/syslog
+  247  sudo emacs db.archpacman.com
+  248  sudo service bind9 restart
+  249  tail /var/log/syslog
+  250  sudo emacs db.archpacman.com
+  251  sudo service bind9 restart
+  252  tail /var/log/syslog
+  253  exit
+  254  cd /etc/bind/
+  255  emacs db.archpacman.com
+  256  sudo emacs db.archpacman.com
+  257  sudo service bind9 restart
+  258  tail /var/log/syslog
+  259  sudo emacs db.archpacman.com
+  260  sudo service bind9 restart
+  261  tail /var/log/syslog
+  262  dig @144.38.217.197 is.forclass.es
+  263  dig is.forclass.es
+  264  dig is.forclass.es +nsearch
+  265  dig is.forclass.es +nssearch
+  266  exit
+  267  ls
+  268  cd /etc/bind/
+  269  ls
+  270  emacs db.archpacman.com
+  271  sudo emacs db.archpacman.com
+  272  exit
+  273  cd /etc/bind/
+  274  emacs db.archpacman.com
+  275  sudo emacs db.archpacman.com
+  276  ls
+  277  cd /etc/bind/
+  278  ls
+  279  emacs db.archpacman.com
+  280  sudo emacs db.archpacman.com
+  281  exit
+  282  cd /etc/bind/
+  283  ls
+  284  emacs db.archpacman.com
+  285  sudo emacs db.archpacman.com
+  286  sudo service bind9 restart
+  287  tail /var/log/syslog
+  288  tac /var/log/syslog
+  289  ls
+  290  dig @ns1.archpacman.com CHNAME
+  291  dig @ns1.archpacman.com paper.archpacman.com CHNAME
+  292  dig @ns1.archpacman.com mail.archpacman.com CHNAME
+  293  dig archpacman.com MX
+  294  dig archpacman.com CNAME
+  295  dig @localhost latex.archpacman.com
+  296  dig @localhost paper.archpacman.com
+  297  exit
+  298  ls
+  299  cd /etc/bind
+  300  ls
+  301  cd ..
+  302  ls
+  303  cd ~/
+  304  ls
+  305  sudo apt-get update
+  306  sudo apt-get install git
+  307  ls
+  308  git clone git@23.88.3.139:scripts
+  309  ls
+  310  cd scripts/
+  311  ls
+  312  cd ..
+  313  emacs .ssh/config
+  314  cd /etc/bind
+  315  ls
+  316  cp db.is.forclass.es db.archpacman.com named.conf.local ~/scripts/dns/
+  317  sudo emacs named.conf
+  318  cd ~/scripts/
+  319  ls
+  320  cd dns/
+  321  ls
+  322  cd ..
+  323  ls
+  324  ./git_auto 
+  325  ls
+  326  cd dns
+  327  ls
+  328  mkdir ns1
+  329  mv db* named* ns1/ 
+  330  ls
+  331  mkdir ns2
+  332  ls
+  333  cd ..
+  334  ls
+  335  ./git_auto 
+  336  exit
+  337  cd /etc/bind
+  338  ls
+  339  emacs db.archpacman.com
+  340  sudo emacs db.archpacman.com
+  341  ls
+  342  cd /etc/bind
+  343  ls
+  344  sudo emacs db.archpacman.com
+  345  service restart bind9
+  346  service bind9 restart
+  347  sudo service bind9 restart
+  348  tail /var/log/syslog
+  349  exit
+  350  ls
+  351  dig mails.archpacman.com
+  352  cd /etc/bind
+  353  sudo emacs db.archpacman.com
+  354  service bind9 restart
+  355  sudo service bind9 restart
+  356  dig mails.archpacman.com
+  357  dig mails.archpacman.com MX
+  358  sudo emacs db.archpacman.com
+  359  sudo service bind9 restart
+  360  tail /var/log/syslog
+  361  dig mails.archpacman.com
+  362  dig mails.archpacman.com mx
+  363  cd /etc/bind
+  364  ls
+  365  sudo emacs db.archpacman.com
+  366  service bind9 restart
+  367  sudo service bind9 restart
+  368  sudo emacs db.archpacman.com
+  369  dig castelia.archpacman.com
+  370  ls
+  371  emacs db.archpacman.com
+  372  sudo emacs db.archpacman.com
+  373  sudo service bind9 restart
+  374  tail /var/log/syslog
+  375  dig castelia.archpacman.com mx
+  376  exit
+  377  ls
+  378  sudo emacs /etc/bind/db.archpacman.com
+  379  sudo service bind9 restart
+  380  tail /var/log/syslog
+  381  clear
+  382  ./con
+  383  exit
+  384  ls
+  385  cd /etc/bind
+  386  ls
+  387  emacs named.conf.local
+  388  sudo emacs named.conf.local
+  389  cat named.conf.local
+  390  sudo emacs 193-220.217.144.in-addr.arpa
+  391  sudo su
+  392  exit
+  393  sudo emacs /etc/bind/named.conf.local
+  394  ls
+  395  emacs name
+  396  su
+  397  cd /etc/bind/
+  398  ls
+  399  scp named.conf.local andrew@144.38.217.197:
+  400  ls
+  401  sudo emacs db.193-220.38.144.in-addr.arpa
+  402  sudo emacs /etc/bind/db.archpacman.com
+  403  sudo tail /var/log/syslog
+  404  service bind9 restart
+  405  suod service bind9 restart
+  406  sudo service bind9 restart
+  407  tail /var/log/syslog
+  408  dig 144.38.217.201
+  409  sudo emacs /etc/bind/db.archpacman.com
+  410  ssh 144.38.217.201
+  411  ping 144.38.217.201
+  412  ping 144.38.217.202
+  413  sudo emacs /etc/bind/db.archpacman.com
+  414  sudo service bind9 restart
+  415  dig 144.38.217.202
+  416  sudo emacs /etc/bind/db.archpacman.com
+  417  sudo service restart bind9
+  418  sudo service bind9 restart
+  419  sudo cat /var/log/syslog
+  420  dig 144.38.217.205
+  421  dig @144.38.217.195 144.38.217.205 
+  422  ls
+  423  cd /etc/bind/
+  424  ls
+  425  emacs named.conf.local
+  426  sudo emacs named.conf.local
+  427  mv db.193-220.144.in-addr.arpa db.192-223.217.144.in-addr.arpa 
+  428  sudo mv db.193-220.144.in-addr.arpa db.192-223.217.144.in-addr.arpa 
+  429  sudo su
+  430  exit
+  431  sudo apt-get install mailutils
+  432  sudo dpkg-reconfigure exim4-config
+  433  sudo apt-get install mailutils
+  434  sudo apt-get remove mailutils
+  435  sudo apt-get install mailutils
+  436  sudo dpkg-reconfigre exim4-config
+  437  sudo dpkg-reconfigure exim4-config
+  438  sudo apt-get install dpkg-reconfigure
+  439  sudo apt-get install exim4-config
+  440  sudo dpkg-reconfigure exim4-config
+  441  exit
+  442  sudo apt-get update
+  443  sudo apt-get dist-upgrade
+  444  exit
+  445  sudo poweroff
+  446  cd /etc/bind
+  447  sudo su
+  448  exit
+  449  dig ns2.archpacman.com mx
+  450  mailx andrew@archpacman.com
+  451  ls
+  452  sudo apt-get install mailutils exim4-config
+  453  sudo dpkg-reconfigure exim4-config
+  454  mailx andrew@http.archpacman.com
+  455  exit
+  456  adduser jake
+  457  sudo adduser jake
+  458  su - jake
+  459  exit
+  460  ./mail
+  461  sudo dkpg-reconfigure exim4-config
+  462  sudo dpkg-reconfigure exim4-config
+  463  dig ns1.archapcman.com MX
+  464  cd /etc/bind
+  465  emacs db.archpacman.com
+  466  sudo emacs db.archpacman.com
+  467  dig http.archpacman.com mx
+  468  dig http.archpacman.com
+  469  dig @144.38.217.195 ns2.archpacman.com mx
+  470  dig @144.38.217.195 http.archpacman.com mx
+  471  dig @144.38.217.195 ns1.archpacman.com mx
+  472  dig @144.38.217.195 res.archpacman.com mx
+  473  emacs db.archpacman.com
+  474  sudo emacs db.archpacman.com
+  475  rbind
+  476  su
+  477  sudo su
+  478  su - jake
+  479  sudo emacs db.archpacman.com
+  480  sudo dpkg-reconfigure exim4-config
+  481  exit
+  482  su - jake
+  483  sudo dpkg-reconfigure exim4-config
+  484  exit
+  485  su - jake
+  486  sudo su
+  487  exit
+  488  sudo su - jake
+  489  sudo dpkg-reconfigure exim4-config
+  490  ls
+  491  cd /etc/bind/
+  492  sudo su
+  493  exit
+  494  dig mail.archpacman.com ptr
+  495  dig res.archpacman.com ptr
+  496  ls
+  497  exit
+  498  ls
+  499  sudo su
+  500  ls
+  501  exit
+  502  sudo emacs /etc/bind/db.archpacman.com
+  503  ls
+  504  sudo emacs /etc/bind/db.192-223.217.144.in-addr.arpa
+  505  sudo service bind9 restart
+  506  mysql -u root -p -h data.archpacman.com
+  507  sudo apt-get mysql-client
+  508  sudo apt-get install mysql-client
+  509  ls
+  510  sudo apt-get install mysql-client
+  511  mysql -u root -p -h data.archpacman.com
+  512  exit
+  513  ls
+  514  sudo su
+  515  ./con
+  516  exit
+  517  ls
+  518  exit
+  519  sudo dpkg-reconfigure exim4-config
+  520  exit
+  521  sudo su
+  522  exit
+  523  mysql -u -p root -h data.archpacman.com
+  524  mysql -p root -h data.archpacman.com
+  525  exit
+  526  dig exam.archpacman.com ptr
+  527  dig exam.archpacman.com
+  528  emacs /etc/bind/db.192-223.217.144.in-addr.arpa
+  529  sudo emacs /etc/bind/db.192-223.217.144.in-addr.arpa
+  530  dig ns1.archpacman.com ptr
+  531  dig exam.archpacman.com ptr
+  532  dig 212.217.38.144.arpa
+  533  cat /etc/bind/db.192-223.217.144.in-addr.arpa
+  534  dig 212.217.38.144.in-addr.arpa
+  535  dig 212.217.38.144.in-addr.arpa ptr
+  536  cd /etc/bind
+  537  ls
+  538  emacs named.conf.local
+  539  sudo emacs named.conf.local
+  540  emacs db.192-223.217.144.in-addr.arpa
+  541  sudo emacs db.192-223.217.144.in-addr.arpa
+  542  sudo service bind9 restart
+  543  cat /var/log/syslog
+  544  exit
+  545  210.217.38.144.in-addr.arpa
+  546  dig 210.217.38.144.in-addr.arpa
+  547  ls
+  548  cd /etc/bind
+  549  ls
+  550  emacs db.is.forclass.es 
+  551  sudo emacs db.is.forclass.es 
+  552  emacs db.archpacman.com
+  553  sudo emacs db.archpacman.com
+  554  emacs db.is.forclass.es 
+  555  sudo emacs db.is.forclass.es 
+  556  dig is.forclass.es
+  557  dig is.forclass.es ns
+  558  sudo emacs db.is.forclass.es 
+  559  dig forclass.es
+  560  dig the.archpacman.com ns
+  561  sudo emacs db.is.forclass.es 
+  562  sudo service bind9 restart
+  563  cat /var/log/syslog
+  564  dig the.archpacman.com
+  565  emacs db.archpacman.com
+  566  sudo emacs db.archpacman.com
+  567  emacs /etc/bind/db.archpacman.com
+  568  sudo emacs /etc/bind/db.archpacman.com
+  569  sudo service bind9 restart
+  570  cat /var/log/syslog
+  571  dig 144-38-150-110
+  572  dig 144.38.150.110
+  573  cd /etc/bind
+  574  sudo emacs db.archpacman.com
+  575  exit
+  576  ls
+  577  sudo emacs /etc/bind/db.archpacman.com
+  578  sudo service bind9 restart
+  579  cat /var/log/syslog
+  580  dig ns1.archpacman.com
+  581  cat /etc/network/interfaces
+  582  history
+  583  exit
+  584  ls
+  585  sudo su
+  586  exit
+  587  sudo su
+  588  ls
+  589  exit
+  590  sudo emacs /etc/bind/db.archpacman.com
+  591  sudo dpkg-reconfigure exim4-config
+  592  exit
+  593  ls
+  594  sudo su
+  595  exit
+  596  sudo reboot
+  597  sudo apt-get update
+  598  sudo apt-get dist-upgrade
+  599  exit
+  600  sudo apt-get update
+  601  sudo apt-get dist-upgrade
+  602  reboot
+  603  sudo reboot
+  604  cd /etc/bind
+  605  ls
+  606  emacs db.archpacman.com
+  607  sudo emacs db.archpacman.com
+  608  sudo service bind9 restart
+  609  exit
+  610  sudo su
+  611  ./con
+  612  sudo su
+  613  exit
+  614  sudo su
+  615  exit
+  616  emacs .ssh/authorized_keys 
+  617  sudo emacs .ssh/authorized_keys 
+  618  cd /home/root
+  619  ls
+  620  cd /
+  621  ls
+  622  ls -l
+  623  ls -a
+  624  ls
+  625  sudo su
+  626  exit
+  627  ls
+  628  cd /etc/bind
+  629  ls
+  630  emacs db.archpacman.com
+  631  sudo su
+  632  exit
+  633  adduser archie
+  634  sudo adduer archie
+  635  sudo adduser archie
+  636  exit
+  637  clear
+  638  ls
+  639  cat /etc/network/interfaces
+  640  exit
+  641  sudo su
+  642  ./con2 ns2
+  643  exit
+  644  cat /etc/network/interfaces
+  645  ls
+  646  cd ..
+  647  ls
+  648  exit
+  649  ls
+  650  cd /etc/bin
+  651  cd /etc/bind
+  652  ls
+  653  emacs db.archpacman.com 
+  654  ls
+  655  sudo bash
+  656  ls
+  657  cd scripts/
+  658  ls
+  659  cd test1/
+  660  ls
+  661  cat linebyline 
+  662  cat user_in
+  663  ls
+  664  sudo emacs /etc/bind/db.archpacman.com
+  665  LS
+  666  sudo emacs /etc/bind/db.archpacman.com
+  667  sudo service bind9 restart
+  668  cat /var/log/syslog
+  669  sudo emacs /etc/bind/db.archpacman.com
+  670  sudo service bind9 restart
+  671  cat /var/log/syslog
+  672  sudo emacs /etc/bind/db.archpacman.com
+  673  sudo service bind9 restart
+  674  cat /var/log/syslog
+  675  cd /etc/bind/
+  676  ls
+  677  cp db.archpacman.com backup_archpackman.com
+  678  sudo cp db.archpacman.com backup_archpackman.com
+  679  ls
+  680  cat backup_db
+  681  sudo emacs db.archpacman.com
+  682  sudo servcie bind9 restart
+  683  sudo service bind9 restart
+  684  cat /var/log/syslog
+  685  ls
+  686  exit
+  687  cd /etc/bind/
+  688  sudo su
+  689  ls
+  690  sudo emacs /etc/bind/db.archpacman.com
+  691  sudo service bind9 restart
+  692  sudo cat /var/log/syslog
+  693  exit
+  694  emacs /etc/network/interfaces
+  695  sudo emacs /etc/network/interfaces
+  696  clear
+  697  history
+  698  sudo emacs/etc/bind/db.ar
+  699  sudo emacs /etc/bind/db.archpacman.com
+  700  sudo service bind9 restart
+  701  cat /var/log/syslog
+  702  exit
+  703  sudo emacs /etc/bind/db.archpacman.com
+  704  exit
+  705  ls
+  706  history > ns1
+  707  emacs ns1 
+  708  cat ns1 
+  709  cd /etc/bind/
+  710  ls
+  711  touch ns1_commands
+  712  history > ns1_commands 

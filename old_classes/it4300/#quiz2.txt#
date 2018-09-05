@@ -1,0 +1,504 @@
+
+
+Skip To Content My Dashboard
+
+    Guokui Qiao
+    Inbox
+    Settings
+    Logout
+    Help
+
+    Courses & Groups
+    My Courses
+    Customize
+        CS-2810-01 SP14 Spring 2014 Enrolled as: Student
+        CS-4307-01 SP14 Spring 2014 Enrolled as: Student
+        HUM-1010-50B Spring 2014 Enrolled as: Student
+        View all courses (3)
+    Assignments
+    Recently Graded
+        Final Test SQL CS-4307-01 SP14
+        9: Mandelbrot part 3 CS-2810-01 SP14
+        8: Mandelbrot part 2 CS-2810-01 SP14
+        7: Mandelbrot part 1 CS-2810-01 SP14
+        12: Modern Microprocessors CS-2810-01 SP14
+        Correction Factor CS-4307-01 SP14
+        Final Test (Design) CS-4307-01 SP14
+        Cultural Review Paper HUM-1010-50B
+    Grades
+    Calendar
+
+CS-4307 Spring 2014
+
+    Home
+    Announcements
+    Assignments
+    Discussions
+    Grades
+    People
+    Files
+    Syllabus
+    Quizzes
+    Conferences
+    Collaborations
+    Chat
+
+    My Dashboard
+    CS-4307
+    Quizzes
+    Quiz 2 SingleFile
+
+Submission Details:
+* Some questions not yet graded
+Time: 	12 minutes
+Current Score: 	25 out of 30 *
+Kept Score: 	25 out of 30
+Quiz 2 SingleFile
+
+    Due Mar 10 at 11am
+    Points 30
+    Questions 31
+    Time Limit None
+
+Instructions
+
+SQL QUIZ
+Attempt History
+  	Attempt 	Time 	Score
+LATEST 	Attempt 1 	12 minutes 	25 out of 30
+Score for this quiz: 25 out of 30 *
+Submitted Mar 7 at 11:22am
+This attempt took 12 minutes.
+ 
+Question 1
+1 / 1 pts
+Which SQL keyword is used to eliminate duplicate fields from the SELECT output?
+Which SQL keyword is used to eliminate duplicate fields from the SELECT output?
+ 
+UNIQUE
+Correct!
+ 
+DISTINCT
+ 
+DIFFERENT
+ 
+DISTINCTIVE
+ 
+Question 2
+1 / 1 pts
+Which of the following SQL statements selects the string 'Success'?
+Which of the following SQL statements selects the string 'Success'?
+ 
+SELECT LEFT('Success is all I need.', 15)
+ 
+SELECT Sucess
+Correct!
+ 
+SELECT 'Success'
+ 
+SELECT ' Success '
+ 
+Question 3
+1 / 1 pts
+What will be the result of the following SQL statement: SELECT LEFT('Have a nice day.', 4) 
+What will be the result of the following SQL statement: SELECT LEFT('Have a nice day.', 4) 
+ 
+day.
+ 
+nice
+ 
+The statement will produce error.
+Correct!
+ 
+Have
+ 
+Question 4
+1 / 1 pts
+If you don't specify ASC or DESC after a SQL ORDER BY clause, the following is used by default:
+If you don't specify ASC or DESC after a SQL ORDER BY clause, the following is used by default:
+ 
+First by DESC then by ASC
+ 
+There is no default value.
+ 
+DESC
+Correct!
+ 
+ASC
+ 
+Question 5
+1 / 1 pts
+The SQL BETWEEN operator …
+The SQL BETWEEN operator …
+ 
+Specifies that a column is a primary key.
+Correct!
+ 
+Specifies a range to test.
+ 
+Specifies that a column is a secondary key.
+ 
+Specifies which tables we are selecting from.
+ 
+Question 6
+1 / 1 pts
+Which SQL statement selects all rows from table called Contest, with column ContestDate having values greater or equal to May 25, 2006?
+Which SQL statement selects all rows from table called Contest, with column ContestDate having values greater or equal to May 25, 2006?
+ 
+SELECT * FROM Contest WHERE ContestDate < '05/25/2006'
+ 
+SELECT * FROM Contest HAVING ContestDate >= '05/25/2006'
+Correct!
+ 
+SELECT * FROM Contest WHERE ContestDate >= '05/25/2006'
+ 
+SELECT * FROM Contest WHERE ContestDate > '05/25/2006'
+ 
+Question 7
+1 / 1 pts
+The AVG SQL function returns the ...
+The AVG SQL function returns the ...
+ 
+the sum of values in a column
+ 
+maximum value from a column.
+Correct!
+ 
+average in the values in a group.
+ 
+median in the values in a group
+ 
+Question 8
+1 / 1 pts
+What does SQL stand for?
+What does SQL stand for?
+ 
+Strict Query Language
+ 
+Standard Query Language.
+ 
+Strong Query Language
+Correct!
+ 
+Structured Query Language.
+ 
+Question 9
+1 / 1 pts
+Which SQL keyword is used to specify conditional search?
+Which SQL keyword is used to specify conditional search?
+ 
+FIND
+Correct!
+ 
+WHERE
+ 
+SELECT
+ 
+SEARCH
+ 
+Question 10
+1 / 1 pts
+Which of the following is a SQL aggregate function?
+Which of the following is a SQL aggregate function?
+Correct!
+ 
+MIN
+ 
+LEFT
+ 
+CAST
+ 
+RIGHT
+ 
+Question 11
+1 / 1 pts
+Order these in mySQL order and thell me what the third clause is
+Order these in mySQL order and thell me what the third clause is
+ 
+GROUP BY
+Correct!
+ 
+WHERE
+ 
+FROM
+ 
+SELECT
+ 
+Question 12
+1 / 1 pts
+Can you use both SELECT and WHERE SQL clauses in one SQL statement?
+Can you use both SELECT and WHERE SQL clauses in one SQL statement?
+ 
+NO
+Correct!
+ 
+YES
+ 
+Question 13
+0 / 1 pts
+Normalization is…
+Normalization is…
+ 
+removing ambiguity
+Correct Answer
+ 
+removing both
+You Answered
+ 
+removing redundancy
+ 
+removing neither
+ 
+Question 14
+1 / 1 pts
+What does follow after the SQL WHERE clause?
+What does follow after the SQL WHERE clause?
+ 
+The name of the table we are selecting from.
+ 
+The locate of the table we are selecting from.
+Correct!
+ 
+Definition of the condition to be met for the rows to be returned.
+ 
+A list of columns to be selected.
+ 
+Question 15
+1 / 1 pts
+What is the ABS SQL function used for?
+What is the ABS SQL function used for?
+Correct!
+ 
+To return the absolute positive value of a numeric expression.
+ 
+To return the absolute average value of a numeric expression.
+ 
+To return the absolute minimum value of a numeric expression.
+ 
+To return the absolute maximum value of a numeric expression.
+ 
+Question 16
+1 / 1 pts
+Which of the following statements gets the total value of the column 'Price' in the 'Sales' table?
+Which of the following statements gets the total value of the column 'Price' in the 'Sales' table?
+ 
+SELECT SUM(Price) WHERE Sales
+ 
+SELECT ADD(Price) FROM Sales
+ 
+SELECT TOTAL(Price) WHERE Sales
+Correct!
+ 
+SELECT SUM(Price) FROM Sales
+ 
+Question 17
+1 / 1 pts
+Which of the following SQL statements has correct syntax?
+Which of the following SQL statements has correct syntax?
+ 
+SELECT * FROM Table1 WHERE Column1 => 10
+ 
+SELECT FROM Table1 WHERE Column1 => 10
+Correct!
+ 
+SELECT * FROM Table1 WHERE Column1 >= 10
+ 
+SELECT * FROM Table1 WHERE Column1 = = 10
+ 
+Question 18
+1 / 1 pts
+What does the following SQL statement do: SELECT Customer, COUNT(Order) FROM Sales GROUP BY Customer HAVING COUNT(Order) &gt;5 ;
+What does the following SQL statement do: SELECT Customer, COUNT(Order) FROM Sales GROUP BY Customer HAVING COUNT(Order) >5 ;
+Correct!
+ 
+Selects all customers from table Sales that have made more than 5 orders.
+ 
+Selects the total number of orders from the Sales table, if this number is greater than 5
+ 
+Will not execute
+ 
+Selects all Customers from the Sales table
+ 
+Question 19
+1 / 1 pts
+Which SQL functions is used to count the number of rows in a SQL query?
+Which SQL functions is used to count the number of rows in a SQL query?
+ 
+CARDINAL()
+ 
+SUM()
+ 
+NUMBER()
+Correct!
+ 
+COUNT()
+ 
+Question 20
+1 / 1 pts
+Which of the following  SQL statements is correct?
+Which of the following  SQL statements is correct?
+ 
+SELECT Username, Password WHERE Username = 'user1'
+ 
+SELECT Username AND Password FROM Users
+Correct!
+ 
+SELECT Username, Password FROM Users
+ 
+SELECT Username, Password FROM Users HAVING Username = 'user1'
+ 
+Question 21
+1 / 1 pts
+RDBMS stands for…
+RDBMS stands for…
+ 
+Read Database Master System
+ 
+Relational Database Masteer System
+ 
+Real Database Management System
+Correct!
+ 
+Relational Database Management System
+ 
+Question 22
+0 / 1 pts
+What does the HAVING clause do?
+What does the HAVING clause do?
+Correct Answer
+ 
+The HAVING keyword specifies a search condition for an aggregate.
+You Answered
+ 
+The HAVING keyword specifies a search condition for an aggregate or a group
+ 
+The HAVING keyword is used to select distinct values.
+ 
+The HAVING keyword is used to join 2 or more tables.
+ 
+Question 23
+1 / 1 pts
+Which of the following SQL statements is correct?
+Which of the following SQL statements is correct?
+ 
+SELECT SALES between '10/12/2005' and '01/01/2006'
+Correct!
+ 
+SELECT * FROM Sales WHERE Date BETWEEN '10/12/2005' AND '01/01/2006'
+ 
+SELECT FROM Sales WHERE Date BETWEEN '10/12/2005' AND '01/01/2006'
+ 
+SELECT FROM Sales WHERE Date BETWEEN ('10/12/2005', '01/01/2006')
+ 
+Question 24
+1 / 1 pts
+Which is the the operator for the NOT equal to search condition?
+Which is the the operator for the NOT equal to search condition?
+Correct!
+ 
+<>
+ 
+=>
+ 
+>
+ 
+>=
+ 
+Question 25
+0 / 1 pts
+The table rows are also known as...
+The table rows are also known as...
+You Answered
+ 
+Fields
+Correct Answer
+ 
+Tuples
+ 
+Relations
+ 
+Attributes
+ 
+Question 26
+0 / 1 pts
+What does the FROM SQL keyword specify?
+What does the FROM SQL keyword specify?
+You Answered
+ 
+The FROM SQL keyword specifies a column list.
+ 
+The FROM SQL keyword specifies the physical location of the database
+ 
+The FROM SQL keyword specifies a search condition.
+Correct Answer
+ 
+The FROM SQL keyword specifies the tables
+ 
+Question 27
+1 / 1 pts
+What will be the result of the following SQL statement: SELECT * FROM Table1 HAVING Column1 &gt; 10 
+What will be the result of the following SQL statement: SELECT * FROM Table1 HAVING Column1 > 10 
+ 
+The result will be empty data set.
+Correct!
+ 
+The SQL statement will generate an error.
+ 
+The result will be all rows having a row number > 10
+ 
+The result will be all rows from Table1 which have Column1 values greater than 10.
+ 
+Question 28
+1 / 1 pts
+What is the correct when we want to specify greater or equal search condition?
+What is the correct when we want to specify greater or equal search condition?
+Correct!
+ 
+>=
+ 
+=>
+ 
+<=
+ 
+=>
+ 
+Question 29
+1 / 1 pts
+The IN SQL keyword…
+The IN SQL keyword…
+ 
+Defines the tables we are selecting or deleting data from.
+ 
+Is used with the DISTINCT SQL keyword only.
+ 
+Determines of a table is IN a database.
+Correct!
+ 
+Determines if a value matches any of the values in a list or a sub-query.
+ 
+Question 30
+0 / 1 pts
+What is the difference between the WHERE and HAVING SQL clauses?
+What is the difference between the WHERE and HAVING SQL clauses?
+ 
+There is no HAVING clause.
+ 
+The WHERE and the HAVING clauses are identical
+You Answered
+ 
+The HAVING SQL clause condition(s) is applied to all rows in the result set before the WHERE clause is applied (if present). The WHERE clause is used only with SELECT SQL statements and specifies a search condition for an aggregate or a group.
+Correct Answer
+ 
+The WHERE SQL clause condition(s) is applied to all rows in the result set before the HAVING clause is applied (if present). The HAVING clause is used only with SELECT SQL statements and specifies a search condition for an aggregate or a group.
+ 
+Question 31
+Not yet graded / 0 pts
+<p>What would you like to do for your term project?</p>
+
+What would you like to do for your term project?
+Your Answer:
+
+c++
+Quiz Score: 25 out of 30
+Instructure, makers of the open source learning management system Canvas Help Privacy policy Terms of service Facebook Twitter
+

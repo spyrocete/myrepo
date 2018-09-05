@@ -1,0 +1,24 @@
+garay-3750#show ntp associations
+
+      address         ref clock     st  when  poll reach  delay  offset    disp
+*~204.17.177.3     132.163.4.103     2   241   512  377     2.8   -1.43     0.9
++~204.17.177.8     198.60.22.240     2   275   512  377     2.0   -1.60     0.8
+ * master (synced), # master (unsynced), + selected, - candidate, ~ configured
+
+
+
+garay-2800-1#show ntp associations
+
+  address         ref clock       st   when   poll reach  delay  offset   disp
++~204.17.177.3    132.163.4.103    2     53    128   177  1.881   2.106  7.213
+*~204.17.177.8    198.60.22.240    2      4    128   177  1.833   1.201  5.789
+ * sys.peer, # selected, + candidate, - outlyer, x falseticker, ~ configured
+
+
+
+garay-2800-2# show ntp associations
+
+  address         ref clock       st   when   poll reach  delay  offset   disp
+*~204.17.177.3    198.60.22.240    2    909   1024   377  1.687   1.289 14.829
++~204.17.177.8    198.60.22.240    2    238   1024   377  1.788   0.989 18.654
+ * sys.peer, # selected, + candidate, - outlyer, x falseticker, ~ configured

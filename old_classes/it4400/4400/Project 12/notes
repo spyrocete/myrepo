@@ -1,0 +1,146 @@
+VM apt-get install snmp
+
+
+
+
+sudo apt-get install snmp-mibs-downloader
+
+vi /etc/snmp/snmp.conf -- comment out #mibs :
+
+vi /etc/snmp/snmpd.conf -- comment out #agentAddress ......
+
+snmpget -v2c -c quasar 74.123.12.248 sysName.0
+
+snmpget -v2c -c quasar 74.123.12.249 sysName.0
+
+snmpget -v2c -c quasar 74.123.12.250 sysName.0
+
+apt-get install syslog-ng-core
+
+apt-get install syslog-ng
+
+apt-get install gcc flex librrd-dev make
+
+cd /usr/local/src/
+
+wget http://sourceforge.net/projects/nfdump/files/stable/nfdump-1.6.1/nfdump-1.6.1.tar.gz
+
+tar -xvf nfdump-1.6.1.tar.gz
+
+apt-get install nfdump
+
+vi /etc/default/nfdump
+
+apt-get install freeradius
+
+garay-3750(config)#ip access-list standard acl_snmp
+
+garay-3750(config-std-nacl)#permit host 74.123.12.242
+
+garay-3750(config-std-nacl)#deny any
+
+garay-3750(config)#snmp-server community quasar RO acl_snmp
+
+garay-3750(config)#snmp-server location dixie
+
+garay-3750(config)#snmp-server contact rgaray
+
+garay-3750(config)#logging source-interface l0
+
+garay-3750(config)#logging host 74.123.12.242
+
+garay-3750(config)#logging trap 7
+
+
+
+
+garay-2800-1(config)#ip access-list standard acl_snmp
+
+garay-2800-1(config-std-nacl)#permit host 74.123.12.242
+ 
+garay-2800-1(config-std-nacl)#deny any
+
+garay-2800-1(config)#snmp-server community quasar RO acl_snmp
+
+garay-2800-1(config)#snmp-server location dixie
+
+garay-2800-1(config)#snmp-server contact rgaray
+
+garay-3750(config)#logging source-interface l0
+
+garay-2800-1(config)#logging host 74.123.12.242
+
+garay-2800-1(config)#logging trap 7
+
+garay-2800-1(config)#int f0/1.3317 
+
+garay-2800-1(config-if)#ip flow ingress
+
+garay-2800-1(config-if)#ip flow egress
+
+garay-2800-1(config)#ip flow-export destination 74.123.12.242 9995
+
+garay-2800-1(config)#ip flow-export version 9
+
+garay-2800-1(config)#ip flow-export source loopback 0
+
+
+
+username clarson privilege 15 secret passw0rd
+
+garay-2800-1(config)#aaa new-model
+
+garay-2800-1(config)#ip radius source-interface loopback 0
+
+garay-2800-1(config)#radius server bam
+
+garay-2800-1(config-radius-server)#address ipv4 74.123.12.242 auth-port 1812 acct-port 1813
+
+garay-2800-1(config-radius-server)#key (fran1054
+
+garay-2800-1(config)#aaa group server radius bamserver
+
+garay-2800-1(config-sg-radius)#server name bam
+
+garay-2800-1(config)#aaa authentication login default group bamserver local
+
+garay-2800-1(config)#aaa authorization exec default group bamserver local
+
+aaa authentication enable default group bamserver enable default group bamserver enable
+
+garay-2800-1(config)#aaa authorization network default group bamserver local
+
+
+
+
+garay-2800-2(config)#ip access-list standard acl_snmp
+
+garay-2800-2(config-std-nacl)#permit host 74.123.12.242
+
+garay-2800-2(config-std-nacl)#deny any
+
+garay-2800-2(config)#snmp-server community quasar RO acl_snmp
+
+garay-2800-2(config)#snmp-server location dixie
+
+garay-2800-2(config)#snmp-server contact rgaray
+
+garay-2800-2(config)#logging source-interface l0
+
+garay-2800-2(config)#logging host 74.123.12.242
+
+garay-2800-2(config)#logging trap 7
+
+garay-2800-2(config)#int f0/1.3317
+
+garay-2800-2(config-subif)#ip flow ingress
+
+garay-2800-2(config-subif)#ip flow egress
+
+garay-2800-2(config)#ip flow-export destination 74.123.12.242 9995
+
+garay-2800-2(config)#ip flow-export version 9
+
+garay-2800-2(config)#ip flow-export source loopback 0
+
+

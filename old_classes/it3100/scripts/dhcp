@@ -1,0 +1,22 @@
+#!/bin/bash
+
+
+
+# Varibles must be changed
+user_name=acoulter
+server=andrew@144.38.217.194
+ip="144\.38\.217\.[0-9][0-9]."
+name=clientafs
+
+ssh $user_name@ssh.cs.dixie.edu "
+ssh -T $server  <<'ENDSSH'
+cat /var/lib/dhcp/dhcpd.leases
+ENDSSH" > leases
+
+address=$(cat leases | grep -B 7 $name | grep -o $ip)
+
+
+#echo $address | grep -o 
+
+echo $user_name@$address
+#ssh $user_name@address

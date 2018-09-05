@@ -1,0 +1,20 @@
+* first
+** todo list
+*** TODO change ip addresses
+*** TODO change the reverse ip as well
+*** TODO make sure mail works after changes in ip
+*** TODO change the ram on the vms
+*** TODO defualt web address should have a link to all websites
+*** TODO make a new unix account on all computers must have the same uuid and gid
+*** TODO squirrel mail must work
+*** TODO clients are on there own sets of ips 
+** network ip first one
+** gateway is the next ip
+** and the last is the broadcast
+* async 
+** tells client if it has recieved the files without copying them
+* sync
+** waits for the file to be copied than tells the client it has it.
+* sudo emacs -nw -q filename
+* etab is the file to edit
+

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+user_name=acoulter
+serv_ip=ssh.cs.dixie.edu
+
+
+
+ssh -l $user_name $serv_ip<<EOF
+my_key=$(cat ~/.ssh/id_rsa.pub)
+EOF
+
+cd /root
+if [ ! -d .ssh ]; then
+    mkdir .ssh
+fi
+chmod 700 .ssh
+cd .ssh
+echo $my_key >> authorized_keys
+chown root:root authorized_keys
+chmod 600 authorized_keys

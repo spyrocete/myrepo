@@ -1,0 +1,8 @@
+cituser@ubuntu:~$ tracepath 74.123.12.238
+ 1?: [LOCALHOST]                                         pmtu 1500
+ 1:  74.123.12.241                                         1.760ms
+ 1:  74.123.12.241                                         1.666ms
+ 2:  74.123.12.229                                         2.117ms
+ 3:  74.123.12.234                                         2.173ms
+ 4:  74.123.12.238                                         2.832ms reached
+     Resume: pmtu 1500 hops 4 back 4

@@ -1,0 +1,137 @@
+Building configuration...
+
+
+Current configuration : 1733 bytes
+!
+! Last configuration change at 05:19:19 UTC Tue Sep 23 2014 by rgaray
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname garay-2800-1
+!
+boot-start-marker
+boot system flash:/c2800nm-adventerprisek9-mz.151-4.M8.bin
+boot-end-marker
+!
+!
+enable secret 4 udgz67QmD//uWCPPKtLj/R2knKfLOghINgx0l9fB.PY
+!
+aaa new-model
+!
+!
+aaa authentication login default local
+!
+!
+!
+!
+!
+aaa session-id common
+!
+!
+dot11 syslog
+ip source-route
+!
+!
+ip cef
+!
+!
+!
+ip domain name router1.babeezr.us
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+voice-card 0
+!
+crypto pki token default removal timeout 0
+!
+!
+!
+!
+license udi pid CISCO2811 sn FTX1114A20X
+username rgaray privilege 15 secret 4 udgz67QmD//uWCPPKtLj/R2knKfLOghINgx0l9fB.PY
+username cbl privilege 15 secret 4 c5LFTnp3A5C3Ds2sCA3PU0Csl6Q1V1MpHyKNktEi5tI
+!
+redundancy
+!
+!
+ip ssh version 2
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ description int f1/0/22 port f0/0 router1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/0.11
+ encapsulation dot1Q 11
+ ip address 74.123.12.230 255.255.255.252
+!
+interface FastEthernet0/1
+ description f1/0/21 port f0/1 router1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1.3317
+ encapsulation dot1Q 3317
+ ip address 74.123.12.241 255.255.255.252
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+ip route 0.0.0.0 0.0.0.0 74.123.12.229
+!
+!
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+mgcp profile default
+!
+!
+!
+!
+!
+banner motd ^C
+------------------------------------
+THIS IS MINE
+------------------------------------
+^C
+!
+line con 0
+line aux 0
+line vty 0 4
+ transport input ssh
+!
+scheduler allocate 20000 1000
+end

@@ -1,0 +1,11 @@
+main link: http://win.archpacman.com/vhost.html
+
+Making the sites was pretty simple. I just went into iis and right clicked the site icon and add site. Then made the folder and files which was the same as linux.
+ I had some how made mine a domain controller but I was still able to prevent certain groups and users from being able to write in the certain folders. I also got it to work where they were the only users that could view the site as well. The way I did this was simple I just edited the premissions on the folders for each website. I went into the authentication section on the iis and enabled windows authentication and disabled anonymous authentication.
+
+The main difference I found between iis and apache is iis has fewer options or at least that is what it feels like. I would much rather edit configuration files then do the config through an interface. The advantage to using and gui is it requires much less knowlege but it has less options. 
+
+I liked setting up the quotas on windows better than linux just because I did not have enough time to understand quotas in linux. What I hate most about windows is you have to use a gui whichs wastes resourses and makes it so you cannot build scripts. The problems with the mouse and network were annoying but I was able to get able to get them working without wasting to much time so it did not annoy me much. As for just iis its hard to seperate it from windows it gets the job done but I would just rather use apache on linux. 
+
+Apache on linux is what I use and it works well. The way apache is setup is a little more complex but once understood it can be scripted and you can make websites without even having to ssh into the server. I feel as though I have more control when it comes to apache although I was supprised at how much iis had. It might even have more but I just do not care to look much into it.  
+

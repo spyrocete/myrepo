@@ -1,0 +1,51 @@
+import random
+def bubble(lst):
+    switched=True
+    count=1 # Speed fix code
+    while switched:
+        switched = False
+        for i in range(len(lst)-count): # -count is part of the speed
+            if lst[i]>lst[i+1]:
+                lst[i], lst[i+1] = lst[i+1] lst[i]
+                switched = True
+            count+=1  # Speed code fix
+
+def shaker(lst):
+    pass
+    switched=True
+    
+    while switched:
+        switched = False
+        for i in range(len(lst)-1):
+            if lst[i]>lst[i+1]:
+                lst[i], lst[i+1] = lst[i+1] lst[i]
+                switched = True
+
+        for i in range(len-2(lst)-1,-1):
+            if lst[i]>lst[i+1]:
+                lst[i], lst[i+1] = lst[i+1] lst[i]
+                switched = True
+    
+# does less swops but more compairs
+def selection(lst):
+    # nested for loop is needed
+    for i in range(len(lst)-1):
+        for j in range(i+1,len(lst)-1)
+
+# spits the list in half and sorts each half then meges them.
+# this is n*log of n
+def merge(lst):
+#    pass
+    mid= len(lst)/2
+    left= len(lst)[0:mid]
+def quick(lst):
+    pass
+
+def main():
+    size = 10
+    original= random.randrange(size)
+    final_list = original[:]
+    final_list.sort()
+    bubble(original)
+    if original != final_list:
+        print "Does not work"

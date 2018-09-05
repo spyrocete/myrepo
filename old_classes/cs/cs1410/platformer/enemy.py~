@@ -1,0 +1,56 @@
+from sprite import Sprite
+import pygame
+import sys
+
+class Enemy(Sprite):
+    def __init__(self, world, obj):
+        if obj.gid is None:
+            print >>sys.stderr, 'Player: must be created from tile object'
+            sys.exit(1)
+
+        self.world = world
+        self.gid = obj.gid
+        self.o_gid = self.gid
+        tile = world.data.tiles[self.gid]
+
+        Sprite.__init__(self,
+                world,
+                obj.kind,
+                '{} ({},{})'.format(obj.kind, obj.x, obj.y),
+                tile.get_width(), tile.get_height(),
+                obj.x, obj.y,
+                (16.0, 16.0))
+        self.addForce('friction', (1.0, 0.0), 'slowdown')
+        self.addForce('gravity', (0.0, 1.0), 'constant')
+
+    def paint(self, surface):
+        self.paintTile(surface, self.world.data.tiles[self.gid])
+
+    def npc_logic(self):
+        if self.dy == 0.0:
+            if pygame.K_UP in newkeys:
+                self.addForce('uparrow', (0.0, -70.0), 'onetime')
+        if pygame.K_DOWN in keys:
+            self.addForce('downarrow', (0.0, -3.0), 'onetime')
+        if pygame.K_LEFT in keys:
+            self.addForce('leftarrow', (-3.0, 0.0), 'onetime')
+        if pygame.K_RIGHT in keys:
+            self.addForce('rightarrow', (3.0, 0.0), 'onetime')
+
+        self.pswitch += 1
+        if self.pswitch % 30 == 0:
+            self.gid += 1
+            self.pswitch = 0
+        elif self.pswitch % 15 == 0:
+            self.gid = self.o_gid
+
+        (x, y) = (self.x, self.y)
+        self.move()
+
+    def handleCollisionWith(self, name, other):
+        # stop when we hit a wall/edge
+        if name == 'boundary' or name == 'solid':
+            return True
+
+
+        return False

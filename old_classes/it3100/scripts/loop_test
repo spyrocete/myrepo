@@ -1,0 +1,18 @@
+#!/bin/bash
+
+vm=clone
+
+vm_line=$(grep $vm feedback)
+grep $vm feedback | grep -o desdemona
+
+declare -a cit_servers=("cordelia" "desdemona" "ophelia")
+
+server=$(echo $vm_line | for i in "${cit_servers[@]}";
+do
+  grep -o $i
+done)
+
+echo $vm_line | grep -o "desdemona"
+
+echo $server
+

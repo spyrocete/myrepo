@@ -1,0 +1,23 @@
+garay-2800-2#show access-lists
+Standard IP access list 1
+    10 permit 204.17.177.8 (345 matches)
+    20 permit 204.17.177.3 (344 matches)
+    30 deny   any (63 matches)
+Standard IP access list ssh_access
+    30 permit 209.33.215.102
+    20 permit 144.38.192.40 (12 matches)
+    10 permit 192.168.1.2
+    40 deny   any (1201 matches)
+Extended IP access list extenze
+    10 permit tcp 144.38.0.0 0.0.255.255 any eq ftp 22 www
+    20 permit tcp 209.33.0.0 0.0.255.255 any eq ftp 22 www
+    30 permit tcp 192.168.0.0 0.0.255.255 any eq ftp 22 www
+    40 deny tcp any 74.123.12.236 0.0.0.3 eq www
+    50 deny tcp any 74.123.12.236 0.0.0.3 eq ftp
+    60 permit tcp host 74.123.12.236 host 204.17.177.11 eq domain
+    70 permit tcp host 74.123.12.236 host 204.17.177.21 eq domain
+    80 permit udp host 74.123.12.236 host 204.17.177.21 eq domain
+    90 permit udp host 74.123.12.236 host 204.17.177.11 eq domain
+    100 deny tcp host 74.123.12.238 eq domain any
+    110 deny udp host 74.123.12.238 eq domain any
+    120 permit ip any any (962 matches)

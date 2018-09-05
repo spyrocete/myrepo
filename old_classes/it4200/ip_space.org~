@@ -1,0 +1,14 @@
+* ips
+starting ip is 70
+
+| ip | domain |
+|----+--------|
+| 70 | xen    |
+| 71 | ns1    |
+| 72 | ns2    |
+| 73 | www    |
+| 74 | vader  |
+| 75 | leia   |
+| 76 | chewy  |
+| 77 | clone  |
+|    |        |

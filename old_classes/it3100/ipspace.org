@@ -1,0 +1,52 @@
+* fixed
+** ips
+194 dhcp
+195 ns1
+196 clone
+197 ns2
+198 mail
+199 http
+200 ntfs
+201 data
+202 disk
+203 ldap
+202 smb
+204 afs
+205 kerberos
+206 smb-pdc
+207 int-ldap
+218 smbint
+219 intnfs
+* fixed dynamic
+208
+209
+210
+211
+212
+* dynamic
+213
+214
+215
+216
+217
+* extra ip
+
+
+220
+221
+222
+* ip range
+** 
+192-223
+** cyder
+192/27
+** gateway
+193
+** broodcast
+223
+** netmask
+255.255.255.224
+** problem ips
+201
+202
+

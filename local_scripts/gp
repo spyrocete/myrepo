@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+if [ "$HOSTNAME" == "arch_laptop" ]; then
+    git pull
+fi
+
+if [ "$1" == "l" ]; then
+    git pull lds master
+fi
+
+if [ "$1" == "h" ]; then
+    git pull homework master
+fi

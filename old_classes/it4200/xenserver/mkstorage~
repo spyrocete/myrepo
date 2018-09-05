@@ -1,0 +1,8 @@
+#!/bin/sh
+echo "Please enter name of new storage for iso"
+read name
+
+echo "Please enter in storage localtion"
+read repo_path
+
+xe sr-create name-label=$name type=iso device-config:legacy_mode=true device-config:location=$repo_path content-type=iso

@@ -1,0 +1,94 @@
+#!/bin/bash
+
+# Andrew Coulter
+# email: spyrocete@gmail.com
+
+# if you want to choose a different ram and disk space use w as a parameter\
+# when running the command like this ./vnc_tunnelV2 w 
+
+echo "If script does not work try running it using screen"
+echo "enter name of new vm"
+read name
+
+# if there is no parameter passed in than the below values will be used.
+if [ -z "$1" ]; then 
+    ram=$(echo 256)
+    disk=$(echo 6)
+fi
+
+if [ "$1" = "w" ]; then
+    echo "how much ram"
+    read ram
+    echo "how much disk space"
+    read disk
+fi
+
+# echo $ram
+# echo $disk
+
+#-----------------------------------
+# file paths may need to be changed
+#-----------------------------------
+# Files pathes to the drives that have the vm images on them.
+# These change all the time check both places before using this script.
+
+# Keep all three pathes listed they may change.
+dir="/qemu/images/"
+# dir2="/ispace/qemu/images/"
+# dir2="/gspace/qemu/images/"
+
+#-------------------------------------------------------------
+# user, vlan, and replace will need to be set before running
+#-------------------------------------------------------------
+user="acoulter"
+vlan="2031"
+replace="clone"  # name of the image that will replace your new vm
+
+# boot_img may need to be changed.
+boot_img="trusty_net"
+
+# Do not change
+old_img="$user-$user-$name.img"
+replacement="$user-$user-$replace.img"
+
+########################## Commands ######################################
+
+citv createvm $name $ram $disk $vlan # The create vm command
+
+echo
+echo "vm was made would you like to boot it or copy your clone over it?"
+echo "b for boot and c for clone"
+read boot
+
+if [ "$boot" = "b" ]; then
+    echo
+    echo "Your image to boot from is $boot_img"
+    echo "Would you like to use it or a different one? d for dirrent or y for current one"
+    read answer
+fi
+  
+if [ "$answer" = "y" ]; then
+    citv bootvm $name d $boot_img
+fi
+
+
+if [ "$answer" = "d" ]; then
+    echo "Here are all of the other images" 
+    echo
+    citv isos | tail
+    echo
+    echo "Type the full name of the image you want"
+    read second_img
+    citv bootvm $name d $second_img
+fi
+
+# This will copy old image and replace the new vm just made.
+if [ "$boot" = "c" ]; then
+  " ls $dir$old_img&& cd $dir2; cp $replacement  $dir$old_img
+    ls $dir2$old_img&& cd $dir2; cp $replacement  $dir2$old_img"
+    ls $dir$old_img&& cd $dir2&& cp $replacement  $dir$old_img&& echo "vm was copied with no problems."
+
+# the code commented out below may be needed.
+
+#    ls $dir2$old_img&& cd $dir2&& cp $replacement  $dir2$old_img&& echo "vm was copied with no problems."
+fi

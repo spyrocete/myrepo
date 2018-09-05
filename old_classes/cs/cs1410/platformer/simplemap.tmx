@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="70" height="32" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="tiles" tilewidth="32" tileheight="32">
+  <image source="./tiles.png" width="5504" height="1024"/>
+ </tileset>
+ <layer name="background" width="70" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2aMQrCMBSGX21GHYR6BE/gJC7i5uLm7g28hZu6iJN4MWf1AuJspJVKSWKSviSvNcNPoKHQfv3//7XQbQqwC6Q9VwIAwy49jRkAy8JowkouqwEdRS6RS+QSuVDjwsdI5CLhYqJ/4RJzRJvLuiPWpiJMLjo58M1FxEC079IvHx42vYHF5RcH2TmyPV0fUc+RzbN37Zcmc3HZL1S4mGQI3S9QSNIzdYXRu0G4EPWLyDt1uFDv3WU/l82cDuYXRaZC+kXUN7rvdabdq/SLBzaN/A4w4GLbxa65jNKaXETZaYFfLkkp1bE25+iQ0csRBS5TRJ8p51FgLt9+xxBajmQeQuTWyHnkQeS5eHyX881FJ1tWfnHYN1UuJ74uegDnwP6hlqM3k3kvX03v5Zi1l8ujYPK04DJD9suVX9stkO6M7n8eLynXXtUAIwAA
+  </data>
+ </layer>
+ <layer name="solid" width="70" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+1WWxLEIAizM3uE3v+sPcAiIIZHLZnhq2hiFMo1xrg6yMhCBQ0UsjW1Lzx/+0Lzty80/ym+oM5xoi+I/91pvqD52xea36rBaz7j1kXc5SqHdGaUXsmXmRY0v6RhCHmzNRyfJi8LK76s7LmLU33x7C8R0Phi6UFIXVptltDwa7Rq8IU6onI1eRq+N/ddKh+Ro9nDawZY4d+ZX3ZrmeOZffMGchZCAuWL9f6q+zKrp98dxx+1/27fPcEXK7q/0OD+R9m+IOZJjzqSzoGcE97wXjL4q/qSpS2C2zLraTR5aq/+XrL52xeav6ovHf/xAEL2j+kAIwAA
+  </data>
+ </layer>
+ <objectgroup name="sprites" width="70" height="32">
+  <object type="player" gid="1709" x="53" y="988"/>
+  <object type="coin" gid="3661" x="617" y="325"/>
+  <object type="coin" gid="3661" x="761" y="370"/>
+  <object type="coin" gid="3661" x="851" y="139"/>
+  <object type="coin" gid="3661" x="356" y="129"/>
+  <object type="coin" gid="3661" x="607" y="138"/>
+  <object type="coin" gid="3661" x="356" y="129"/>
+  <object type="coin" gid="3661" x="84" y="278"/>
+  <object type="coin" gid="3661" x="451" y="719"/>
+  <object type="enemy" gid="4814" x="746" y="985"/>
+  <object type="enemy2" gid="5475" x="1514" y="572"/>
+  <object type="weakwall" gid="3" x="190" y="960"/>
+  <object type="weakwall" gid="3" x="189" y="992"/>
+  <object type="door" gid="5163" x="486" y="192"/>
+  <object type="door" gid="5164" x="518" y="192"/>
+  <object type="door" gid="5335" x="485" y="224"/>
+  <object type="door" gid="5336" x="516" y="224"/>
+  <object type="coin" gid="3661" x="1462" y="549"/>
+  <object type="coin" gid="3661" x="1560" y="547"/>
+  <object type="coin" gid="3661" x="1469" y="475"/>
+  <object type="coin" gid="3661" x="1550" y="477"/>
+ </objectgroup>
+</map>

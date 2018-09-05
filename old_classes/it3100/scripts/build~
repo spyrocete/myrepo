@@ -1,0 +1,9 @@
+#!/bin/bash
+
+name="test"
+
+echo "Host "$name"
+     HostName 144123412
+     User tom
+
+" > test

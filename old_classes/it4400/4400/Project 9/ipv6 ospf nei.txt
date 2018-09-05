@@ -1,0 +1,25 @@
+garay-2800-1#show ipv6 ospf neighbor
+
+Neighbor ID     Pri   State           Dead Time   Interface ID    Interface
+74.123.12.250     0   FULL/  -        00:00:37    9               FastEthernet0/1.13
+74.123.12.248     0   FULL/  -        00:00:37    2079            FastEthernet0/0.11
+
+
+
+garay-2800-2#show ipv6 ospf neighbor
+
+Neighbor ID     Pri   State           Dead Time   Interface ID    Interface
+74.123.12.249     0   FULL/  -        00:00:31    8               FastEthernet0/1.13
+74.123.12.248     0   FULL/  -        00:00:35    2080            FastEthernet0/0.12
+
+
+
+
+garay-3750#show ipv6 ospf neighbor
+
+Neighbor ID     Pri   State           Dead Time   Interface ID    Interface
+74.123.14.255     1   FULL/  -        00:00:37    2185            Vlan117
+74.123.12.249     1   FULL/  -        00:00:39    6               Vlan11
+74.123.12.250     1   FULL/  -        00:00:34    7               Vlan12
+
+

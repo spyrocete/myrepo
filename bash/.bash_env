@@ -1,0 +1,3 @@
+PS1='[\u@\h \W]\$ '
+export EDITOR="emacs"
+export PATH=$PATH":$HOME/homework/local_scripts"

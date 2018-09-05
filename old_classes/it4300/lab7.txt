@@ -1,0 +1,133 @@
+mysql> source lab6.mql
+ERROR: 
+Failed to open file 'lab6.mql', error: 2
+mysql> source lab6.sql
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+--------------
+select round (avg(price),2) as "Average Price" from titles
+--------------
+
++---------------+
+| Average Price |
++---------------+
+|         18.39 |
++---------------+
+1 row in set (0.00 sec)
+
+--------------
+select count(title_name) as "Qty" from titles
+--------------
+
++-----+
+| Qty |
++-----+
+|  13 |
++-----+
+1 row in set (0.00 sec)
+
+--------------
+select sum(sales*price) as "Volume" from titles
+--------------
+
++-------------+
+| Volume      |
++-------------+
+| 41428860.77 |
++-------------+
+1 row in set (0.00 sec)
+
+--------------
+select type, round(avg(pages)) as "Average Pages" from titles group by type
+--------------
+
++------------+---------------+
+| type       | Average Pages |
++------------+---------------+
+| biography  |           438 |
+| children   |            54 |
+| computer   |          1226 |
+| history    |           308 |
+| psychology |           512 |
++------------+---------------+
+5 rows in set (0.00 sec)
+
+--------------
+select type, round(avg(pages)) as "Average Pages" from titles group by type having avg(pages) > '500'
+--------------
+
++------------+---------------+
+| type       | Average Pages |
++------------+---------------+
+| computer   |          1226 |
+| psychology |           512 |
++------------+---------------+
+2 rows in set (0.00 sec)
+
+--------------
+select type, round(avg(pages)) as "Average Pages" from titles group by type having avg(pages) > '500' order by pages
+--------------
+
++------------+---------------+
+| type       | Average Pages |
++------------+---------------+
+| psychology |           512 |
+| computer   |          1226 |
++------------+---------------+
+2 rows in set (0.00 sec)
+
+--------------
+select count(distinct state) "Number of States" from authors
+--------------
+
++------------------+
+| Number of States |
++------------------+
+|                4 |
++------------------+
+1 row in set (0.00 sec)
+
+--------------
+select distinct state, count(au_lname) as "#of Authors" from authors group by state
+--------------
+
++-------+-------------+
+| state | #of Authors |
++-------+-------------+
+| CA    |           3 |
+| CO    |           1 |
+| FL    |           1 |
+| NY    |           2 |
++-------+-------------+
+4 rows in set (0.00 sec)
+
+--------------
+select distinct type, count(title_name) as "#of books" from titles where type <> 'children' group by type
+--------------
+
++------------+-----------+
+| type       | #of books |
++------------+-----------+
+| biography  |         4 |
+| computer   |         1 |
+| history    |         3 |
+| psychology |         3 |
++------------+-----------+
+4 rows in set (0.00 sec)
+
+--------------
+select distinct type, count(title_name)as "#of books" from titles group by type having count(title_name)>='3'
+--------------
+
++------------+-----------+
+| type       | #of books |
++------------+-----------+
+| biography  |         4 |
+| history    |         3 |
+| psychology |         3 |
++------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> ext

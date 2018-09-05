@@ -1,0 +1,69 @@
+* Brandon Nygard
+help desk specialist level 2 at zagg. Was lead tech for a year at
+dsu. esxi virtual
+
+make your project something you want to do after graduation
+
+** life after dsu
+People around you are good to keep in touch with. They can be good 
+assets. 
+
+Your degree can count as some of your expeirnec.
+
+Try and learn many different aspects of it so 
+
+Start applying for jobs now do not wait until graduation.
+
+when you first start ask for info about the infastructor.
+
+If you cannot meet a dead line ask for an extension.
+
+* interviews
+imployers are looking for someone that can fit into their group.
+** interview process
+What are projects you like to do or have done
+what do you do in your spare time
+Strenths
+how well do you do with pressure
+degruntalted imployies (honest and listen to them)
+Goals
+give a specific example of hard work or anything by telling a short story.
+** certifications
+he pefers certificates over degrees.
+
+** intervie do nots
+Do not tell the them what they are doing wrong
+
+** int james
+What it classes do you like
+What is something that was hard to do that you did
+example of on the job problem sovled user related
+Worked with virtualization
+on windows what have you done 
+Networking what have you done
+sntp tools
+try and pause to answer the question
+interests out side of computers 
+** technical
+What do you offer for empleys
+What is the order in employs their families.
+Line between too much and to little.
+It should be as much as an interview for me as it is for the interviewer
+write a card or email a day or two after the interview. You may want to call 
+ 
+** about self
+Tell them about running the marathon 
+you like to humor
+*** what they do 
+work a lot with vmware
+configure firewall
+setting up servers
+monitoring
+balancing 
+budget hardware to get the right budget
+
+
+** Fiber links 
+they run fiber throughout st goerge
+** toniquen networks 
+They provide internet to residental areas 

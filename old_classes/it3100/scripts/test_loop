@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+vm="clone"
+
+server=$(cat feedback | grep $vm | for i in "cordelia" "desdemona" "ophelia"
+do
+  grep -o $i
+done)
+
+#echo $server

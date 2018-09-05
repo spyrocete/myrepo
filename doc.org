@@ -1,0 +1,1026 @@
+* mysql
+** install mysql
+cmd:sudo apt-get install mysql-server
+** Connecting to mysql database with php
+*** source
+<?php
+
+//the example of inserting data with variable from HTML form
+mysql_connect("host_name","user_name","password");//database connection
+mysql_select_db("dbname");
+
+// Get values from form 
+$name = $_POST['name'];
+$address = $_POST['address'];
+
+//inserting data order
+$order = "INSERT INTO data_employees
+	   (name, address)
+	  VALUES
+	   ('$name','$address')";
+
+//declare in the order variable
+$result = mysql_query($order);	//order executes
+if($result)
+{
+ echo("
+Input data is succeed");
+}
+else
+{
+ echo("
+Input data is fail");
+}
+
+?>
+
+This code was taken from the following website
+link:http://onlinephpguide.com/php-mysql-insert
+
+additinal information
+link:http://www.tutorialspoint.com/php/mysql_insert_php.htm
+
+** post date php and html
+link: http://www.phil-hudson.com/post-datetime-form-submission-using-mysql-php/
+
+** commands for mysql
+all databases will have the name $data and users will have $user this 
+can be replaced by any names you want the $ is not needed. 
+link:http://www.pantz.org/software/mysql/mysqlcommands.html
+
+need:first in the terminal run the following command
+
+cmd:mysql -u root -p
+
+the -u is to use a different user and the -p is to use a different password.
+you should be in a mysql terminal prompt from here all mysql commands can be
+run.
+
+
+show all data bases
+cmd:show databases;
+
+create database 
+cmd:create database $data;
+
+drop database
+cmd:drop database $data;
+
+create user
+cmd:create user ‘$user’@’localhost’ identified by ‘password’;
+
+note: the password can be any password that you want it to be.
+
+# drop user
+cmd:drop user ‘$user’@’localhost’;
+
+
+
+# to show users
+# need:first make sure you run the following command this will put you in mysql database which is needed to see users and users in databases.
+cmd:use mysql;
+select user,host,password from user;
+
+# to show users that have privileges to any databases (must be using mysql database by running the command use mysql)
+cmd:select user,host,db from db;
+
+# to grant privileges 
+cmd:grant all privileges on $data.*  to ‘$user’@localhost’;
+
+note: the database must be followed by .* 
+
+
+to revoke privileges for users
+cmd:revoke all privileges on $data.* to ‘$user’@’localhost’;
+
+when dealing with privileges it is best to run the following command after making changes. 
+cmd:flush privileges; 
+
+*** tables colums
+inert in table
+cmd:insert into table_name (coumn1,column2,column3)
+cmd:values (value1,value2,value3);
+
+# show columns 
+cmd:show columns table_name from db_name;
+# show columns while using the database
+cmd:show columns from table_name;
+
+# show data in columns
+cmd:select column_name from table_name
+
+to search for certain value
+cmd:select * from table_name where column_name like search_term;
+example if I want to search for 3 in column named id I would do the following
+ex:select * from table_name where id like 3;
+** create a file of everything done
+# while inside of mysql
+tee file_name
+** make a temp database from a query
+select * from [table]
+ into [new table]
+* emacs
+** macros
+start defining
+C-x (
+end defining
+C-x )
+
+execute
+C-x e
+
+execute multiple times
+C-u [number] C-x e
+
+name macro
+M-x name-last-kbd-macro
+
+call named macro
+M-x [name of macro]
+
+save macro for use in different emacs session
+open .emacs file
+M-x insert-kbd-macro
+
+bind key to your macro
+edit .emacs
+(global-set-key (kbd "C-c a") '[name of macro])
+** master emacs
+link:http://ergoemacs.org/emacs/effective_emacs.html
+** commands
+align text
+C-u M-x align
+
+stop current command
+C-j
+
+link:http://www.emacswiki.org/emacs/AlignCommands
+
+make spaces or tabs the same
+firs indent the first line of selected code and highlight it and the rest of
+the code and press tab it should all be aligned with the first line of code.
+
+* printers
+** drivers and info
+link:http://www.openprinting.org/printers
+** my printer
+brother hl-2270dw
+drivers that can be used: Brother HL-1250
+* metasploit
+** information on metasploit
+link:http://www.offensive-security.com/metasploit-unleashed/Main_Page
+* magit
+** magit commands
+get status
+M-x magit-status
+refresh status buffer with
+g
+stage changes
+s
+commit
+c
+push
+P
+
+** website for more commands
+link:http://daemianmack.com/magit-cheatsheet.ht
+* linux
+** find version running
+cmd: lsb_release -a
+** gernerate sourse list
+   link: http://repogen.simplylinux.ch/
+** fix apt-get
+   rm -rf /var/lib/apt/lists
+** refrsh bashrc
+source ~/.bashrc
+
+** emacs ctr+space fix
+# From the commandline run: 
+ibus-setup
+# Under General::Next Input Method you should see <Control>space. 
+# Click on the three dots and change it to something else. Hit Apply
+# and close out. ctrl-space should work in Emacs now.
+
+** /etc/network/interface
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+	address 144.38.222.69
+	network 144.38.222.64
+	netmask 255.255.255.224
+	gateway 144.38.222.65
+	dns-nameservers 8.8.8.8 8.8.4.4
+
+** school vm install instructions
+network is the first ip int the range
+netmask is normally /27 which is 255.255.255.224 this would be 30 ip addresses
+gateway add 1 to the network address
+first usable add 2 to the network 
+
+** mount windows hard drive
+mount -t ntfs-3g
+* xen server
+** make local repo for iso
+mkdir /var/opt/iso_inport && cd /var/opt/iso_inport
+wget iso link
+xe sr-create name-label=LocalISO type=iso device-config:location=/var/opt/iso_inport device-config:legacy_mode=true content-type=iso
+** vm install
+link:http://wysotsky.info/?p=88
+** gui manager
+# openxenmanager
+https://github.com/OpenXenManager/openxenmanager
+** change vm ram
+# check the amount of ram that is assigned to vm
+xe vlist params=all name-label="vm-name" | grep memory
+xe vm-shutdown name-label="vm-name"
+# get uuid of vm
+xe vm-list params-uuid name-label="vm-name"
+# set vm ram
+xe vm-param-set memory-static-max=<ram in bytes> memory-dynamic-max=<same> memory-dynamic-min=<same> uuid=<vm uuid>
+** fix vm that wont boot
+# find uuid of vm
+cd /opt/xensource/debug
+list_domains | grep <uuid of vm>
+./xenops destory_domain -domid <id found in step above>
+xe-toolstack-restart
+
+* git
+** make git server
+# on the server side make a folder and run this command inside of the folder
+git --bare init
+
+# client side
+git init 
+git add .
+git commit -m 'first commit'
+git remote add origin andrew@192.157.221.222:~/homework
+git push origin master
+ 
+** push the git files to different folder
+
+*** make a file in the git repo /hooks/post-receive
+#!/bin/sh
+GIT_WORK_TREE=/home/andrew/homework git checkout -f
+
+*** after file is made run command below
+chmod +x /hooks/post-receive
+
+** remove file from git
+git rm --cached filename
+
+* cisco
+
+link: http://www.cisco.com/c/en/us/td/docs/ios/12_2/configfun/configuration/guide/ffun_c/fcf006.html#wp1001335
+** redirect output from command
+show run | redirect filename
+# see all of the file systems
+show file system
+# show all of files in a file sytem
+more flash:filename
+** loop
+int range f0/11-20(command)
+
+** show int status
+** pass for switch
+thisismypass
+
+** setup
+# set password for enable
+enable
+config t
+enable secret
+end
+no cdp run
+
+# setup for user login
+
+aaa new-model
+aaa authentication login default local
+line vty 0 4
+login authentication default 
+end
+
+# make banner
+banner motd Q
+# where the Q is, is the caractor that you will end your motd
+
+# create user
+username andrew privilege 15 secret timeforfun
+
+# change hostname
+enable
+config t
+hostname name-you-want
+
+# delete old vlan files
+
+** remove user
+"no username xxxx(user) password <RETURN>.
+** show versions
+enable
+show version
+
+** show config
+show run
+** vlan
+
+** get rid of annoying transimiting msg
+no ip domain-lookup
+** ip
+enable
+conf t
+int f0/0
+# note if on switch do int vlan 1
+ip address ip-address mask
+# example: ip address 144.38.204.75 255.255.255.224
+no shutdown
+exit
+*** rout1
+int f1/0/0
+ description vlan for test
+ encapsulation dot1Q 101
+ ip address 74.123.12.134 255.255.255.252
+ no shutdown
+exit
+
+# practical test
+int f0/1.[vlan numb]
+ encapsulation dot1Q [vlan numb]
+ ip address 74.123.12.134 255.255.255.252
+exit
+
+
+*** switch
+vlan 914
+ description for practical test 
+ name ptest
+interface Vlan914
+ description for practical test 
+no ip address 74.123.12.137 255.255.255.252
+interface FastEthernet1/0/24
+ switchport access vlan 102
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 102,114
+ switchport mode trunk
+
+# practical test
+# 74.123.14.216/29
+# Address:   74.123.14.216         01001010.01111011.00001110.11011 000
+# Netmask:   255.255.255.248 = 29  11111111.11111111.11111111.11111 000
+# Wildcard:  0.0.0.7               00000000.00000000.00000000.00000 111
+# =>
+# Network:   74.123.14.216/29      01001010.01111011.00001110.11011 000 (Class A)
+# Broadcast: 74.123.14.223         01001010.01111011.00001110.11011 111
+# HostMin:   74.123.14.217         01001010.01111011.00001110.11011 001
+# HostMax:   74.123.14.222         01001010.01111011.00001110.11011 110
+# Hosts/Net: 6                     
+
+vlan 914
+ description for practical test 
+ name ptest
+interface Vlan914
+ description for practical test
+ ip address 74.123.14.218 255.255.255.248
+interface FastEthernet1/0/18
+ switchport trunk allowed vlan 400,3314,914
+interface FastEthernet1/0/22
+ switchport trunk allowed vlan 400,3330,914
+
+# tests
+ping 74.123.14.217
+*** p rout1
+int f0/1.914
+  ip address 74.123.14.219 255.255.255.248
+
+
+*** p rout2
+int f0/1.914
+  ip address 74.123.14.220 255.255.255.248
+
+** ip routing
+enable
+conf t
+ip routing
+ip rout 0.0.0.0 0.0.0.0 <ip gateway>
+
+** ipv6
+*** switch
+
+** ssh
+# config ip and ip routing first
+ip domain-name <domain name>
+crypto key generate rsa
+# do at least 1024
+ip ssh version 2
+no ip ssh version 1
+line vty 0 4
+transport input ssh
+*** time out
+line vty 0 4
+session-timeout 10
+exec-timeout 10 0
+
+** keyless
+aaa new-model
+aaa authentication login default local
+aaa authorization exec default local none
+username andrew privilege 15 password timeforfun
+ip scp server enable
+
+ip ssh pubkey-chain
+username andrew
+key-string
+
+
+** copy from tftp server
+copy tftp flash
+** before rebooting into new iso
+show version
+# make sure regiester is set to 0x2102 if not run the following
+conf t
+config-register 0x2102
+
+* arch linux
+** uefi boot with windows
+https://wiki.archlinux.org/index.php/Windows_and_Arch_dual_boot
+
+** bashrc
+# to reload bashrc do source .bashrc
+export PATH=$PATH":$HOME/homework/local_scripts"
+export EDITOR="emacs"
+** virtual box
+# the only one needed is modprobe vboxdrv, the other two are suppose to get windows 8 working
+alias vbox='sudo modprobe vboxdrv;sudo modprobe -r kvm_intel;sudo modprobe kvm_intel nested=1;echo "mods loaded"'
+
+** custom iso
+
+*** add custom repo of apps to live disk
+# custom repository uncomit lines below
+[customrepo]
+SigLevel = Optional TrustAll
+Server = file:///home/user/customrepo/$arch
+
+# Make a custom.db
+touch custom.db.tar.gz
+# Run the following command
+repo-add /path/to/repo.db.tar.gz /path/to/*.pkg.tar.xz
+
+
+=======
+** acl
+*** setup
+**** router1
+ntp server 198.60.22.240
+ntp server 204.17.177.8
+ntp server 204.17.177.3
+
+Standard IP access list 11
+    10 permit 204.17.177.8
+    20 permit 204.17.177.3
+    30 deny   any
+
+ip access-list standard test
+ permit 74.211.92.222
+ permit 209.33.215.102
+ permit 144.38.192.40
+ permit 144.38.0.0 0.255.255.255
+ deny   any
+
+ip access-list standard test
+no deny   any
+ permit 144.38.0.0 0.255.255.255
+ deny   any
+
+line vty 0 4
+    access-class test in
+line vty 5 15
+    access-class test in
+
+ntp access-group peer 11
+
+ip access-list extended vms 
+ permit tcp 144.38.0.0 0.0.255.255 host 74.123.12.141 eq 22 21 80
+ permit tcp 209.33.192.0 0.0.63.255 host 74.123.12.141 eq 22 21 80
+ deny tcp any host 74.123.12.141 eq 80 21
+ permit tcp host 204.17.177.11 host 74.123.12.142 eq 53
+ permit udp host 204.17.177.11 host 74.123.12.142 eq 53
+ deny tcp any host 74.123.12.142 eq 53
+ deny udp any host 74.123.12.142 eq 53
+ permit ip any any
+
+int f0/1.3330
+ip access-group vms in
+
+# ptest
+144.38.192.40
+
+
+**** router 2
+
+ntp server 198.60.22.240
+ntp server 204.17.177.8
+ntp server 204.17.177.3
+
+ip access-list standard 11
+    10 permit 204.17.177.8
+    20 permit 204.17.177.3
+    30 deny   any
+exit
+
+ip access-list standard test
+ permit 74.211.92.222
+ permit 209.33.215.102
+ permit 144.38.192.40
+ deny   any
+exit
+
+line vty 0 4
+    access-class test in
+line vty 5 15
+    access-class test in
+exit
+
+ntp access-group peer 11
+exit
+
+ip access-list extended vms 
+ permit tcp 144.38.0.0 0.0.255.255 host 74.123.12.145 eq 22 21 80
+ permit tcp 209.33.192.0 0.0.63.255 host 74.123.12.145 eq 22 21 80
+ deny tcp any host 74.123.12.145 eq 80 21
+ permit tcp host 204.17.177.11 host 74.123.12.146 eq 53
+ permit udp host 204.17.177.11 host 74.123.12.146 eq 53
+ deny tcp any host 74.123.12.146 eq 53
+ deny udp any host 74.123.12.146 eq 53
+ permit ip any any
+exit
+
+int f0/1.3330
+ip access-group vms in
+
+**** switch
+ntp server 198.60.22.240
+ntp server 204.17.177.8
+ntp server 204.17.177.3
+
+ip access-list standard 11
+    10 permit 204.17.177.8
+    20 permit 204.17.177.3
+    30 deny   any
+exit
+
+ip access-list standard test
+ permit 74.211.92.222
+ permit 209.33.215.102
+ permit 144.38.192.40
+ deny   any
+exit
+
+line con 0
+line vty 0 4
+ access-class test in
+ transport input ssh
+line vty 5 15
+ access-class test in
+ transport input ssh
+
+ntp access-group peer 11
+exit
+
+ip access-list extended ping
+ permit icmp 144.38.0.0 0.0.255.255 any
+ permit icmp host 209.33.215.102 any
+ permit icmp host 74.211.92.222 any
+ deny icmp any 74.123.12.128 0.0.0.31 
+ deny tcp any 74.123.12.128 0.0.0.31 eq 53  
+ deny udp any 74.123.12.128 0.0.0.31 eq 53
+ permit ip any any
+exit
+interface FastEthernet1/0/16
+ ip access-group ping in
+int vlan114
+ ip access-group ping in
+
+# ptest
+  tcp/22, tcp/25, tcp/53, udp/53, udp/123, udp/1900
+
+ip access-list extended acl
+ permit icmp host 144.38.192.40 any
+ permit icmp 209.33.192.0 0.0.31.255 any
+ permit icmp host 74.211.92.222 any
+ deny icmp any 74.123.14.216 0.0.0.7
+ deny tcp any 74.123.14.216 0.0.0.7 eq 22
+ deny tcp any 74.123.14.216 0.0.0.7 eq 25
+ deny tcp any 74.123.14.216 0.0.0.7 eq 53
+ deny udp any 74.123.14.216 0.0.0.7 eq 53
+ deny udp any 74.123.14.216 0.0.0.7 eq 123
+ deny udp any 74.123.14.216 0.0.0.7 eq 1900
+ permit ip any any
+int vlan914
+ ip access-group acl in
+
+** loopback
+interface Loopback0
+ ip address 74.123.12.157 255.255.255.255
+ ip ospf message-digest-key 1 md5 OSPFisMYfavorite
+ ip ospf network point-to-point
+
+** ntp
+ntp server 198.60.22.240
+ntp server 204.17.177.8
+ntp server 204.17.177.3
+clock timezone MST -7 0
+clock summer-time MDT recurring
+
+** ospf
+
+# setup
+*** switch
+router ospf 65535
+ router-id 74.123.12.157
+ log-adjacency-changes
+ area 0 authentication message-digest
+ network 74.123.12.156 0.0.0.0 area 0
+ network 74.123.12.128 0.0.0.31 area 0
+interface Vlan114
+ description uplink for switch
+ ip address 74.123.12.130 255.255.255.252
+ ip ospf message-digest-key 1 md5 ineedospf2pass
+ ip ospf network point-to-point
+interface Loopback0
+ ip address 74.123.12.157 255.255.255.255
+ ip ospf message-digest-key 1 md5 OSPFisMYfavorite
+ ip ospf network point-to-point
+
+# ivp6
+
+
+ipv6 router ospf 65535
+router-id 74.123.12.157
+area 0 authentication message-digest
+redistribute connected metric 1
+redistribute static metric 1
+
+
+router-id 74.123.12.157
+area 0 authentication message-digest
+redistribute connected metric 1
+redistribute static metric 1
+
+
+int vlan 
+ipv6 ospf 65535 area 0
+ipv6 ospf network point-to-point
+ipv6 enable
+ipv6 router ospf 65535
+router-id 74.123.12.248
+redistribute connected metric 1
+redistribute static metric 1
+
+
+
+
+ 
+# ptest
+
+ipv6 router ospf 65535
+ router-id 74.123.12.157
+ log-adjacency-changes
+ 
+
+
+router ospf 65535
+ ip ospf cost 600
+ network 74.123.14.218 0.0.0.7 area 0
+
+
+interface Vlan914
+ ip ospf message-digest-key 1 md5 ineedospf2pass
+ ip ospf cost 
+
+sho ip ospf neighbor | inc Vlan914
+*** rout1
+interface FastEthernet0/1.400
+ description vlan 400 between 2800s
+ encapsulation dot1Q 400
+ ip address 74.123.12.149 255.255.255.252
+ ip ospf message-digest-key 1 md5 [password]
+ ip ospf network point-to-point
+ no shutdown 
+
+interface FastEthernet1/0/18
+ ip ospf message-digest-key 1 md5 OSPFisMYfavorite
+ ip ospf network point-to-point
+ ipv6 enable
+ ipv6 ospf network point-to-point
+
+** problems
+
+you still have static route on your 2800's. you should remove those once OSPF
+  is up. You also have static routes on your 3750, you should remove them once
+  you have made sure you are redistributing connected routes on the 2800's into OSPF.
+
+missing "show run", "sho ntp association", VM traceroutes,
+
+also missing the summary-address for hte /27 on the 3750
+
+** intel mincro code
+emacs /boot/grub/grub.cfg
+# add the following line to grub.cfg 
+# the /intel-ucode.img could be in /boot/intel-ucode.img if you do not have a serperate partetion for /boot
+initrd	/intel-ucode.img /initramfs-linux.img
+* siege
+** make siege log file work/make config file
+siege.conf
+** url file formate
+HOST=www.archpacman.com/wordpress
+http://${HOST}/index.php
+http://${HOST}/wp-activate.php
+http://${HOST}/wp-blog-header.php
+http://${HOST}/wp-comments-post.php
+http://${HOST}/wp-config.php
+http://${HOST}/wp-config-sample.php
+http://${HOST}/wp-cron.php
+http://${HOST}/wp-links-opml.php
+http://${HOST}/wp-load.php
+http://${HOST}/wp-login.php
+http://${HOST}/wp-mail.php
+http://${HOST}/wp-settings.php
+http://${HOST}/wp-signup.php
+http://${HOST}/wp-trackback.php
+http://${HOST}/xmlrpc.php 
+
+** siege command
+# -t is for time, -c is for how many users, and -f is for file
+siege -t 1M -c 20 -f urls.txt
+* webspiders
+robots.txt
+* cellphone
+** change imei
+http://techrival.blogspot.com/2013/08/how-to-setchange-imei-for-android.html
+Open Android Terminal Emulatör
+
+*Type SU then press ENTER button to get Superuser permmison
+
+After that, type this command then press ENTER button 
+
+echo 'AT+EGMR=1,7,"IMEI_NUMBER"' >/dev/pttycmd1
+
+echo AT+EGMR=1*7*IMEI_1 >/dev/pttycmd1
+
+# info on it
+http://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identiyt
+* ivp6
+** link for calc
+http://www.gestioip.net/cgi-bin/subnet_calculator.cgi
+* apache2
+** mode_rewrite
+sudo a2enmod rewrite
+
+emacs /etc/apache2/sites-avalible/site.conf
+
+ <Directory /var/www/>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+ </Directory>
+
+* ssl cert
+** must do the following to make ssl work
+sudo a2enmod ssl
+sudo service apache2 restart
+
+** virtual host file for the website
+<VirtualHost 144.38.204.74:443>
+ServerAdmin root@archpacman.com
+DocumentRoot /var/www/secure1.archpacman
+ServerName secure1.archpacman.com
+SSLEngine on
+SSLCertificateFile /etc/apache2/ssl/secure1.crt
+SSLCertificateKeyFile /etc/apache2/ssl/secure1.key
+# SSLCertificateChainFile /etc/ssl/crt/intermediate.crt                         
+        <Directory /var/www/secure1.archpacman>
+
+        </Directory>
+</VirtualHost>
+
+** self signed
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout secure1.key -out secure1.crt
+
+** signed by other
+# on client server 
+openssl genrsa -des3 -out server.key 1024
+openssl req -new -key server.key -out new.csr
+
+# on server side that will sign the cert
+
+# generate your key
+openssl genrsa -des3 -out CA.key 1024
+# gernirate your certificate for signing other certs
+openssl req -new -key CA.key -x509 -days 1095 -out CA.crt
+# sign the cert
+openssl x509 -req -days 365 -in new.csr -CA CA.crt -CAkey CA.key -CAcreateserial -out new.crt
+* proxy
+# squid
+** acl on squid
+acl kidspc src 144.38.204
+acl clean time MTWHF 12:00-18:00
+http_access deny kidspc clean
+# block file types
+acl mp3 urlpath_regex -i \.mp3$
+http_access deny mp3
+
+** acl block list of sites in file
+# file looks like
+# just write one domain per line
+acl bad_domains dstdom_regex -i "/etc/squid3/sit.txt"
+http_access deny bad_domains
+
+# if you find words in the url and query
+acl no_cooking url_regex cooking
+** add program
+url_rewrite_program /path/to/program
+
+** squid-gaurd
+** dansguardian
+# config file /etc/dansguardina/dansguardian.conf
+# commint out line that says it should
+emacs /etc/dans/contentregexplist
+
+* load balance
+* egrip
+** switch
+
+router eigrp 12345
+router-id 74.123.12.157
+network 74.123.12.128 0.0.0.3
+network 74.123.12.132 0.0.0.3
+network 74.123.12.136 0.0.0.3
+network 74.123.15.40 0.0.0.7
+redistribute connected metric 1 10 255 1 1500
+redistribute static metric 1 10 255 1 1500
+
+** router1
+
+router eigrp 12345
+router-id 74.123.12.156
+network 74.123.12.132 0.0.0.3
+network 74.123.12.148 0.0.0.3
+redistribute connected metric 1 10 255 1 1500
+redistribute static metric 1 10 255 1 1500
+
+** router2
+
+router eigrp 12345
+router-id 74.123.12.153
+network 74.123.12.136 0.0.0.3
+network 74.123.12.148 0.0.0.3
+redistribute connected metric 1 10 255 1 1500
+redistribute static metric 1 10 255 1 1500
+
+** disable
+
+no ip http server
+no ip http secure-server
+
+
+
+
+no router ospf 65535
+
+interface FastEthernet0/1.400
+no ip ospf message-digest-key 1 md5 7 10613A29231E012635022B3D2B3A3A3036
+no ip ospf network point-to-point
+no ip ospf 65535 area 100
+
+interface FastEthernet0/0.102
+no ip ospf network point-to-point
+no ip ospf 65535 area 100
+
+
+router eigrp 12345
+router eigrp 12345
+ network 74.123.12.128 0.0.0.3
+ network 74.123.12.136 0.0.0.3
+ network 74.123.12.132 0.0.0.3
+
+interface Vlan114
+no ip ospf message-digest-key 1 md5 OSPFisMYfavorite
+no ip ospf network point-to-point
+
+interface Vlan101
+no ip ospf message-digest-key 1 md5 OSPFisMYfavorite
+no ip ospf network point-to-point
+
+interface Vlan102
+no ip ospf message-digest-key 1 md5 OSPFisMYfavorite
+no ip ospf network point-to-point
+
+* ssh
+** remove host from known hosts
+ssh-keygen -R hostname
+** keep ssh alive
+# add to the following file /etc/ssh/ssh_config
+ServerAliveInterval 100
+** tunnel to server closet 
+# these need to be done in two different terminals
+ssh acoulter@ssh.cs.dixie.edu -L 5112:localhost:5112
+ssh root@server -L 6977:localhost:5901
+
+ssh -L 5112:localhost:5112 andrew@144.38.204.102
+* scapy
+** p1 
+sudo scapy
+pkt=IP(src="1.1.1.1",dst="144.38.192.210")
+i=ICMP(type="echo-reply") 
+send(pkt/i/"coulter")
+** p2
+t=TCP(dport=[9999],sport=[34567])
+send(pkt/t/"coulter")
+** p3
+sy=TCP(dport=33333,sport=55555,flags="S")
+send(pkt/sy/"coulter")
+
+* vi or vim
+** two screens at one time
+:sp
+** 
+** alt
+use alt to run commands outside of insert mode
+** put in background
+crtl z
+** vim tutor
+# in bash type
+vimtutor
+* vagrant
+** make a new vagrant box
+mkdir docker
+cd docker/
+vagrant box add docker ../vagrant_box/archlinux-x86_64.box 
+vagrant init docker
+vagrant up
+
+** make vagrant box from a vagrant box
+https://scotch.io/tutorials/how-to-create-a-vagrant-base-box-from-an-existing-one
+vagrant package --output test.box
+mkdir ~/test
+vagrant box add test test.box
+
+** speed up vagrant boxes
+https://stefanwrobel.com/how-to-make-vagrant-performance-not-suck
+** vagrant boxes
+http://www.vagrantbox.es/
+
+* web attack
+# phishing via ajax
+https://google-gruyere.appspot.com/part2#2__cross_site_scripting
+* bsd
+nullfs mounts ezjail
+# to restart the network and add the ips
+/etc/netstart
+# see jails
+jls
+ezjail-admin create jail1 144.38.222.73
+# jexec number_of_jail 
+jexec 1 /bin/sh
+jexec 1 /usr/local/bin/bash
+pkg install mysql51-server
+# warns for security problems
+https://www.shadowserver.org/wiki/
+
+* freebsd
+** first time setup
+login as cituser the password is the default one
+login as root with the following command do not use sudo
+su -
+edit /etc/rc.conf
+and change the following lines in the file
+
+defaultrouter="144.38.222.65"
+
+ifconfig_re0="inet 144.38.222.72 netmask 255.255.255.224"
+
+ifconfig_re0_alias0="inet 144.38.222.73/27"
+** update
+freebsd-update fetch
+freebsd-update install
+https://www.freebsd.org/doc/handbook/updating-upgrading-freebsdupdate.html
+** update to newer version
+# if you need to update the version 
+freebsd-update -r 9.1-RELEASE upgrade
+# you need to reboot 
+shutdown -r now
+freebsd-update install
+** find version
+uname -a
+
+* canyonland
+** login
+*** godaddy
+user: 55429182
+pass: Mitosis12#
+*** gmail
+user: canyonlandpeds
+pass: napymi12

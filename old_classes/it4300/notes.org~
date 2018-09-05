@@ -1,0 +1,4 @@
+* sets 
+a U b will show all numbers in each set and not take out dupes
+a + b will take everything
+a N b will only take out the ones that are in both

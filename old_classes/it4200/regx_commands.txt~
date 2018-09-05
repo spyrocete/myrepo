@@ -1,0 +1,41 @@
+#!/bin/bash
+
+#1 
+echo "Number 1"
+egrep ^foo.*s$ /usr/share/dict/words | wc
+
+#2
+echo "Number 2"
+egrep .*ijk.* /usr/share/dict/words | wc
+
+#3
+echo "Number 3"
+egrep '.*pilot.*|gically' /usr/share/dict/words | wc
+
+#4
+echo "Number 4"
+egrep ['a|e|i|o|u']['a|e|i|o|u']['a|e|i|o|u']['a|e|i|o|u'] /usr/share/dict/words | wc
+
+#5
+echo "Number 5"
+egrep -w ....................$ /usr/share/dict/words | wc
+
+#6
+echo "Number 6"
+egrep '(ux)$' /usr/share/dict/words | wc
+
+#7
+echo "Number 7"
+egrep ^[abs].*zz /usr/share/dict/words | wc
+
+#8
+echo "Number 8"
+egrep '^(.)(.).\2\1$' /usr/share/dict/words | wc
+
+#9
+echo "Number 9"
+egrep '^(.)(.)(.).?\3\2\1$' /usr/share/dict/words
+
+#10
+echo "Number 10"
+egrep '[^aeiou]*a[^aeiou]*e[^aeiou]*i[^aeiou]*o[^aeiou]*u[^aeiou]*$' /usr/share/dict/words | wc

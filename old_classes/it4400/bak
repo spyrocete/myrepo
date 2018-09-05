@@ -1,0 +1,236 @@
+
+!
+! Last configuration change at 17:23:08 MST Mon Nov 24 2014 by andrew
+! NVRAM config last updated at 17:28:51 MST Mon Nov 24 2014 by andrew
+! NVRAM config last updated at 17:28:51 MST Mon Nov 24 2014 by andrew
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname coulter-2800-1
+!
+boot-start-marker
+boot system flash:/c2800nm-adventerprisek9-mz.151-4.M8.bin
+boot-end-marker
+!
+!
+logging buffered 4096
+enable secret 4 LH1sMlHzZ8Am/pLL.V74lU1ornKVmusR9iuQFShaBpg
+!
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authorization exec default local none 
+!
+!
+!
+!
+!
+aaa session-id common
+!
+clock timezone MST -7 0
+clock summer-time MDT recurring
+!
+dot11 syslog
+ip source-route
+!
+!
+ip cef
+!
+!
+!
+no ip domain lookup
+ip domain name docdoc.us
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+vty-async
+!
+!
+!
+!
+!
+!
+!
+voice-card 0
+!
+crypto pki token default removal timeout 0
+!
+!
+!
+!
+license udi pid CISCO2811 sn FCZ092970R3
+username test password 7 010703174F02154F315E471F100912150E4C11392E36
+username andrew privilege 15 secret 4 Dbz21iKNu21UyqFfQL7eibCfwIszy1sazj26fRT1igQ
+username cbl privilege 15 secret 4 c5LFTnp3A5C3Ds2sCA3PU0Csl6Q1V1MpHyKNktEi5tI
+!
+redundancy
+!
+!
+ip ssh time-out 60
+ip ssh version 2
+ip ssh pubkey-chain
+  username andrew
+   key-hash ssh-rsa 9AE74D3CD68D7B5D84539612B6F7561A acoulter@lear
+  quit
+ip scp server enable
+! 
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 74.123.12.156 255.255.255.255
+!
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/0.101
+ description linked with vlan 101 as uplink on switch
+ encapsulation dot1Q 101
+ ip address 74.123.12.134 255.255.255.252
+ ipv6 address 2604:2C00:FFE4:1000::/64 eui-64
+ ipv6 enable
+ ipv6 ospf network point-to-point
+ ipv6 ospf 65535 area 100
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1.400
+ description vlan 400 between 2800s
+ encapsulation dot1Q 400
+ ip address 74.123.12.149 255.255.255.252
+ ipv6 address 2604:2C00:FFE4:1200::1/64
+ ipv6 enable
+ ipv6 ospf network point-to-point
+ ipv6 ospf 65535 area 100
+!
+interface FastEthernet0/1.3314
+ description This is on vlan 3314 and it for vm1
+ encapsulation dot1Q 3314
+ ip address 74.123.12.141 255.255.255.252
+ ipv6 address 2604:2C00:FFE4:1300::1/64
+ ipv6 enable
+!
+!
+router eigrp 12345
+ network 74.123.12.132 0.0.0.3
+ network 74.123.12.148 0.0.0.3
+ redistribute connected metric 1 10 255 1 1500
+ redistribute static metric 1 10 255 1 1500
+ eigrp router-id 74.123.12.156
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+ip access-list standard test
+ permit 74.211.92.222
+ permit 209.33.215.102
+ permit 144.38.192.40
+ permit 144.0.0.0 0.255.255.255
+ deny   any
+!
+ip access-list extended vms
+ permit tcp 144.38.0.0 0.0.255.255 host 74.123.12.141 eq 22 ftp www
+ permit tcp 209.33.192.0 0.0.63.255 host 74.123.12.141 eq 22 ftp www
+ deny   tcp host 74.123.12.141 any eq 22 www ftp
+ permit udp host 204.17.177.21 host 74.123.12.142 eq domain
+ permit tcp host 204.17.177.21 host 74.123.12.142 eq domain
+ deny   tcp any host 74.123.12.142 eq domain
+ deny   udp any host 74.123.12.142 eq domain
+ permit ip any any
+!
+ipv6 router ospf 65535
+ router-id 74.123.12.156
+ redistribute connected metric 1
+ redistribute static metric 1
+!
+!
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+mgcp profile default
+!
+!
+!
+!
+!
+banner motd elcome
+Bender
+ 
+                  o
+                  |
+                ,'~'.
+               /     \
+              |   ____|_
+              |  '___,,_'         .----------------.
+              |  ||(o |o)|       ( KILL ALL HUMANS! )
+              |   -------         ,----------------'
+              |  _____|         -'
+              \  '####,
+               -------
+             /________\
+           (  )        |)
+           '_ ' ,------|\         _
+          /_ /  |      |_\        ||
+         /_ /|  |     o| _\      _|| 
+        /_ / |  |      |\ _\____//' |
+       (  (  |  |      | (_,_,_,____/
+        \ _\ |   ------|        
+         \ _\|_________|
+          \ _\ \__\\__\
+          |__| |__||__|
+       ||/__/  |__||__|
+               |__||__|
+               |__||__|
+               /__)/__)
+              /__//__/
+             /__//__/
+            /__//__/.
+          .'    '.   '.
+         (_kOs____)____)
+
+
+!
+line con 0
+line aux 0
+line vty 0 4
+ session-timeout 60 
+ transport input ssh
+line vty 5 15
+ access-class test in
+ transport input all
+!
+scheduler allocate 20000 1000
+ntp access-group peer 11
+ntp server 204.17.177.3
+ntp server 204.17.177.8
+ntp server 198.60.22.240
+end

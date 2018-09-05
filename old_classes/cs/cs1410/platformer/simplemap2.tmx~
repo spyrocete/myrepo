@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="70" height="32" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="tiles" tilewidth="32" tileheight="32">
+  <image source="../../../Downloads/plat/tiles.png" width="5504" height="1024"/>
+ </tileset>
+ <layer name="background" width="70" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2YTQ7CIBBGMXbpwrR4GONSvUQTV/Y66lI9ST2CiedQF+odhJgmTS0tBaYzKIsXf4qReQ4f2M2QsS0SO0GeMHYSpPwb+X6uuKZL8fnie3QfpxFjK46DTb3QBC/0vMwi/PopesGuPXjxy0tYR6FfqlwG/nqRcy9DeR2dR+1Q7hcdv77mS7WPXPeSr16g+qTNC8S6MPFCOV+w/LjqFxOf0otuzb56gc4XyL3HxEtd9rpad7a5C+UlI9AvNr89ZP/U5W5f2euiXyCcYN+v8/X8otNDtvnSZ5a68qKD69yl4qfwYpovUPsRth9q/UIF7HzBrr8O0/2IyrkOCshz3SNm7KngFX/GYNevYjyB87IXvXhQcExoe0l5t/sMXf4f/YKXLrmim7tzwULBkv+vF59zV+5HVzG3GxL3kpd1ZW7yddYwd53rxfOmcXXI8W9wAUjAACMAAA==
+  </data>
+ </layer>
+ <layer name="solid" width="70" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2YURKAIAhE9f6X7rdp0ExYdp14M36lYBsB2ltrvYY5WDB9zyhdbEoXm9LFpnSxKV1sShebDF1m9tV1YfUzO74y+jGkDit21ePl7Tkqlk7VZdemdy77nHJCfmHtK8qfN4ci7O9yUv+SGdsrtpF10fteTF2QePVFxQ/7rioiXhB7VogXRb72daM5Xv/sfuVJxD6i866CPnf/u98MVY8U+l2vDcZaJAr5RZGovsHjXxGF/KZIxhljVofVdVn9L9TORygianLpMrbBWItk5Q7hr+MC09siPQAjAAA=
+  </data>
+ </layer>
+ <objectgroup name="sprites" width="70" height="32">
+  <object type="player" gid="1709" x="84" y="988"/>
+  <object type="chest" gid="5161" x="123" y="286"/>
+  <object type="chest" gid="5161" x="478" y="990"/>
+  <object type="chest" gid="5161" x="822" y="232"/>
+  <object type="chest" gid="5161" x="921" y="863"/>
+  <object type="chest" gid="5161" x="921" y="954"/>
+  <object type="chest" gid="5161" x="75" y="702"/>
+  <object type="chest" gid="5161" x="33" y="203"/>
+  <object type="enemy" gid="5482" x="778" y="858"/>
+  <object type="enemy2" gid="4445" x="79" y="285"/>
+  <object type="door" gid="5163" x="286" y="320"/>
+  <object type="door" gid="5335" x="286" y="352"/>
+  <object type="door" gid="5336" x="316" y="352"/>
+  <object type="door" gid="5164" x="318" y="320"/>
+  <object type="brick" gid="3" x="1311" y="735"/>
+  <object type="brick" gid="3" x="1343" y="735"/>
+  <object type="brick" gid="3" x="1373" y="735"/>
+  <object type="brick" gid="3" x="511" y="895"/>
+  <object type="brick" gid="3" x="510" y="863"/>
+  <object type="marker" gid="1378" x="1209" y="370"/>
+ </objectgroup>
+</map>

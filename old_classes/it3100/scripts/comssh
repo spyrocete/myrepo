@@ -1,0 +1,2 @@
+#!/bin/bash
+ssh acoulter@ssh.cs.dixie.edu 'ssh lear 'citv showvm > my_vm_info''

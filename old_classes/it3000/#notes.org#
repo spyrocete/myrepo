@@ -1,0 +1,35 @@
+* background attach
+# Can change the way it scrolls and many other things
+http://www.w3schools.com/cssref/pr_background-attachment.asp
+
+* background clip
+# it will go out to the edge of the border
+* background origin
+# controls wich box an image will go to like boarder
+auto will keep the img the same size so if it is 
+* gradiance 
+* sprites
+img optimized 
+multiple images on just one image file.
+* svg
+scalable images
+* color theory
+tents you add whites
+tones you add grey
+shades add black
+* color mods
+** hsla
+hex, rgb, 
+rgba allows opacity
+hsla 
+* fonts
+** gen font
+http://www.fontsquirrel.com/tools/webfont-generator
+** font websites
+# font palace
+http://www.fontpalace.com/  
+# google fonts
+https://www.google.com/fonts
+** css
+shadows
+blurr

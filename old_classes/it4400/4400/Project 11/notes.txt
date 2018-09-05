@@ -1,0 +1,45 @@
+garay-3750(config)#router eigrp 12345
+
+garay-3750(config-router)#eigrp router-id 74.123.12.248
+
+garay-3750(config-router)# network 74.123.12.224 0.0.0.3
+
+garay-3750(config-router)# network 74.123.12.228 0.0.0.3
+
+garay-3750(config-router)# network 74.123.12.232 0.0.0.3
+
+garay-3750(config-router)# network 74.123.15.40 0.0.0.7
+
+garay-3750(config-router)#redistribute connected metric 1 10 255 1 1500
+
+garay-3750(config-router)#redistribute static metric 1 10 255 1 1500
+
+
+
+garay-2800-1(config)#router eigrp 12345
+
+garay-2800-1(config-router)#eigrp router-id 74.123.12.249
+
+garay-2800-1(config-router)# network 74.123.12.228 0.0.0.3
+
+garay-2800-1(config-router)# network 74.123.12.244 0.0.0.3
+
+garay-2800-1(config-router)#redistribute connected metric 1 10 255 1 1500
+
+garay-2800-1(config-router)#redistribute static metric 1 10 255 1 1500
+
+
+
+garay-2800-2(config)#router eigrp 12345
+
+garay-2800-2(config-router)#eigrp router-id 74.123.12.250
+
+garay-2800-2(config-router)# network 74.123.12.232 0.0.0.3
+
+garay-2800-2(config-router)# network 74.123.12.244 0.0.0.3
+
+garay-2800-2(config-router)#redistribute connected metric 1 10 255 1 1500
+
+garay-2800-2(config-router)#redistribute static metric 1 10 255 1 1500
+
+

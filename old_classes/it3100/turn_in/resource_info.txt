@@ -1,0 +1,4 @@
+ip: 144.38.217.200
+user: andrew
+grandparent: sshd: andrew@pts/0  
+getty: -8 38400 tty1

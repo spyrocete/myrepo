@@ -1,0 +1,8 @@
+ip: 144.38.217.199
+site1: info.archpacman.com
+site2: pen.archpacman.com
+site3: paper.archpacman.com
+site4: latex.archpacman.com
+site5: calc.archpacman.com
+site6: org.archpacman.com
+application: http://info.archpacman.com/test.php

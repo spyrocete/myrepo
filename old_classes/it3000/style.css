@@ -1,0 +1,17 @@
+/* class is used for multiple times throughout a page *\
+/
+.blue { color:blue;
+}
+
+/* id is used once per page */
+#big { 
+    font:30px
+}
+
+a:hover { 
+    color:red
+}
+
+h1,h2,p {
+    color:yellow
+}
