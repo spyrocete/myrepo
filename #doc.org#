@@ -271,10 +271,9 @@ chmod +x /hooks/post-receive
 git rm --cached filename
 
 * github
-** push git without username and password
+** store username and password
 git config credential.helper store
-git push http://example.com/repo.git
-
+git push origin master
 * cisco
 
 link: http://www.cisco.com/c/en/us/td/docs/ios/12_2/configfun/configuration/guide/ffun_c/fcf006.html#wp1001335
