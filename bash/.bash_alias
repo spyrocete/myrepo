@@ -91,7 +91,7 @@ fi
 
 # qq for quick ref
 # -o ServerAliveInterval=100
-gbash='/homework/bash'
+gbash='/myrepo/bash'
 
 alias G='getting'
 alias GP='git_push'
@@ -99,7 +99,7 @@ alias B='cib'
 
 # The ssh-copy-id command can only take the name from the local config.
 alias ssh-copy-id='cat ~/myrepo/config > ~/.ssh/config;ssh-copy-id'
-alias ec='emacs ~/myrepo/config'
+alias ec='emacs -nw ~/myrepo/config'
 alias ssh='ssh -o ServerAliveInterval=100 -F ~/myrepo/config'
 alias scp='scp -F ~/myrepo/config'
 
@@ -109,8 +109,8 @@ alias S='showcit'
 alias skype='apulse32 skype'
 alias e='emacs -nw'
 
-alias ea='emacs ~$gbash/.bash_alias;source ~$gbash/.bash_alias'
-alias eb='emacs ~$gbash/.bashrc;source ~$gbash/.bashrc'
+alias ea='emacs -nw ~$gbash/.bash_alias'
+alias eb='emacs -nw ~$gbash/.bashrc'
 alias aup="yaourt -Syu --aur"
 alias pacup="sudo pacman --noconfirm -Syu" 
 
