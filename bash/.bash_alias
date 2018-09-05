@@ -41,7 +41,7 @@ function cib {
 EOF
 }
 
-function getting {
+function git_pull {
     git add --all
     git commit -am "auto gen quick git commit"
     if [ $HOSTNAME = "ArchDesktop" ]; then
@@ -54,15 +54,10 @@ function getting {
     fi
 }
 
-function git_pull {
+function git_push {
     git add --all
     git commit -am "auto gen quick git commit"
-    if [ $HOSTNAME = "ArchDesktop" ]; then
-       echo "you are using desktop"
-       	git pull homework master     
-    else
-	git pull
-    fi
+    git push origin master
 }
 
 
@@ -99,7 +94,7 @@ fi
 gbash='/homework/bash'
 
 alias G='getting'
-alias GP='git_pull'
+alias GP='git_push'
 alias B='cib'
 
 # The ssh-copy-id command can only take the name from the local config.
