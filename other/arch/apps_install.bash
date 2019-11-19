@@ -41,12 +41,13 @@ done
 
 
 # make user
+# usrname="andrew"
 useradd -m -g users -G wheel -s /bin/bash andrew
 echo "type password for andew"
 passwd andrew
 
 # add user to sudo
-visudo
+echo 'andrew  ALL=(ALL:ALL) ALL' >> /etc/sudoers
 
 # configure ssh
 # emacs /etc/ssh/sshd_config
